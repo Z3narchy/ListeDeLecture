@@ -1,30 +1,37 @@
-{
-    "_id" : ObjectId("5ff608bc40c9431c73c05ae6"),
-    "titre" : "Solar Flare Homicide",
-    "artiste" : "Emmure",
-    "categorie" : ["Deathcore"]
-}
-{
-    "_id" : ObjectId("5ff608ce40c9431c73c05ae7"),
-    "titre" : "Dust In The Wind",
-    "artiste" : "Kansas",
-    "categorie" : ["Soft Rock"]
-}
-{
-    "_id" : ObjectId("5ff617408fdacc1b7ca2121c"),
-    "titre" : "Flag of the Beast ",
-    "artiste" : "Emmure",
-    "categorie" : ["Deathcore"]
-}
-{
-    "_id" : ObjectId("5ff61ccd3872041cfcdae7be"),
-    "titre" : "Master of Puppets",
-    "artiste" : "Metallica",
-    "categorie" : ["Hard Rock"]
-}
-{
-    "_id" : ObjectId("5ff61e1c4401fb276c862623"),
-    "titre" : "From Whom the Bell Tolls",
-    "artiste" : "Metallica",
-    "categorie" : ["Hard Rock"]
-}
+[
+    {
+        "titre": "Solar Flare Homicide",
+        "artiste": "Emmure",
+        "categorie": [
+            "Deathcore"
+        ]
+    },
+    {
+        "titre": "Dust In The Wind",
+        "artiste": "Kansas",
+        "categorie": [
+            "Soft Rock"
+        ]
+    },
+    {
+        "titre": "Flag of the Beast ",
+        "artiste": "Emmure",
+        "categorie": [
+            "Deathcore"
+        ]
+    },
+    {
+        "titre": "Master of Puppets",
+        "artiste": "Metallica",
+        "categorie": [
+            "Hard Rock"
+        ]
+    },
+    {
+        "titre": "From Whom the Bell Tolls",
+        "artiste": "Metallica",
+        "categorie": [
+            "Hard Rock"
+        ]
+    }
+]
