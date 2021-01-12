@@ -37,11 +37,11 @@ app.get('/api/pieces/:id', (requete, reponse) => {
         const infoPiece = await db.collection('pieces').findOne({ _id: objectId });
         reponse.status(200).json(infoPiece);      
     }, reponse).catch(
-        () => reponse.status(500).send("Pièce non trouvée")
+        () => reponse.status(404).send("Pièce non trouvée")
     );
 });
 
-app.put('/api/pieces/ajouter', (requete, reponse) => {
+app.post('/api/pieces/ajouter', (requete, reponse) => {
     const {titre, artiste, categorie} = requete.body;
 
     if (titre !== undefined && artiste !== undefined && categorie !== undefined) {
@@ -65,7 +65,7 @@ app.put('/api/pieces/ajouter', (requete, reponse) => {
     }
 });
 
-app.post('/api/pieces/modifier/:id', (requete, reponse) => {
+app.put('/api/pieces/modifier/:id', (requete, reponse) => {
     const {titre, artiste, categorie} = requete.body;
     const id = requete.params.id;
 
