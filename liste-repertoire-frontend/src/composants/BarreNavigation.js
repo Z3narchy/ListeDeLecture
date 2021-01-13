@@ -15,8 +15,8 @@ function BarreNavigation() {
                     <LinkContainer to="/repertoire">
                         <Nav.Link>Repertoire</Nav.Link>
                     </LinkContainer>
-                    <LinkContainer to="/ajouterClient">
-                        <Nav.Link>Ajouter une pièce</Nav.Link>
+                    <LinkContainer to="/demande">
+                        <Nav.Link>Demande spéciale</Nav.Link>
                     </LinkContainer>
                     <LinkContainer to="/admin">
                         <Nav.Link>Admin</Nav.Link>
