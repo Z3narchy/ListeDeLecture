@@ -65,7 +65,7 @@ function PageDemande() {
                 <Button variant="primary" onClick={envoyerDemande} >
                     Envoyer
             </Button>
-            <h3>Pèces déjà ajouté.</h3>
+            <h3>Pièce(s) déjà ajouté(s).</h3>
             <ListePiecesAjouter pieces={listeDemandes}  />
             </Form>
             <p>Pour ajouter une chanson à votre liste, simplement cliquer sur le bouton 'Add'.</p>
