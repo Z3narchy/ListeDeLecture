@@ -10,8 +10,7 @@ function AfficherDemandes(demandes) {
             <li>{demande.name}</li>
             {demande.listeChansons.map((chanson) =>
                 <ul>
-                    <li>{chanson.titre}</li>
-                    <li>{chanson.artiste}</li>
+                    <li>{chanson.artiste} - {chanson.titre}</li>
                 </ul>)}
         </>
     )
@@ -22,7 +21,7 @@ function PageAfficherDemande() {
     useEffect(() => {
         const chercherDonnees = async () => {
             const resultat = await fetch(`/api/demandesSpeciales`);
-            const body = await resultat.json().catch((error) => { console.log(error) });
+            const body = await resultat.json().catch((error) => {console.log(error)});
             setListeDemande(body);
         };
         chercherDonnees();
