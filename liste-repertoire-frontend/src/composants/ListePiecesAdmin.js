@@ -10,8 +10,6 @@ function ListePiecesAdmin({ pieces }) {
         pieces.forEach(piece => {
 
             piece.categorie.forEach(categorie => {
-                console.log(categorie);
-
                 if (!tableauCategories.includes(categorie)) {
 
                     if (tableauCategories[categorie] === undefined) {
