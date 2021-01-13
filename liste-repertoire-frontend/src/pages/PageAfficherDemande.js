@@ -13,16 +13,21 @@ function PageAfficherDemande() {
             setListeDemande(body);
         };
         chercherDonnees();
-    }, []); 
-    
+    }, []);
+
     if (listeDemandes?.length) {
 
         return (
             <>
                 <ul>
                     {
-                        listeDemandes.map(piece => <li>{piece.titre} - {piece.artiste}</li>)
-                    }
+                        listeDemandes.map(demande =>
+                            <li>
+                                {demande.name} -  {Object.keys(demande.listeChansons).map((chanson, index) =>
+                                    <p>{chanson.titre}</p>
+                                )}
+                            </li>
+                        )}
                 </ul>
             </>
         );
