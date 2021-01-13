@@ -8,7 +8,6 @@ function ListePieces({ pieces }) {
         pieces.forEach(piece => {
 
             piece.categorie.forEach(categorie => {
-                console.log(categorie);
 
                 if (!tableauCategories.includes(categorie)) {
 
@@ -18,8 +17,6 @@ function ListePieces({ pieces }) {
                 }
             })
         });
-
-
 
         return (
             <>
