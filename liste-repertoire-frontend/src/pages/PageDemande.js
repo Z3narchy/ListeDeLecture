@@ -44,8 +44,11 @@ function PageDemande() {
     {
         var piece = listePieces.find(c => c._id == id);
         var nouvelleListe = listeDemande.slice();
-        nouvelleListe.push(piece);
-        setListeDemande(nouvelleListe)
+        if(!nouvelleListe.includes(piece))
+        {
+            nouvelleListe.push(piece);
+            setListeDemande(nouvelleListe)
+        }
     }
     return (
         <>

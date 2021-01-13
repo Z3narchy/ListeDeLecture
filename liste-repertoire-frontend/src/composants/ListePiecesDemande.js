@@ -17,9 +17,7 @@ function ListePiecesDemande({ pieces, handle }) {
                     if (tableauCategories[categorie] === undefined) {
                         tableauCategories.push(categorie);
                     }
-
                 }
-
             })
         });
         
