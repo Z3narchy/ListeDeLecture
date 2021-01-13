@@ -5,7 +5,6 @@ import {
 } from 'react';
 
 import ListePiecesAdmin from '../composants/ListePiecesAdmin';
-
 import Button from 'react-bootstrap/Button';
 import { Link } from 'react-router-dom';
 
@@ -26,9 +25,11 @@ function PageAdmin() {
             <h1>Page administrateur</h1>
 
             <Link to="/ajouter">
-                <Button>Ajouter une nouvelle pièce</Button>    
+                <Button  className="m-2">Ajouter une nouvelle pièce</Button>    
             </Link>
-            
+            <Link to="/afficher">
+                <Button className="m-2">Afficher les listes de demandes</Button>    
+            </Link>
             <h2>Liste du répertoire</h2>
             <ListePiecesAdmin pieces={listePieces} />
         </>
