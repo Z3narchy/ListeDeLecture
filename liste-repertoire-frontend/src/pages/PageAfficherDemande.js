@@ -4,6 +4,19 @@ import {
     useEffect
 } from 'react';
 
+function AfficherDemandes(demandes) {
+    var demandesJSX = demandes.map((demande) =>
+        <>
+            <li>{demande.name}</li>
+            {demande.listeChansons.map((chanson) =>
+                <ul>
+                    <li>{chanson.titre}</li>
+                    <li>{chanson.artiste}</li>
+                </ul>)}
+        </>
+    )
+    return demandesJSX;
+}
 function PageAfficherDemande() {
     const [listeDemandes, setListeDemande] = useState([]);
     useEffect(() => {
@@ -20,14 +33,7 @@ function PageAfficherDemande() {
         return (
             <>
                 <ul>
-                    {
-                        listeDemandes.map(demande =>
-                            <li>
-                                {demande.name} -  {Object.keys(demande.listeChansons).map((chanson, index) =>
-                                    <p>{chanson.titre}</p>
-                                )}
-                            </li>
-                        )}
+                    {AfficherDemandes(listeDemandes)}
                 </ul>
             </>
         );
