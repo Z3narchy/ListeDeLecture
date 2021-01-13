@@ -55,7 +55,7 @@ app.post('/api/pieces/ajouter', (requete, reponse) => {
             reponse.status(200).send("Pièce ajoutée");
         }, reponse).catch(
             () => reponse.status(500).send("Erreur : la pièce n'a pas été ajoutée")
-        );;        
+        );       
     }
     else {
         reponse.status(500).send(`Certains paramètres ne sont pas définis :
@@ -104,6 +104,66 @@ app.delete('/api/pieces/supprimer/:id', (requete, reponse) => {
     }, reponse).catch(
         () => reponse.status(500).send("Erreur : la pièce n'a pas été supprimée")
     );    
+});
+
+app.get('/api/demandesSpeciales', (requete, reponse) => {
+    utiliserDB(async (db) => {
+        const listeDemandes = await db.collection('demandesSpeciales').find().toArray();
+        reponse.status(200).json(listeDemandes);
+    }, reponse).catch(
+        () => reponse.status(500).send("Erreur lors de la requête")
+    );;
+});
+
+app.post('/api/demandesSpeciales/ajouter', (requete, reponse) => {
+    const {name, listeChansons} = requete.body;
+
+    console.log(name);
+
+    if (name !== undefined && listeChansons !== undefined) {
+        utiliserDB(async (db) => {
+            await db.collection('demandesSpeciales').insertOne({ 
+                name: name,
+                listeChansons: listeChansons
+            });
+            
+            reponse.status(200).send("liste de demandes ajoutees");
+        }, reponse).catch(
+            () => reponse.status(500).send("Erreur : la liste des demandes speciales n'était pas bien remplie")
+        );        
+    }
+    else {
+        reponse.status(500).send(`Certains paramètres ne sont pas définis :
+            - titre: ${titre}
+            - artiste: ${artiste}
+            - categorie: ${categorie}`);
+    }
+});
+
+app.put('/api/demandesSpeciales/modifier/:id', (requete, reponse) => {
+    const {name, listeChansons} = requete.body;
+    const id = requete.params.id;
+
+    if (name !== undefined && listeChansons !== undefined) {
+        utiliserDB(async (db) => {
+            var objectId = ObjectID.createFromHexString(id);
+            await db.collection('demandesSpeciales').updateOne({ _id: objectId }, {
+                '$set': {
+                    name: name,
+                    listeChansons: listeChansons
+                }
+            });
+            
+            reponse.status(200).send("liste de demandes speciales modifiees");
+        }, reponse).catch(
+            () => reponse.status(500).send("Erreur : la pièce n'a pas été modifiée")
+        );        
+    }
+    else {
+        reponse.status(500).send(`Certains paramètres ne sont pas définis :
+            - nom: ${name}
+            - artiste: ${listeChansons}`);
+    }
 });
 
 app.listen(8000, () => console.log("Serveur démarré sur le port 8000"));

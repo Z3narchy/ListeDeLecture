@@ -1,0 +1,75 @@
+[
+    {
+        "name": "John",
+        "listeChansons": [
+            {
+                "titre": "chanson2",
+                "artiste": "artisssse",
+                "categorie": [
+                    "rock",
+                    "metal",
+                    "kpop"
+                ]
+            },
+            {
+                "titre": "chanson2",
+                "artiste": "erticcho",
+                "categorie": [
+                    "metal",
+                    "rap",
+                    "trash"
+                ]
+            },
+            {
+                "titre": "chanson3",
+                "artiste": "artisssse",
+                "categorie": [
+                    "rock",
+                    "pop",
+                    "kpop"
+                ]
+            }
+        ]
+    },
+    {
+        "name": "Niklas",
+        "listeChansons": [
+            {
+                "titre": "Road69",
+                "artiste": "SuaBrosse",
+                "categorie": [
+                    "pop",
+                    "kid",
+                    "familyfriendly"
+                ]
+            },
+            {
+                "titre": "Brossebrossebrosse",
+                "artiste": "bode-ouaizeur",
+                "categorie": [
+                    "trah",
+                    "rap",
+                    "metal"
+                ]
+            },
+            {
+                "titre": "LaverMonBateau",
+                "artiste": "perfectionisse",
+                "categorie": [
+                    "rock",
+                    "latino",
+                    "kpop"
+                ]
+            },
+            {
+                "titre": "JvousMetAPorte",
+                "artiste": "bestoopy",
+                "categorie": [
+                    "soft",
+                    "nightcore",
+                    "kpop"
+                ]
+            }
+        ]
+    }
+]
