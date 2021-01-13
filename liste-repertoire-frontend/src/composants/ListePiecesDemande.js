@@ -3,7 +3,7 @@ import Alert from 'react-bootstrap/Alert'
 import Button from 'react-bootstrap/Button';
 
 
-function ListePiecesDemande({ pieces, liste }) {
+function ListePiecesDemande({ pieces, handle }) {
     if(pieces?.length) {
         var tableauCategories = [];
 
@@ -22,9 +22,7 @@ function ListePiecesDemande({ pieces, liste }) {
 
             })
         });
-
-
-
+        
         return (
             <>
                 {tableauCategories.map((categorie) => {
@@ -33,11 +31,12 @@ function ListePiecesDemande({ pieces, liste }) {
                         <div key={categorie}>
                             <h4>{categorie}</h4>
                             <ul>
-                                {
+                                {   
                                     piecesAssociees.map(piece =>
-                                        <div> <li key={piece._id}>{piece.titre} - {piece.artiste}</li>
-                                    <Button variant="primary" className="aline"> Add</Button></div>)
-                                    
+                                        <li key={piece._id}>{piece.titre} - {piece.artiste}
+                                        <Button variant="primary" className="m-2" onClick={ () => handle(piece._id)} > Add</Button>
+                                        </li>
+                                    )
                                 }
                             </ul>
                             
@@ -53,10 +52,3 @@ function ListePiecesDemande({ pieces, liste }) {
 }
 
 export default ListePiecesDemande;
-
-/*
-<Button variant="primary" onClick={envoyerDemande} >
-                                 Envoyer
-                                </Button>
-
-                                */

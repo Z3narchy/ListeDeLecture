@@ -4,6 +4,7 @@ import {
     useEffect
 } from 'react';
 import ListePiecesDemande from '../composants/ListePiecesDemande';
+import ListePiecesAjouter from '../composants/ListePiecesAjouter';
 import { Form } from 'react-bootstrap';
 import Button from 'react-bootstrap/Button';
 import { Redirect } from 'react-router-dom';
@@ -15,8 +16,8 @@ function PageDemande() {
     const [listeDemande, setListeDemande] = useState([]);
 
     const envoyerDemande = async () => {
-        await fetch(`/api/pieces/ajouter`, {
-            method: 'put',
+        await fetch(`/api/demandesSpeciales/ajouter`, {
+            method: 'post',
             body: JSON.stringify({ nom, listeDemande }),
             headers: {
                 'Content-Type': 'application/json'
@@ -27,7 +28,7 @@ function PageDemande() {
 
     function AfficherRedirection() {
         if (rediriger === true) {
-            return <Redirect to="/admin" />
+            return <Redirect to="/repertoire" />
         }
     }
     useEffect(() => {
@@ -39,6 +40,13 @@ function PageDemande() {
         chercherDonnees();
     }, []);
 
+    function handleclick(id)
+    {
+        var piece = listePieces.find(c => c._id == id);
+        var nouvelleListe = listeDemande.slice();
+        nouvelleListe.push(piece);
+        setListeDemande(nouvelleListe)
+    }
     return (
         <>
             {AfficherRedirection()}
@@ -54,9 +62,11 @@ function PageDemande() {
                 <Button variant="primary" onClick={envoyerDemande} >
                     Envoyer
             </Button>
+            <h3>Pèces déjà ajouté.</h3>
+            <ListePiecesAjouter pieces={listeDemande}  />
             </Form>
             <p>Pour ajouter une chanson à votre liste, simplement cliquer sur le bouton 'Add'.</p>
-            <ListePiecesDemande pieces={listePieces} />
+            <ListePiecesDemande pieces={listePieces} handle={handleclick} />
         </>
     );
 }
