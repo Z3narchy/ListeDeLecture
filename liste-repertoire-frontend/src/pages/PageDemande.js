@@ -5,20 +5,20 @@ import {
 } from 'react';
 import ListePiecesDemande from '../composants/ListePiecesDemande';
 import ListePiecesAjouter from '../composants/ListePiecesAjouter';
-import { Form } from 'react-bootstrap';
+import { Alert, Form } from 'react-bootstrap';
 import Button from 'react-bootstrap/Button';
 import { Redirect } from 'react-router-dom';
 
 function PageDemande() {
     const [listePieces, setListePieces] = useState([]);
-    const [nom, setNom] = useState('');
+    const [name, setNom] = useState('');
     const [rediriger, setRediriger] = useState(false);
-    const [listeDemande, setListeDemande] = useState([]);
+    const [listeDemandes, setListeDemande] = useState([]);
 
     const envoyerDemande = async () => {
         await fetch(`/api/demandesSpeciales/ajouter`, {
             method: 'post',
-            body: JSON.stringify({ nom, listeDemande }),
+            body: JSON.stringify({ name, listeDemandes }),
             headers: {
                 'Content-Type': 'application/json'
             }
@@ -43,7 +43,7 @@ function PageDemande() {
     function handleclick(id)
     {
         var piece = listePieces.find(c => c._id == id);
-        var nouvelleListe = listeDemande.slice();
+        var nouvelleListe = listeDemandes.slice();
         if(!nouvelleListe.includes(piece))
         {
             nouvelleListe.push(piece);
@@ -58,7 +58,7 @@ function PageDemande() {
             <Form className="mb-1">
                 <Form.Group>
                     <Form.Label>Nom d'usager</Form.Label>
-                    <Form.Control type="text" value={nom}
+                    <Form.Control type="text" value={name}
                         onChange={(event) => setNom(event.target.value)} />
                 </Form.Group>
                 <p>Cliquer sur le bouton pour envoyer votre liste.</p>
@@ -66,7 +66,7 @@ function PageDemande() {
                     Envoyer
             </Button>
             <h3>Pèces déjà ajouté.</h3>
-            <ListePiecesAjouter pieces={listeDemande}  />
+            <ListePiecesAjouter pieces={listeDemandes}  />
             </Form>
             <p>Pour ajouter une chanson à votre liste, simplement cliquer sur le bouton 'Add'.</p>
             <ListePiecesDemande pieces={listePieces} handle={handleclick} />

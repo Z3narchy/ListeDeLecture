@@ -116,15 +116,16 @@ app.get('/api/demandesSpeciales', (requete, reponse) => {
 });
 
 app.post('/api/demandesSpeciales/ajouter', (requete, reponse) => {
-    const {name, listeChansons} = requete.body;
+    const {name, listeDemandes} = requete.body;
 
     console.log(name);
+    console.log(listeDemandes);
 
-    if (name !== undefined && listeChansons !== undefined) {
+    if (name !== undefined && listeDemandes !== undefined) {
         utiliserDB(async (db) => {
             await db.collection('demandesSpeciales').insertOne({ 
                 name: name,
-                listeChansons: listeChansons
+                listeChansons: listeDemandes
             });
             
             reponse.status(200).send("liste de demandes ajoutees");
@@ -134,9 +135,8 @@ app.post('/api/demandesSpeciales/ajouter', (requete, reponse) => {
     }
     else {
         reponse.status(500).send(`Certains paramètres ne sont pas définis :
-            - titre: ${titre}
-            - artiste: ${artiste}
-            - categorie: ${categorie}`);
+            - name: ${name}
+            - listeChansons: ${listeDemandes}`);
     }
 });
 

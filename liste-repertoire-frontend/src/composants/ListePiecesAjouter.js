@@ -15,7 +15,7 @@ function ListePiecesAjouter({ pieces }) {
         );
     }
     else {
-        return <h5 variant={"info"} >Il n'y a pas de pièces dans le répertoire.</h5>;
+        return <h5 variant={"info"} >Aucune pièce ajoutée.</h5>;
     }
 }
 
