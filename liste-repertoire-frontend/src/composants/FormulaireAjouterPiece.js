@@ -17,7 +17,7 @@ function FormulaireAjouterPiece({ id }) {
     const envoyerFormulaire = async () => {
         await fetch(`/api/pieces/ajouter`, {
             method: 'post',
-            body: JSON.stringify({ titre, artiste, categories }),
+            body: JSON.stringify({ titre, artiste, categories}),
             headers: {
                 'Content-Type': 'application/json'
             }

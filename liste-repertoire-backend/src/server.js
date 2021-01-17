@@ -42,41 +42,49 @@ app.get('/api/pieces/:id', (requete, reponse) => {
 });
 
 app.post('/api/pieces/ajouter', (requete, reponse) => {
-    const {titre, artiste, categorie} = requete.body;
+    //const {titre, artiste, categories} = requete.body;
+    const titre = requete.body.titre;
+    const artiste = requete.body.artiste;
+    const categories = requete.body.categories;
 
-    if (titre !== undefined && artiste !== undefined && categorie !== undefined) {
+
+    if (titre !== undefined && artiste !== undefined && categories !== undefined) {
         utiliserDB(async (db) => {
             await db.collection('pieces').insertOne({ 
                 titre: titre,
                 artiste: artiste,
-                categorie: categorie
+                categorie: categories
             });
             
             reponse.status(200).send("Pièce ajoutée");
         }, reponse).catch(
             () => reponse.status(500).send("Erreur : la pièce n'a pas été ajoutée")
-        );       
+        );    
     }
     else {
         reponse.status(500).send(`Certains paramètres ne sont pas définis :
             - titre: ${titre}
             - artiste: ${artiste}
-            - categorie: ${categorie}`);
+            - categorie: ${categories}`);
     }
 });
 
 app.put('/api/pieces/modifier/:id', (requete, reponse) => {
-    const {titre, artiste, categorie} = requete.body;
+    //const {titre, artiste, categories} = requete.body;
+    const titre = requete.body.titre;
+    const artiste = requete.body.artiste;
+    const categories = requete.body.categories;
     const id = requete.params.id;
+    console.log(titre, artiste, categories)
 
-    if (titre !== undefined && artiste !== undefined && categorie !== undefined) {
+    if (titre !== undefined && artiste !== undefined && categories !== undefined) {
         utiliserDB(async (db) => {
             var objectId = ObjectID.createFromHexString(id);
             await db.collection('pieces').updateOne({ _id: objectId }, {
                 '$set': {
                     titre: titre,
                     artiste: artiste,
-                    categorie: categorie
+                    categorie: categories
                 }
             });
             
@@ -89,7 +97,7 @@ app.put('/api/pieces/modifier/:id', (requete, reponse) => {
         reponse.status(500).send(`Certains paramètres ne sont pas définis :
             - titre: ${titre}
             - artiste: ${artiste}
-            - categorie: ${categorie}`);
+            - categorie: ${categories}`);
     }
 });
 
@@ -117,9 +125,6 @@ app.get('/api/demandesSpeciales', (requete, reponse) => {
 
 app.post('/api/demandesSpeciales/ajouter', (requete, reponse) => {
     const {name, listeDemandes} = requete.body;
-
-    console.log(name);
-    console.log(listeDemandes);
 
     if (name !== undefined && listeDemandes !== undefined) {
         utiliserDB(async (db) => {

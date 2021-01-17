@@ -29,7 +29,7 @@ function FormulaireModifierPiece({ id }) {
     const envoyerFormulaire = async () => {
         await fetch(`/api/pieces/modifier/${id}`, {
             method: 'put',
-            body: JSON.stringify({ titre, artiste, categorie: categories }),
+            body: JSON.stringify({ titre, artiste, categories: categories }),
             headers: {
                 'Content-Type': 'application/json'
             }
