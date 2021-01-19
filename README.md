@@ -1,2 +1,2 @@
 # ListeDeLecture
-Travail liste de lecture cours Applications Webs & Bases de Données
+Travail liste de lecture cours Applications Web & Bases de Données
