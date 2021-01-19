@@ -17,7 +17,7 @@ function PageSupprimer({ match }) {
         await fetch(`/api/pieces/supprimer/${id}`, {
             method: 'delete',
         });
-        
+
         setRediriger(true);
     };
 
@@ -28,20 +28,20 @@ function PageSupprimer({ match }) {
     }
 
     return (
-    <>
-        {AfficherRedirection()}
-        <h1>Supprimer</h1>
-        <Alert variant={'danger'} >
-            Êtes-vous certain de vouloir supprimer cette pièce?
+        <>
+            {AfficherRedirection()}
+            <h1>Supprimer</h1>
+            <Alert variant={'danger'} >
+                Êtes-vous certain de vouloir supprimer cette pièce?
         </Alert>
 
-        <Button variant={'primary'} className={'mr-1'} onClick={confirmerSuppression} >Supprimer</Button>
+            <Button variant={'primary'} className={'mr-1'} onClick={confirmerSuppression} >Supprimer</Button>
 
-        <Link to="/admin">
-            <Button variant={'danger'} >Annuler</Button>  
-        </Link>
-        
-    </>
+            <Link to="/admin">
+                <Button variant={'danger'} >Annuler</Button>
+            </Link>
+
+        </>
     );
 }
 

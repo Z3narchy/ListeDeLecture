@@ -40,12 +40,10 @@ function PageDemande() {
         chercherDonnees();
     }, []);
 
-    function handleclick(id)
-    {
+    function handleclick(id) {
         var piece = listePieces.find(c => c._id == id);
         var nouvelleListe = listeDemandes.slice();
-        if(!nouvelleListe.includes(piece))
-        {
+        if (!nouvelleListe.includes(piece)) {
             nouvelleListe.push(piece);
             setListeDemande(nouvelleListe)
         }
@@ -65,8 +63,8 @@ function PageDemande() {
                 <Button variant="primary" onClick={envoyerDemande} >
                     Envoyer
             </Button>
-            <h3>Pièce(s) déjà ajouté(s).</h3>
-            <ListePiecesAjouter pieces={listeDemandes}  />
+                <h3>Pièce(s) déjà ajouté(s).</h3>
+                <ListePiecesAjouter pieces={listeDemandes} />
             </Form>
             <p>Pour ajouter une chanson à votre liste, simplement cliquer sur le bouton 'Add'.</p>
             <ListePiecesDemande pieces={listePieces} handle={handleclick} />

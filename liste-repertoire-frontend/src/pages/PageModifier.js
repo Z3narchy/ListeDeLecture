@@ -10,10 +10,10 @@ function PageModifier({ match }) {
             <h1>Modifier</h1>
             <FormulaireModifierPiece id={id} />
             <Link to="/admin">
-                <Button variant={'danger'} >Annuler</Button>    
+                <Button variant={'danger'} >Annuler</Button>
             </Link>
         </>
-    ); 
+    );
 }
 
 export default PageModifier;

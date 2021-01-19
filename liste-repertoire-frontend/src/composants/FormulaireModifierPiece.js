@@ -91,7 +91,7 @@ function FormulaireModifierPiece({ id }) {
                                             </Button>
                                 </InputGroup.Append>
                             </InputGroup>
-                    )}
+                        )}
                     <div className="text-center">
                         <Button className="ml-2" variant="success" onClick={AjouterCategorie} >
                             +

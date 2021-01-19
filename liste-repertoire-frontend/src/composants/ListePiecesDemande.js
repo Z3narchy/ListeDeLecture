@@ -4,7 +4,7 @@ import Button from 'react-bootstrap/Button';
 
 
 function ListePiecesDemande({ pieces, handle }) {
-    if(pieces?.length) {
+    if (pieces?.length) {
         var tableauCategories = [];
 
         pieces.forEach(piece => {
@@ -20,7 +20,7 @@ function ListePiecesDemande({ pieces, handle }) {
                 }
             })
         });
-        
+
         return (
             <>
                 {tableauCategories.map((categorie) => {
@@ -29,15 +29,15 @@ function ListePiecesDemande({ pieces, handle }) {
                         <div key={categorie}>
                             <h4>{categorie}</h4>
                             <ul>
-                                {   
+                                {
                                     piecesAssociees.map(piece =>
                                         <li key={piece._id}>{piece.titre} - {piece.artiste}
-                                        <Button variant="primary" className="m-2" onClick={ () => handle(piece._id)} > Add</Button>
+                                            <Button variant="primary" className="m-2" onClick={() => handle(piece._id)} > Add</Button>
                                         </li>
                                     )
                                 }
                             </ul>
-                            
+
                         </div>
                     )
                 })}

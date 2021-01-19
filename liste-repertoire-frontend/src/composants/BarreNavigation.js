@@ -20,7 +20,7 @@ function BarreNavigation() {
                     </LinkContainer>
                     <LinkContainer to="/admin">
                         <Nav.Link>Admin</Nav.Link>
-                    </LinkContainer>            
+                    </LinkContainer>
                 </Nav>
             </Navbar.Collapse>
         </Navbar>

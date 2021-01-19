@@ -21,7 +21,7 @@ function PageAfficherDemande() {
     useEffect(() => {
         const chercherDonnees = async () => {
             const resultat = await fetch(`/api/demandesSpeciales`);
-            const body = await resultat.json().catch((error) => {console.log(error)});
+            const body = await resultat.json().catch((error) => { console.log(error) });
             setListeDemande(body);
         };
         chercherDonnees();

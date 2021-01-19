@@ -17,7 +17,7 @@ function FormulaireAjouterPiece({ id }) {
     const envoyerFormulaire = async () => {
         await fetch(`/api/pieces/ajouter`, {
             method: 'post',
-            body: JSON.stringify({ titre, artiste, categories}),
+            body: JSON.stringify({ titre, artiste, categories }),
             headers: {
                 'Content-Type': 'application/json'
             }
@@ -31,7 +31,7 @@ function FormulaireAjouterPiece({ id }) {
         }
     }
 
-    function AjouterCategorie(){
+    function AjouterCategorie() {
         var nouvelleCategorie = categories.slice();
         nouvelleCategorie.push('');
         setCategories(nouvelleCategorie);
@@ -44,33 +44,33 @@ function FormulaireAjouterPiece({ id }) {
         setCategories(categorieChangee);
     }
 
-    function SupprimerCategorie(index){
+    function SupprimerCategorie(index) {
         var categorieSupprimee = categories.slice();
         categorieSupprimee.splice(index, 1);
         setCategories(categorieSupprimee);
     }
     return (
-    <>
-        {AfficherRedirection()}
-        <Form className="mb-1">
-            <Form.Group>
-                <Form.Label>Titre</Form.Label>
-                <Form.Control type="text" value={titre} 
-                    onChange={(event) => setTitre(event.target.value)} />
-            </Form.Group>
+        <>
+            {AfficherRedirection()}
+            <Form className="mb-1">
+                <Form.Group>
+                    <Form.Label>Titre</Form.Label>
+                    <Form.Control type="text" value={titre}
+                        onChange={(event) => setTitre(event.target.value)} />
+                </Form.Group>
 
-            <Form.Group>
-                <Form.Label>Artiste / Groupe</Form.Label>
-                <Form.Control type="text" value={artiste} 
-                    onChange={(event) => setArtiste(event.target.value)} />
-            </Form.Group>
-            <Form.Group>
-                <Form.Label>Catégorie</Form.Label>
-                    { categories.map((categorie, index) =>
+                <Form.Group>
+                    <Form.Label>Artiste / Groupe</Form.Label>
+                    <Form.Control type="text" value={artiste}
+                        onChange={(event) => setArtiste(event.target.value)} />
+                </Form.Group>
+                <Form.Group>
+                    <Form.Label>Catégorie</Form.Label>
+                    {categories.map((categorie, index) =>
                         <InputGroup>
                             <Form.Control className="my-2" type="text" value={categorie}
                                 onChange={(event) => ChangementCategorie(index, event.target.value)} />
-                                
+
                             <InputGroup.Append>
                                 <Button className="my-2" variant="danger" onClick={() => SupprimerCategorie(index)} >
                                     X
@@ -83,13 +83,13 @@ function FormulaireAjouterPiece({ id }) {
                             +
                         </Button>
                     </div>
-            </Form.Group>
+                </Form.Group>
 
-            <Button variant="primary" onClick={envoyerFormulaire} >
-                Ajouter
+                <Button variant="primary" onClick={envoyerFormulaire} >
+                    Ajouter
             </Button>
-        </Form>
-    </>
+            </Form>
+        </>
     );
 }
 
