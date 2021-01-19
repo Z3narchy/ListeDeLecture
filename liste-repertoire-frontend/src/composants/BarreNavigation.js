@@ -15,9 +15,12 @@ function BarreNavigation() {
                     <LinkContainer to="/repertoire">
                         <Nav.Link>Repertoire</Nav.Link>
                     </LinkContainer>
+                    <LinkContainer to="/demande">
+                        <Nav.Link>Demande spéciale</Nav.Link>
+                    </LinkContainer>
                     <LinkContainer to="/admin">
                         <Nav.Link>Admin</Nav.Link>
-                    </LinkContainer>            
+                    </LinkContainer>
                 </Nav>
             </Navbar.Collapse>
         </Navbar>

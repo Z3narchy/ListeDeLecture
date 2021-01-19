@@ -1,0 +1,47 @@
+[
+    {
+        "titre": "Solar Flare Homicide",
+        "artiste": "Emmure",
+        "categorie": [
+            "Deathcore",
+            "Categorie 1",
+            "Categorie 2"
+        ]
+    },
+    {
+        "titre": "Dust In The Wind",
+        "artiste": "Kansas",
+        "categorie": [
+            "Soft Rock",
+            "Categorie 1",
+            "Categorie 2"
+        ]
+    },
+    {
+        "titre": "Flag of the Beast ",
+        "artiste": "Emmure",
+        "categorie": [
+            "Deathcore",
+            "Categorie 1",
+            "Categorie 2"
+        ]
+    },
+    {
+        "titre": "Master of Puppets",
+        "artiste": "Metallica",
+        "categorie": [
+            "Hard Rock",
+            "Categorie 1",
+            "Categorie 2"
+        ]
+    },
+    {
+        "titre": "From Whom the Bell Tolls",
+        "artiste": "Metallica",
+        "categorie": [
+            "Hard Rock",
+            "Categorie 1",
+            "Categorie 2"
+        ]
+    }
+]

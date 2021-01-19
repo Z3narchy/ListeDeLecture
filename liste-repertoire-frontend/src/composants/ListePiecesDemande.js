@@ -1,13 +1,16 @@
 import React from 'react';
 import Alert from 'react-bootstrap/Alert'
+import Button from 'react-bootstrap/Button';
 
-function ListePieces({ pieces }) {
+
+function ListePiecesDemande({ pieces, handle }) {
     if (pieces?.length) {
         var tableauCategories = [];
 
         pieces.forEach(piece => {
 
             piece.categorie.forEach(categorie => {
+                console.log(categorie);
 
                 if (!tableauCategories.includes(categorie)) {
 
@@ -27,9 +30,14 @@ function ListePieces({ pieces }) {
                             <h4>{categorie}</h4>
                             <ul>
                                 {
-                                    piecesAssociees.map(piece => <li key={piece._id}>{piece.titre} - {piece.artiste}</li>)
+                                    piecesAssociees.map(piece =>
+                                        <li key={piece._id}>{piece.titre} - {piece.artiste}
+                                            <Button variant="primary" className="m-2" onClick={() => handle(piece._id)} > Add</Button>
+                                        </li>
+                                    )
                                 }
                             </ul>
+
                         </div>
                     )
                 })}
@@ -41,4 +49,4 @@ function ListePieces({ pieces }) {
     }
 }
 
-export default ListePieces;
+export default ListePiecesDemande;

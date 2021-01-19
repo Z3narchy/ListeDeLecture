@@ -12,7 +12,7 @@ function PageRepertoire() {
     useEffect(() => {
         const chercherDonnees = async () => {
             const resultat = await fetch(`/api/pieces`);
-            const body = await resultat.json().catch((error) => {console.log(error)});
+            const body = await resultat.json().catch((error) => { console.log(error) });
             setListePieces(body);
         };
         chercherDonnees();
