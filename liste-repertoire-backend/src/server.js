@@ -6,6 +6,7 @@ const app = express();
 
 app.use(bodyParser.json());
 
+//---------- Connexion BD ----------
 const utiliserDB = async (operations, reponse) => {
     try {
         const client = await MongoClient.connect('mongodb://localhost:27017', {useUnifiedTopology: true});
@@ -20,6 +21,7 @@ const utiliserDB = async (operations, reponse) => {
     }
 };
 
+//---------- Pieces ----------
 app.get('/api/pieces', (requete, reponse) => {
     utiliserDB(async (db) => {
         const listePieces = await db.collection('pieces').find().toArray();
@@ -114,6 +116,7 @@ app.delete('/api/pieces/supprimer/:id', (requete, reponse) => {
     );    
 });
 
+//---------- Demandes Spéciales ----------
 app.get('/api/demandesSpeciales', (requete, reponse) => {
     utiliserDB(async (db) => {
         const listeDemandes = await db.collection('demandesSpeciales').find().toArray();
@@ -124,13 +127,14 @@ app.get('/api/demandesSpeciales', (requete, reponse) => {
 });
 
 app.post('/api/demandesSpeciales/ajouter', (requete, reponse) => {
-    const {name, listeDemandes} = requete.body;
+    const {name, listeDemandes, estActive} = requete.body;
 
-    if (name !== undefined && listeDemandes !== undefined) {
+    if (name !== undefined && listeDemandes !== undefined && estActive !== undefined) {
         utiliserDB(async (db) => {
             await db.collection('demandesSpeciales').insertOne({ 
                 name: name,
-                listeChansons: listeDemandes
+                listeChansons: listeDemandes,
+                estActive: estActive
             });
             
             reponse.status(200).send("liste de demandes ajoutees");
@@ -141,21 +145,23 @@ app.post('/api/demandesSpeciales/ajouter', (requete, reponse) => {
     else {
         reponse.status(500).send(`Certains paramètres ne sont pas définis :
             - name: ${name}
-            - listeChansons: ${listeDemandes}`);
+            - listeChansons: ${listeDemandes}
+            - estActive: ${estActive}`);
     }
 });
 
 app.put('/api/demandesSpeciales/modifier/:id', (requete, reponse) => {
-    const {name, listeChansons} = requete.body;
+    const {name, listeChansons, estActive} = requete.body;
     const id = requete.params.id;
 
-    if (name !== undefined && listeChansons !== undefined) {
+    if (name !== undefined && listeChansons !== undefined && estActive !== undefined) {
         utiliserDB(async (db) => {
             var objectId = ObjectID.createFromHexString(id);
             await db.collection('demandesSpeciales').updateOne({ _id: objectId }, {
                 '$set': {
                     name: name,
-                    listeChansons: listeChansons
+                    listeChansons: listeChansons,
+                    estActive: estActive
                 }
             });
             
@@ -167,7 +173,8 @@ app.put('/api/demandesSpeciales/modifier/:id', (requete, reponse) => {
     else {
         reponse.status(500).send(`Certains paramètres ne sont pas définis :
             - nom: ${name}
-            - artiste: ${listeChansons}`);
+            - artiste: ${listeChansons}
+            - estActive; ${estActive}`);
     }
 });
 
