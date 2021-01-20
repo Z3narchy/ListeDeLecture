@@ -6,6 +6,7 @@ import PageModifier from './pages/PageModifier';
 import PageSupprimer from './pages/PageSupprimer';
 import PageDemande from './pages/PageDemande';
 import PageAfficherDemande from './pages/PageAfficherDemande';
+import PageInscription from './pages/PageInscription';
 import Page404 from './pages/Page404';
 import BarreNavigation from './composants/BarreNavigation';
 import './App.css';
@@ -31,6 +32,7 @@ function App() {
           <Route path="/supprimer/:id" component={PageSupprimer} />
           <Route path="/ajouter" component={PageAjouter} />
           <Route path="/afficher" component={PageAfficherDemande} />
+          <Route path="/inscription" component={PageInscription} />
           <Route component={Page404} />
         </Switch>        
       </Container>
