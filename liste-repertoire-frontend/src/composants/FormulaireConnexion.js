@@ -68,7 +68,7 @@ function FormulaireConnexion() {
                     <Form.Control type="text" value={motPasse}
                         onChange={(event) => setMotPasse(event.target.value)} />
                 </Form.Group>
-                <Button variant="primary" onClick={confirmationFormulaire} >
+                <Button className="btn-block" variant="primary"  onClick={confirmationFormulaire} >
                     Connexion
             </Button>
             </Form>
