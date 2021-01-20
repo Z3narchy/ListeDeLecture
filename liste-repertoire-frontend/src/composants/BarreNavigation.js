@@ -22,6 +22,11 @@ function BarreNavigation() {
                         <Nav.Link>Admin</Nav.Link>
                     </LinkContainer>
                 </Nav>
+                <Nav>
+                    <LinkContainer to="/inscription">
+                        <Nav.Link>Inscription</Nav.Link>
+                    </LinkContainer>
+                </Nav>
             </Navbar.Collapse>
         </Navbar>
     );
