@@ -36,6 +36,7 @@
         ],
         "estActive": true
     },
+
     {
         "_id": ObjectId("5fff68247ad1841eb478a81c"),
         "name": "Sébastien",
@@ -63,9 +64,10 @@
         ],
         "estActive": true
     },
+
     {
         "_id": ObjectId("5fff6a577ad1841eb478a81d"),
-        "name": "Penis",
+        "name": "Nicolas",
         "listeChansons": [
             {
                 "_id": "5fff3bd3e5c476703a80d338",
@@ -100,6 +102,7 @@
         ],
         "estActive": true
     },
+
     {
         "_id": ObjectId("5fff6acf7ad1841eb478a81e"),
         "name": "Monsieur Patate",
@@ -137,6 +140,7 @@
         ],
         "estActive": true
     },
+
     {
         "_id": ObjectId("5fff6bf07ad1841eb478a81f"),
         "name": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAH",
@@ -194,6 +198,7 @@
         ],
         "estActive": true
     },
+    
     {
         "_id": ObjectId("600479b6c6f2b42b1c78c30c"),
         "name": "Patatomique",
