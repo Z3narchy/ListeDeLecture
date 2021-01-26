@@ -1,38 +1,110 @@
-import React from 'react';
-import Alert from 'react-bootstrap/Alert'
+import { React, useState } from 'react';
+import Alert from 'react-bootstrap/Alert';
+import Form from 'react-bootstrap/Form';
+import Table from 'react-bootstrap/Table';
+import Col from 'react-bootstrap/Col';
+import Button from 'react-bootstrap/Button';
 
 function ListePieces({ pieces }) {
-    if (pieces?.length) {
-        var tableauCategories = [];
+    const [tri, setTri] = useState('Titre');
+    const [ordre, setOrdre] = useState('Croissant')
 
-        pieces.forEach(piece => {
+    const [rechercheTitre, setRechercheTitre] = useState('');
+    const [rechercheArtiste, setRechercheArtiste] = useState('');
+    const [rechercheCategorie, setRechercheCategorie] = useState('');
+
+    if (pieces?.length) {
+
+        // Tri des catégories pour chaque pièce individuellement
+        pieces.forEach(piece =>
+            piece.categorie.sort()
+        );
+
+        // Affiche seulement les pièces qui correspondent aux valeurs contenues dans les Input de recherche
+        pieces = pieces.filter(function (piece) {
+            var contientCategorie = false;
 
             piece.categorie.forEach(categorie => {
-
-                if (!tableauCategories.includes(categorie)) {
-
-                    if (tableauCategories[categorie] === undefined) {
-                        tableauCategories.push(categorie);
-                    }
+                if (categorie.toLowerCase().includes(rechercheCategorie.toLowerCase())) {
+                    contientCategorie = true;
                 }
-            })
+            });
+
+            return piece.titre.toLowerCase().includes(rechercheTitre.toLowerCase()) && piece.artiste.toLowerCase().includes(rechercheArtiste.toLowerCase()) && contientCategorie;
         });
+
+        // Tri les pièces selon la valeur dans tri et ordre
+        const trierPar = tri.toLowerCase().replace('é', 'e');
+
+        pieces.sort((a, b) => {
+            if (a[trierPar][0] < b[trierPar][0]) {
+                return ordre === 'Croissant' ? -1 : 1;
+            }
+            if (a[trierPar][0] > b[trierPar][0]) {
+                return ordre === 'Croissant' ? 1 : -1;
+            }
+            return 0;
+        });
+
 
         return (
             <>
-                {tableauCategories.map((categorie) => {
-                    const piecesAssociees = pieces.filter((piece) => piece.categorie.includes(categorie));
-                    return (
-                        <div key={categorie}>
-                            <h4>{categorie}</h4>
-                            <ul>
-                                {
-                                    piecesAssociees.map(piece => <li key={piece._id}>{piece.titre} - {piece.artiste}</li>)
-                                }
-                            </ul>
-                        </div>
-                    )
-                })}
+                <Form className="p-2 bg-light">
+                    <Form.Row>
+                        <Form.Group as={Col}>
+                            <Form.Label>Titre :</Form.Label>
+                            <Form.Control type="search" value={rechercheTitre} onChange={(event) => setRechercheTitre(event.target.value)} />
+                        </Form.Group>
+                        <Form.Group as={Col}>
+                            <Form.Label>Artiste :</Form.Label>
+                            <Form.Control type="search" value={rechercheArtiste} onChange={(event) => setRechercheArtiste(event.target.value)} />
+                        </Form.Group>
+                        <Form.Group as={Col}>
+                            <Form.Label>Catégorie :</Form.Label>
+                            <Form.Control type="search" value={rechercheCategorie} onChange={(event) => setRechercheCategorie(event.target.value)} />
+                        </Form.Group>
+                    </Form.Row>
+                    <Form.Row>
+                        <Form.Group as={Col}>
+                            <Form.Label>Trier par :</Form.Label>
+                            <Form.Control as="select" value={tri} onChange={(event) => setTri(event.target.value)}>
+                                <option>Titre</option>
+                                <option>Artiste</option>
+                                <option>Catégorie</option>
+                            </Form.Control>
+                        </Form.Group>
+                        <Form.Group as={Col}>
+                            <Form.Label>Ordre :</Form.Label>
+                            <Form.Control as="select" value={ordre} onChange={(event) => setOrdre(event.target.value)}>
+                                <option>Croissant</option>
+                                <option>Décroissant</option>
+                            </Form.Control>
+                        </Form.Group>
+                    </Form.Row>
+                </Form>
+                <Table bordered hover className="my-4">
+                    <thead class="thead-light">
+                        <tr>
+                            <th>Titre</th>
+                            <th>Artiste</th>
+                            <th>Catégories</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {pieces.map((piece) =>
+                            <tr key={piece._id}>
+                                <td>{piece.titre}</td>
+                                <td>{piece.artiste}</td>
+                                <td>{piece.categorie.map((categorie) =>
+                                    <Button className="mx-1" variant="light" onClick={() => setRechercheCategorie(categorie)}>
+                                        {categorie}
+                                    </Button>
+                                )}
+                                </td>
+                            </tr>
+                        )}
+                    </tbody>
+                </Table>
             </>
         );
     }
