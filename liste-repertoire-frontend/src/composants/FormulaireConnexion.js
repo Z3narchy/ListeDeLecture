@@ -13,16 +13,14 @@ function FormulaireConnexion() {
     const [motPasse, setMotPasse] = useState('');
     const [usagerBD, setUsagerBD] = useState('');
     const [motPasseBD, setMotPasseBD] = useState('');
-    const [idBD, setIdBD] = useState('');
     const [statusBD, setStatusBD] = useState('');
     const [rediriger, setRediriger] = useState(false);
-    const { setAuthentification, setEstAdmin, setIdUtilisateur } = UtiliseAuth();
+    const { setAuthentification, setEstAdmin, setUsername } = UtiliseAuth();
 
     useEffect(() => {
         const chercherDonnees = async () => {
             const resultat = await fetch(`/api/pieces/${usager}`);
             const body = await resultat.json().catch((error) => { console.log(error) });
-            setIdBD(body._id);
             setUsagerBD(body.usager);
             setMotPasseBD(body.motPasse);
             setStatusBD(body.estAdmin);
@@ -35,12 +33,12 @@ function FormulaireConnexion() {
         if(usager === usagerBD && motPasse === motPasseBD)
         {
             setAuthentification(true);
-            setIdUtilisateur(idBD);
+            setUsername(usager);
         }
         else if(usager === usagerBD && motPasse === motPasseBD && statusBD === 'true')
         {
             setAuthentification(true);
-            setIdUtilisateur(idBD);
+            setUsername(usager);
             setEstAdmin(true);
         }
         setUsager("");

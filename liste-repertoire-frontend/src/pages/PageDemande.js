@@ -3,6 +3,7 @@ import {
     useState,
     useEffect
 } from 'react';
+import { UtiliseAuth } from "../context/Auth";
 import ListePiecesDemande from '../composants/ListePiecesDemande';
 import ListePiecesAjouter from '../composants/ListePiecesAjouter';
 import { Alert, Form } from 'react-bootstrap';
@@ -10,15 +11,16 @@ import Button from 'react-bootstrap/Button';
 import { Redirect } from 'react-router-dom';
 
 function PageDemande() {
+
+    const {username} = UtiliseAuth();
     const [listePieces, setListePieces] = useState([]);
-    const [name, setNom] = useState('');
     const [rediriger, setRediriger] = useState(false);
     const [listeDemandes, setListeDemande] = useState([]);
 
     const envoyerDemande = async () => {
         await fetch(`/api/demandesSpeciales/ajouter`, {
             method: 'post',
-            body: JSON.stringify({ name, listeDemandes }),
+            body: JSON.stringify({ username, listeDemandes }),
             headers: {
                 'Content-Type': 'application/json'
             }
@@ -56,8 +58,7 @@ function PageDemande() {
             <Form className="mb-1">
                 <Form.Group>
                     <Form.Label>Nom d'usager</Form.Label>
-                    <Form.Control type="text" value={name}
-                        onChange={(event) => setNom(event.target.value)} />
+                    <Form.Control disabled type="text" value={username}/>
                 </Form.Group>
                 <p>Cliquer sur le bouton pour envoyer votre liste.</p>
                 <Button variant="primary" onClick={envoyerDemande} >

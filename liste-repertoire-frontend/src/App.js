@@ -10,6 +10,7 @@ import PageInscription from './pages/PageInscription';
 import Page404 from './pages/Page404';
 import BarreNavigation from './composants/BarreNavigation';
 import PageConnexion from './pages/PageConnexion';
+import PageGestionPourUtilisateur from './pages/PageGestionPourUtilisateur';
 import { ContexteAuth } from './context/Auth';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -27,11 +28,11 @@ import {
 function App() {
   const [authentification, setAuthentification]  = useState(false);
   const [estAdmin, setEstAdmin]  = useState(false); 
-  const [idUtilisateur, setIdUtilisateur]  = useState(false); 
+  const [username, setUsername]  = useState(false); 
 
   return (
-    <ContexteAuth.Provider value={{authentification, setAuthentification}, {estAdmin, setEstAdmin}, 
-    {idUtilisateur, setIdUtilisateur}  }>
+    <ContexteAuth.Provider value={{authentification, setAuthentification, estAdmin, setEstAdmin, 
+      username, setUsername}}>
       <Router>
         <Container>
           <BarreNavigation />
@@ -46,6 +47,7 @@ function App() {
             <Route path="/afficher" component={PageAfficherDemande} />
             <Route path="/inscription" component={PageInscription} />
             <Route path="/connexion" component={PageConnexion} />
+            <Route path="/gestionDemandesUtilisateur" component={PageGestionPourUtilisateur}/>
             <Route component={Page404} />
           </Switch>
         </Container>

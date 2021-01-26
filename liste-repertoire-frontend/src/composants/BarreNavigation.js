@@ -23,6 +23,9 @@ function BarreNavigation() {
                     </LinkContainer>
                 </Nav>
                 <Nav>
+                    <LinkContainer to="/gestionDemandesUtilisateur">
+                        <Nav.Link>Mes Demandes</Nav.Link>
+                    </LinkContainer>
                     <LinkContainer to="/inscription">
                         <Nav.Link>Inscription</Nav.Link>
                     </LinkContainer>
