@@ -1,6 +1,5 @@
 [
     {
-        "_id": ObjectId("5fff5da57ad1841eb478a81b"),
         "name": "Sebastien",
         "listeChansons": [
             {
@@ -39,7 +38,6 @@
     },
 
     {
-        "_id": ObjectId("5fff68247ad1841eb478a81c"),
         "name": "Sébastien",
         "listeChansons": [
             {
@@ -68,7 +66,6 @@
     },
 
     {
-        "_id": ObjectId("5fff6a577ad1841eb478a81d"),
         "name": "Nicolas",
         "listeChansons": [
             {
@@ -107,7 +104,6 @@
     },
 
     {
-        "_id": ObjectId("5fff6acf7ad1841eb478a81e"),
         "name": "Monsieur Patate",
         "listeChansons": [
             {
@@ -147,7 +143,6 @@
     },
 
     {
-        "_id": ObjectId("5fff6bf07ad1841eb478a81f"),
         "name": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAH",
         "listeChansons": [
             {
@@ -206,7 +201,6 @@
     },
     
     {
-        "_id": ObjectId("600479b6c6f2b42b1c78c30c"),
         "name": "Patatomique",
         "listeChansons": [
             {
