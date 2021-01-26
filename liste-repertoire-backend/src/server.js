@@ -291,11 +291,12 @@ app.put('/api/utilisateurs/modifier/:id', (requete, reponse) => {
 
 app.delete('/api/utilisateurs/supprimer/:id', (requete, reponse) => {
     const id = requete.params.id;
+    
     utiliserDB(async (db) => {
         const objectId = Object.createFromHexString(id);
-        const resultat = await db.collection('utilisateurs').deleteOne({ _id: objectId });
+        const resultat = await db.collection('utilisateurs').deleteOne({ _id: objectId});
 
-        reponse.status(200).send(`${resultat.deletedCount} Utilisateur(s) supprimé(s)`);
+        reponse.status(200).send("Utilisateur(s) supprimé(s)");
     }, reponse).catch(
         () => reponse.status(500).send("Erreur : l'utilisateur n'a pas été supprimé")
     );
