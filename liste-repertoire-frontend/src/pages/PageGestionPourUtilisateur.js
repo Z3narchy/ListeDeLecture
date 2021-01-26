@@ -89,7 +89,10 @@ function PageGestionPourUtilisateur()
         var demandesJSX = demandesActives.map((demande) =>
             <>
                 <Button style={{ marginRight: "10px" }} onClick={() => handleClickButtonActif(demande)}>Désactiver</Button>
-                <Button style={{ marginRight: "10px" }} onClick={() => handleClickButtonActif(demande)}>Modifier</Button>
+                <Link to="modifierDemandeSpeciale">
+                    <Button style={{ marginRight: "10px" }}>Modifier</Button>
+                </Link>
+                
                 <li> {demande.name} </li>
                 {demande.listeChansons.map((chanson) =>
                     <ul>

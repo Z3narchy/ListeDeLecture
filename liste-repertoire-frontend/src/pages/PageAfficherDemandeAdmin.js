@@ -32,7 +32,7 @@ function PageAfficherDemande() {
         );
     }
     else {
-        return <h5 variant={"info"} >Aucune liste de demande.</h5>;
+        return <h5 variant={"info"} >Aucune demande trouvée.</h5>;
     }
 
     async function handleClickButtonActif(demande) {
