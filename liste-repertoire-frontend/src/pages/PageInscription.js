@@ -1,7 +1,6 @@
 import {
     React,
-    useState,
-    useEffect
+    useState
 } from 'react';
 
 import { Link } from 'react-router-dom';
@@ -12,31 +11,10 @@ import { Redirect } from 'react-router-dom';
 function PageInscription() {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
-    const [alerteUsername, setAlerteUsername] = useState('');
     const [rediriger, setRediriger] = useState(false);
 
-    useEffect(() => {
-        const chercherDonnees = async () => {
-            if(username != '' )
-            {
-                const resultat = await fetch(`/api/utilisateurs/${username}`);
-                const body = await resultat.json().catch((error) => { setAlerteUsername('') });
-                if (body == undefined) {
-                    setAlerteUsername('');
-                }
-                else if (body.username.toLowerCase() != undefined)
-                {
-                    console.log(body.username);
-                    setAlerteUsername('Ce nom d\'utilisateur est déjà utilisé');
-                }
-            }
-            
-        };
-        chercherDonnees();
-    }, [username]);
-
     const envoyerFormulaire = async () => {
-        await fetch(`/api/utilisateurs/ajouter`, {
+        await fetch(`/api/inscription`, {
             method: 'post',
             body: JSON.stringify({ username, password }),
             headers: {
@@ -48,7 +26,7 @@ function PageInscription() {
 
     function AfficherRedirection() {
         if (rediriger === true) {
-            return <Redirect to="/" />
+            return <Redirect to="/admin" />
         }
     }
 
@@ -57,8 +35,6 @@ function PageInscription() {
             {AfficherRedirection()}
             <div className="d-flex justify-content-center">
                 <Form className="mb-1 col-md-4">
-                    <h5 className="text-center">Inscription</h5>
-                    <p className="text-danger">{alerteUsername}</p>
                     <Form.Group>
                         <Form.Label>Nom d'utilisateur</Form.Label>
                         <Form.Control type="text" value={username}
@@ -70,15 +46,12 @@ function PageInscription() {
                         <Form.Control type="text" value={password}
                             onChange={(event) => setPassword(event.target.value)} />
                     </Form.Group>
-                    <Button className="btn-block my-2" variant={'primary'} onClick={envoyerFormulaire} >
+                    <Button className="btn-block" variant="primary" onClick={envoyerFormulaire} >
                         Inscription
                     </Button>
-                    <Button className="btn-block my-2" variant={'danger'} onClick={() => setRediriger(true)}>
-                        Annuler
-                    </Button>
-                <p>Déjà inscrit ? Connectez vous <Link to='/connexion'>ici</Link></p>
+                    <p>Déjà inscrit ? Connectez vous <Link to='/connexion'>ici</Link></p>
                 </Form>
-        </div>
+            </div>
         </>
     )
 }
