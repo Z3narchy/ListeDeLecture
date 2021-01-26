@@ -3,7 +3,7 @@ import FormulaireModifierPiece from '../composants/FormulaireModifierPiece';
 import Button from 'react-bootstrap/Button'
 import { Link } from 'react-router-dom';
 
-function PageModifier({ match }) {
+function PageModifierPiece({ match }) {
     const id = match.params.id;
     return (
         <>
@@ -16,4 +16,4 @@ function PageModifier({ match }) {
     );
 }
 
-export default PageModifier;
+export default PageModifierPiece;

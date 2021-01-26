@@ -29,7 +29,7 @@ function PageGestionPourUtilisateur()
             <>
                 <br />
                 <ul>
-                    <Link to="/demande">
+                    <Link to="/creerDemandeSpeciale">
                         <Button style={{ marginRight: "10px" }}>Nouvelle Demande Spéciale</Button>
                     </Link>
                     <h3 style={{ textAlign: "center" }}>Demande Actives</h3>
@@ -89,7 +89,7 @@ function PageGestionPourUtilisateur()
         var demandesJSX = demandesActives.map((demande) =>
             <>
                 <Button style={{ marginRight: "10px" }} onClick={() => handleClickButtonActif(demande)}>Désactiver</Button>
-                <Link to="modifierDemandeSpeciale">
+                <Link to={`/modifierDemandeSpeciale/${demande._id}`}>
                     <Button style={{ marginRight: "10px" }}>Modifier</Button>
                 </Link>
                 

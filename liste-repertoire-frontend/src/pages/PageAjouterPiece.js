@@ -3,7 +3,7 @@ import FormulaireAjouterPiece from '../composants/FormulaireAjouterPiece';
 import Button from 'react-bootstrap/Button'
 import { Link } from 'react-router-dom';
 
-function PageAjouter() {
+function PageAjouterPiece() {
     return (
         <>
             <h1>Ajouter une nouvelle pièce</h1>
@@ -15,4 +15,4 @@ function PageAjouter() {
     );
 }
 
-export default PageAjouter;
+export default PageAjouterPiece;

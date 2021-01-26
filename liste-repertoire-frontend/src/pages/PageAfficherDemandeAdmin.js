@@ -5,7 +5,7 @@ import {
 } from 'react';
 import Button from 'react-bootstrap/Button'
 
-function PageAfficherDemande() {
+function PageAfficherDemandeAdmin() {
     const [render, setRender] = useState(false);
     const [listeDemandes, setListeDemande] = useState([]);
 
@@ -84,4 +84,4 @@ function PageAfficherDemande() {
     }
 }
 
-export default PageAfficherDemande;
+export default PageAfficherDemandeAdmin;

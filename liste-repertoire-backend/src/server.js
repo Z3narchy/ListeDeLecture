@@ -126,6 +126,16 @@ app.get('/api/demandesSpeciales', (requete, reponse) => {
     );;
 });
 
+app.get('/api/demandesSpeciales/:{id}', (requete, reponse) => {
+    var objectId = ObjectID.createFromHexString(requete.params.id);
+    utiliserDB(async (db) => {
+        const demande = await db.collection('demandesSpeciales').find({ _id: objectId });
+        reponse.status(200).json(demande);
+    }, reponse).catch(
+        () => reponse.status(500).send("Erreur lors de la requête")
+    );;
+});
+
 app.get('/api/demandesSpeciales/:username', (requete, reponse) => {
     const username = requete.params.username;
     utiliserDB(async (db) => {

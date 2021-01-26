@@ -8,7 +8,7 @@ import { Form } from 'react-bootstrap';
 import Button from 'react-bootstrap/Button';
 import { Redirect } from 'react-router-dom';
 
-function PageInscription() {
+function PageInscriptionUtilisateur() {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [rediriger, setRediriger] = useState(false);
@@ -56,4 +56,4 @@ function PageInscription() {
     )
 }
 
-export default PageInscription;
+export default PageInscriptionUtilisateur;

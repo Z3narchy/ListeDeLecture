@@ -4,7 +4,7 @@ import Button from 'react-bootstrap/Button'
 import { Link } from 'react-router-dom';
 import { Form } from 'react-bootstrap';
 
-function PageConnexion() {
+function PageConnexionUtilisateur() {
     return (
         <>
             <div className="d-flex justify-content-center">
@@ -20,4 +20,4 @@ function PageConnexion() {
     );
 }
 
-export default PageConnexion;
+export default PageConnexionUtilisateur;
