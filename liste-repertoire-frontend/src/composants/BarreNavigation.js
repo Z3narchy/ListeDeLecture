@@ -26,6 +26,9 @@ function BarreNavigation() {
                     <LinkContainer to="/inscription">
                         <Nav.Link>Inscription</Nav.Link>
                     </LinkContainer>
+                    <LinkContainer to="/connexion">
+                        <Nav.Link>Connexion</Nav.Link>
+                    </LinkContainer>
                 </Nav>
             </Navbar.Collapse>
         </Navbar>
