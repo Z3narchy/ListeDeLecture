@@ -126,6 +126,16 @@ app.get('/api/demandesSpeciales', (requete, reponse) => {
     );;
 });
 
+app.get('/api/demandesSpeciales/:username', (requete, reponse) => {
+    const username = requete.params.username;
+    utiliserDB(async (db) => {
+        const listeDemandes = await db.collection('demandesSpeciales').find({username: username}).toArray();
+        reponse.status(200).json(listeDemandes);
+    }, reponse).catch(
+        () => reponse.status(500).send("Erreur lors de la requête")
+    );;
+});
+
 app.post('/api/demandesSpeciales/ajouter', (requete, reponse) => {
     const {name, listeDemandes, estActive, dateAjout} = requete.body;
 
@@ -183,5 +193,15 @@ app.put('/api/demandesSpeciales/modifier/:id', (requete, reponse) => {
             - dateAjout: ${dateAjout}`);
     }
 });
+
+// app.get('/api/utilisateurs/:username', (requete, reponse) => {
+//     utiliserDB(async (db) => {
+//         const utilisateur = await db.collection('utilisateurs').findOne();
+
+//         reponse.status(200).json();
+//     }, reponse).catch(
+//         () => reponse.status(500).send("Erreur lors de la requête")
+//     );;
+// });
 
 app.listen(8000, () => console.log("Serveur démarré sur le port 8000"));
