@@ -43,13 +43,11 @@ function FormulaireModifierPiece({ id }) {
         }
     }
 
-
     function AjouterCategorie() {
         var nouvelleCategorie = categories.slice();
         nouvelleCategorie.push('');
         setCategories(nouvelleCategorie);
     }
-
 
     function ChangementCategorie(index, valeur) {
         var categorieChangee = categories.slice();
