@@ -45,6 +45,9 @@ function BarreNavigation() {
                         <LinkContainer to="/admin">
                             <Nav.Link>Admin</Nav.Link>
                         </LinkContainer>
+                        <LinkContainer to="/gestion">
+                          <Nav.Link>Gestion des usagers</Nav.Link>
+                        </LinkContainer>
                         :null
                     }
                 </Nav>

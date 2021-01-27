@@ -9,6 +9,7 @@ import PageAfficherDemandeAdmin from './pages/PageAfficherDemandeAdmin';
 import PageInscription from './pages/PageInscription';
 import Page404 from './pages/Page404';
 import BarreNavigation from './composants/BarreNavigation';
+import PageGestionUsager from './pages/PageGestionUsager';
 import PageConnexion from './pages/PageConnexionUtilisateur';
 import PageGestionPourUtilisateur from './pages/PageGestionPourUtilisateur';
 import PageModifierDemandeSpeciale from './pages/PageModifierDemandeSpeciale';
@@ -32,8 +33,7 @@ function App() {
   const [username, setUsername]  = useState(false); 
 
   return (
-    <ContexteAuth.Provider value={{authentification, setAuthentification, estAdmin, setEstAdmin, 
-      username, setUsername}}>
+    <ContexteAuth.Provider value={{authentification, setAuthentification, estAdmin, setEstAdmin, username, setUsername}}>
       <Router>
         <Container>
           <BarreNavigation />
@@ -48,6 +48,7 @@ function App() {
             <Route path="/afficherDemandesAdmin" component={PageAfficherDemandeAdmin} />
             <Route path="/inscription" component={PageInscription} />
             <Route path="/connexion" component={PageConnexion} />
+            <Route path="/gestion" component={PageGestionUsager} />
             <Route path="/gestionDemandesUtilisateur" component={PageGestionPourUtilisateur}/>
             <Route path="/modifierDemandeSpeciale/:id" component={PageModifierDemandeSpeciale}/>
             <Route component={Page404} />
