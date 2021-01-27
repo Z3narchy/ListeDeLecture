@@ -30,7 +30,7 @@ function PageCreerDemandeSpeciale() {
 
     function AfficherRedirection() {
         if (rediriger === true) {
-            return <Redirect to="/repertoire" />
+            return <Redirect to="/repertoire"/>
         }
     }
     useEffect(() => {
