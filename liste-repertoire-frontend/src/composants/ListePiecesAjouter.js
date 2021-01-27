@@ -1,5 +1,4 @@
 import React from 'react';
-import Alert from 'react-bootstrap/Alert'
 
 function ListePiecesAjouter({ pieces }) {
     if (pieces?.length) {
@@ -8,7 +7,7 @@ function ListePiecesAjouter({ pieces }) {
             <>
                 <ul>
                     {
-                        pieces.map(piece => <li>{piece.titre} - {piece.artiste}</li>)
+                        pieces.map(piece => <li key={piece._id}>{piece.titre} - {piece.artiste}</li>)
                     }
                 </ul>
             </>
