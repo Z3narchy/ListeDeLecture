@@ -9,8 +9,8 @@ import ListePiecesAjouter from '../composants/ListePiecesAjouter';
 import { Form } from 'react-bootstrap';
 import Button from 'react-bootstrap/Button';
 import { Redirect } from 'react-router-dom';
-
-function PageDemande() {
+ 
+function PageCreerDemandeSpeciale() {
     const [listePieces, setListePieces] = useState([]);
     const [rediriger, setRediriger] = useState(false);
     const [listeDemandes, setListeDemande] = useState([]);
@@ -33,7 +33,7 @@ function PageDemande() {
 
     function AfficherRedirection() {
         if (rediriger === true) {
-            return <Redirect to="/repertoire" />
+            return <Redirect to="/gestionDemandesUtilisateur"/>
         }
     }
     useEffect(() => {
@@ -61,7 +61,7 @@ function PageDemande() {
             <Form className="mb-1">
                 <Form.Group>
                     <Form.Label>Nom d'usager</Form.Label>
-                    <Form.Control type="text" value={username}/>
+                    <Form.Control disabled type="text" value={username}/>
                 </Form.Group>
                 <h3>Pièce(s) déjà ajouté(s).</h3>
                 <ListePiecesAjouter pieces={listeDemandes} />
@@ -76,4 +76,4 @@ function PageDemande() {
     );
 }
 
-export default PageDemande;
+export default PageCreerDemandeSpeciale;

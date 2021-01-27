@@ -6,7 +6,7 @@ import {
 
 import ListePieces from '../composants/ListePieces';
 
-function PageRepertoire() {
+function PageRepertoirePieces() {
     const [listePieces, setListePieces] = useState([]);
 
     useEffect(() => {
@@ -26,4 +26,4 @@ function PageRepertoire() {
     );
 }
 
-export default PageRepertoire;
+export default PageRepertoirePieces;

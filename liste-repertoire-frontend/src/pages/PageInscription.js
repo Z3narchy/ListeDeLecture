@@ -10,7 +10,7 @@ import { Form } from 'react-bootstrap';
 import Alert from 'react-bootstrap/Alert';
 import Button from 'react-bootstrap/Button';
 
-function PageInscription() {
+function PageInscriptionUtilisateur() {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [alerteUsername, setAlerteUsername] = useState(true);
@@ -90,4 +90,4 @@ function PageInscription() {
     )
 }
 
-export default PageInscription;
+export default PageInscriptionUtilisateur;
