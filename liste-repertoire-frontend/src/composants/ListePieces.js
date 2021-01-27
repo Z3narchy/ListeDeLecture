@@ -83,7 +83,7 @@ function ListePieces({ pieces }) {
                     </Form.Row>
                 </Form>
                 <Table bordered hover className="my-4">
-                    <thead class="thead-light">
+                    <thead className="thead-light">
                         <tr>
                             <th>Titre</th>
                             <th>Artiste</th>
@@ -95,8 +95,8 @@ function ListePieces({ pieces }) {
                             <tr key={piece._id}>
                                 <td>{piece.titre}</td>
                                 <td>{piece.artiste}</td>
-                                <td>{piece.categorie.map((categorie) =>
-                                    <Button className="mx-1" variant="light" onClick={() => setRechercheCategorie(categorie)}>
+                                <td>{piece.categorie.map((categorie , index) =>
+                                    <Button key={index} className="mx-1" variant="light" onClick={() => setRechercheCategorie(categorie)}>
                                         {categorie}
                                     </Button>
                                 )}
