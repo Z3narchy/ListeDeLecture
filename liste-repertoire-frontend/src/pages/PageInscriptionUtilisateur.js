@@ -14,7 +14,7 @@ function PageInscriptionUtilisateur() {
     const [rediriger, setRediriger] = useState(false);
 
     const envoyerFormulaire = async () => {
-        await fetch(`/api/inscription`, {
+        await fetch(`/api/utilisateurs`, {
             method: 'post',
             body: JSON.stringify({ username, password }),
             headers: {

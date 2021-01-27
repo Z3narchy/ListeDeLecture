@@ -11,6 +11,8 @@ import { UtiliseAuth } from '../context/Auth';
 import ListePiecesAjouter from './ListePiecesAjouter';
 import ListePiecesDemande from './ListePiecesDemande';
 
+// A FINIR
+
 function FormulaireModifierDemandeSpeciale({ id }) 
 {
     const {username} = UtiliseAuth();
@@ -21,7 +23,7 @@ function FormulaireModifierDemandeSpeciale({ id })
 
     useEffect(() => {
         const chercherDemande = async () => {
-            const resultat = await fetch(`/api/demandesSpeciales/${id}`);
+            const resultat = await fetch(`/api/demandesSpeciales/demande/${id}`);
             const body = await resultat.json().catch((error) => { console.log(error) });
             setDemande(demande);
         };

@@ -227,27 +227,29 @@ app.get('/api/utilisateurs', (requete, reponse) => {
     );;
 });
 
-app.get('/api/utilisateurs/:username', (requete, reponse) => {
+app.post('/api/utilisateurs/:username', (requete, reponse) => {
     const usernameRequete = requete.params.username;
-    const motPasseRequete = requete.body.motPasse;
-
+    const motPasse = requete.body.motPasse;
+    console.log(usernameRequete);
+    console.log(motPasse);
+    var authentification = {
+        username: "",
+        estValide: false,
+        estAdmin: false
+    }
     utiliserDB(async (db) => {
         const utilisateur = await db.collection('utilisateurs').findOne({ username: usernameRequete });
-        var authentification = {
-            username: "",
-            estValide: false,
-            estAdmin: false
-        }
+        
 
         if (utilisateur !== undefined) {
             authentification.username = utilisateur.username;
-            authentification.estValide = utilisateur.motPasse === motPasseRequete;
+            authentification.estValide = utilisateur.motPasse === motPasse;
             authentification.estAdmin = utilisateur.estAdmin;
         };
 
         reponse.status(200).json(authentification);
     }, reponse).catch(
-        () => reponse.status(500).send("Erreur lors de la requête")
+        () => reponse.status(500).send(authentification)
     );
 });
 
