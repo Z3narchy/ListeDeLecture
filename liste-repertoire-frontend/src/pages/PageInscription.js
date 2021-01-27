@@ -38,7 +38,7 @@ function PageInscription() {
     }, [username]);
 
     const envoyerFormulaire = async () => {
-        await fetch(`/api/utilisateurs/ajouter`, {
+        await fetch(`/api/utilisateurs`, {
             method: 'post',
             body: JSON.stringify({ username, password }),
             headers: {
