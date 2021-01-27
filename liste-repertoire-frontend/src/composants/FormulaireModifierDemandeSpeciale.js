@@ -3,22 +3,46 @@ import {
     useState,
     useEffect
 } from 'react';
-import ListePiecesDemande from '../composants/ListePiecesDemande';
-import ListePiecesAjouter from '../composants/ListePiecesAjouter';
-import { Alert, Form } from 'react-bootstrap';
+
+import { Form } from 'react-bootstrap';
 import Button from 'react-bootstrap/Button';
 import { Redirect } from 'react-router-dom';
+import { UtiliseAuth } from '../context/Auth';
+import ListePiecesAjouter from './ListePiecesAjouter';
+import ListePiecesDemande from './ListePiecesDemande';
 
-function PageDemande() {
+// A FINIR
+
+function FormulaireModifierDemandeSpeciale({ id }) 
+{
+    const {username} = UtiliseAuth();
+    const [demande, setDemande] = useState({});
     const [listePieces, setListePieces] = useState([]);
-    const [name, setNom] = useState('');
-    const [rediriger, setRediriger] = useState(false);
     const [listeDemandes, setListeDemande] = useState([]);
+    const [rediriger, setRediriger] = useState(false);    
+
+    useEffect(() => {
+        const chercherDemande = async () => {
+            const resultat = await fetch(`/api/demandesSpeciales/demande/${id}`);
+            const body = await resultat.json().catch((error) => { console.log(error) });
+            setDemande(demande);
+        };
+        chercherDemande();
+    }, [id]);
+
+    useEffect(() => {
+        const chercherPieces = async () => {
+            const resultat = await fetch(`/api/pieces`);
+            const body = await resultat.json().catch((error) => { console.log(error) });
+            setListePieces(body);
+        };
+        chercherPieces();
+    }, []);
 
     const envoyerDemande = async () => {
-        await fetch(`/api/demandesSpeciales/ajouter`, {
-            method: 'post',
-            body: JSON.stringify({ name, listeDemandes }),
+        await fetch(`/api/demandesSpeciales/modifier/${id}`, {
+            method: 'put',
+            body: JSON.stringify({ demande }),
             headers: {
                 'Content-Type': 'application/json'
             }
@@ -28,17 +52,9 @@ function PageDemande() {
 
     function AfficherRedirection() {
         if (rediriger === true) {
-            return <Redirect to="/repertoire" />
+            return <Redirect to="/gestionDemandesSpeciales" />
         }
     }
-    useEffect(() => {
-        const chercherDonnees = async () => {
-            const resultat = await fetch(`/api/pieces`);
-            const body = await resultat.json().catch((error) => { console.log(error) });
-            setListePieces(body);
-        };
-        chercherDonnees();
-    }, []);
 
     function handleclick(id) {
         var piece = listePieces.find(c => c._id == id);
@@ -56,10 +72,9 @@ function PageDemande() {
             <Form className="mb-1">
                 <Form.Group>
                     <Form.Label>Nom d'usager</Form.Label>
-                    <Form.Control type="text" value={name}
-                        onChange={(event) => setNom(event.target.value)} />
+                    <Form.Control disabled type="text" value={username}/>
                 </Form.Group>
-                <p>Cliquer sur le bouton pour envoyer votre liste.</p>
+                <p>Cliquer sur le bouton pour envoyer votre demande modifiée.</p>
                 <Button variant="primary" onClick={envoyerDemande} >
                     Envoyer
             </Button>
@@ -72,4 +87,4 @@ function PageDemande() {
     );
 }
 
-export default PageDemande;
+export default FormulaireModifierDemandeSpeciale;

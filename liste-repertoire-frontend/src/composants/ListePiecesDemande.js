@@ -45,7 +45,7 @@ function ListePiecesDemande({ pieces, handle }) {
         );
     }
     else {
-        return <Alert variant={"info"} >Il n'y a pas de pièces dans le répertoire.</Alert>;
+        return <Alert variant={"info"} >Il n'y a pas de pièces.</Alert>;
     }
 }
 

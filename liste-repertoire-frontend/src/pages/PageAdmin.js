@@ -24,10 +24,10 @@ function PageAdmin() {
         <>
             <h1>Page administrateur</h1>
 
-            <Link to="/ajouter">
+            <Link to="/ajouterPiece">
                 <Button className="m-2">Ajouter une nouvelle pièce</Button>
             </Link>
-            <Link to="/afficher">
+            <Link to="/afficherDemandesAdmin">
                 <Button className="m-2">Afficher les listes de demandes</Button>
             </Link>
             <h2>Liste du répertoire</h2>
