@@ -48,7 +48,7 @@ function App() {
             <Route path="/afficherDemandesAdmin" component={PageAfficherDemandeAdmin} />
             <Route path="/inscription" component={PageInscription} />
             <Route path="/connexion" component={PageConnexion} />
-            <Route path="/gestion" component={PageGestionUsager} />
+            <Route path="/gestionUtilisateur" component={PageGestionUsager} />
             <Route path="/gestionDemandesUtilisateur" component={PageGestionPourUtilisateur}/>
             <Route path="/modifierDemandeSpeciale/:id" component={PageModifierDemandeSpeciale}/>
             <Route component={Page404} />
