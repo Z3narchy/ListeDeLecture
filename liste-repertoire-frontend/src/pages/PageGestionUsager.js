@@ -3,17 +3,14 @@ import {
   useState,
   useEffect
 } from 'react';
-
 import Button from 'react-bootstrap/Button';
-import { Link } from 'react-router-dom';
 import Container from 'react-bootstrap/Container';
 import Table from 'react-bootstrap/Table';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Alert from 'react-bootstrap/Alert';
-import { Redirect } from 'react-router-dom';
 
 function PageGestionUsager() {
-  const [rediriger, setRediriger] = useState(false);
+  const [rafraichir, setRafraichir] = useState(false);
   const [listeUsagers, setListeUsager] = useState([]);
   useEffect(() => {
     const chercherDonnees = async () => {
@@ -22,26 +19,24 @@ function PageGestionUsager() {
       setListeUsager(body);
     };
     chercherDonnees();
-  }, []);
+  }, [rafraichir]);
 
   function promouvoirUsager(id, username, motPasse) {
-    var estAdminMod = true;
+    var estAdmin = "true";
     const chercherDonnees = async () => {
       await fetch(`/api/utilisateurs/modifier/${id}`, {
         method: 'put',
-        body: JSON.stringify({ username, motPasse, estAdminMod }),
+        body: JSON.stringify({ username, motPasse, estAdmin }),
         headers: {
           'Content-Type': 'application/json'
         }
       });
-      setRediriger(true);
+      setRafraichir(!rafraichir);
     }
     chercherDonnees();
   }
 
-
   function supprimerUsager(id) {
-    console.log(id);
     const chercherDonnees = async () => {
       await fetch(`/api/utilisateurs/supprimer/${id}`, {
         method: 'delete',
@@ -50,22 +45,14 @@ function PageGestionUsager() {
           'Content-Type': 'application/json'
         }
       });
-      setRediriger(true);
+      setRafraichir(!rafraichir);
     }
     chercherDonnees();
   }
 
-  function AfficherRedirection() {
-    if (rediriger === true) {
-      return <Redirect to="/gestion" />
-    }
-  }
-
   if (listeUsagers?.length) {
-
     return (
       <>
-      {AfficherRedirection()}
         <Container>
           <Alert variant='primary'> Gestion des usagers</Alert>
           <Table bordered hover>
@@ -110,32 +97,3 @@ function PageGestionUsager() {
 }
 
 export default PageGestionUsager;
-
-
-// Ajouter dans App
-// import PageGestionUsager from './pages/PageGestionUsager';
-// <Route path="/gestion" component={PageGestionUsager} />
-
-
-// Ajouter dans BarreNavigation
-/*
-<LinkContainer to="/gestion">
-                        <Nav.Link>Gestion des usagers</Nav.Link>
-                    </LinkContainer>
-
-
-*/
-
-
-
-
-
-
-
-
-
-
-
-
-
-
