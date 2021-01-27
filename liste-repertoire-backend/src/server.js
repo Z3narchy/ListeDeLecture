@@ -217,31 +217,33 @@ app.get('/api/utilisateurs', (requete, reponse) => {
     );;
 });
 
-app.get('/api/utilisateurs/:username', (requete, reponse) => {
+app.post('/api/utilisateurs/:username', (requete, reponse) => {
     const usernameRequete = requete.params.username;
-    const motPasseRequete = requete.body.motPasse;
+    const motPasseRequete= requete.body.motPasse;
+    var authentification = {
+        username: "",
+        estValide: false,
+        estAdmin: false
+    };
 
     utiliserDB(async (db) => {
         const utilisateur = await db.collection('utilisateurs').findOne({ username: usernameRequete });
-        var authentification = {
-            username: "",
-            estValide: false,
-            estAdmin: false
-        }
 
         if (utilisateur !== undefined) {
             authentification.username = utilisateur.username;
             authentification.estValide = utilisateur.motPasse === motPasseRequete;
-            authentification.estAdmin = utilisateur.estAdmin;
-        };
 
+            if(authentification.estValide){
+                authentification.estAdmin = utilisateur.estAdmin;
+            }
+        };
         reponse.status(200).json(authentification);
     }, reponse).catch(
-        () => reponse.status(500).send("Erreur lors de la requête")
+        () => reponse.status(500).send(authentification)
     );
 });
 
-app.post('/api/utilisateurs/ajouter', (requete, reponse) => {
+app.post('/api/utilisateurs', (requete, reponse) => {
     const nouvelUtilisateur = requete.body;
 
     if (nouvelUtilisateur !== undefined) {
@@ -266,21 +268,23 @@ app.post('/api/utilisateurs/ajouter', (requete, reponse) => {
 app.put('/api/utilisateurs/modifier/:id', (requete, reponse) => {
     const id = requete.params.id;
     const modifications = requete.body;
+    console.log(modifications);
+    console.log(id);
     
     if (modifications !== undefined){
         utiliserDB(async (db) => {
-            const objectId = Object.createFromHexString(id);
+            const objectId = ObjectID.createFromHexString(id);
             await db.collection('utilisateurs').updateOne({ _id: objectId }, {
                 '$set': {
                     username: modifications.username,
                     motPasse: modifications.motPasse,
-                    estActive: modifications.estActive
+                    estAdmin: modifications.estAdmin
                 }
             });
 
-            reponse.status(200).send("Utilisateur modifié");
+            reponse.status(200).send(`Utilisateur ${objectId} modifié`);
         }, reponse).catch(
-            () => reponse.status(500).send("Erreur : l'utilisateur n'a pas été modifiée")
+            () => reponse.status(500).send("Erreur : l'utilisateur n'a pas été modifié.")
         );
     }
     else {
@@ -293,7 +297,7 @@ app.delete('/api/utilisateurs/supprimer/:id', (requete, reponse) => {
     const id = requete.params.id;
     
     utiliserDB(async (db) => {
-        const objectId = Object.createFromHexString(id);
+        const objectId = ObjectID.createFromHexString(id);
         const resultat = await db.collection('utilisateurs').deleteOne({ _id: objectId});
 
         reponse.status(200).send("Utilisateur(s) supprimé(s)");
