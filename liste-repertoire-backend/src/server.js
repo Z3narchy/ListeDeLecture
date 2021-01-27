@@ -266,6 +266,8 @@ app.post('/api/utilisateurs', (requete, reponse) => {
 app.put('/api/utilisateurs/modifier/:id', (requete, reponse) => {
     const id = requete.params.id;
     const modifications = requete.body;
+    console.log(modifications);
+    console.log(id);
     
     if (modifications !== undefined){
         utiliserDB(async (db) => {
