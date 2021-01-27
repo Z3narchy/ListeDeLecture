@@ -1,17 +1,22 @@
+import { UtiliseAuth } from "../context/Auth";
 import {
     React,
     useState,
     useEffect
 } from 'react';
 import Button from 'react-bootstrap/Button'
+import {Link} from 'react-router-dom';
 
-function PageAfficherDemande() {
+// A FINIR
+function PageGestionPourUtilisateur()
+{
+    const {username} = UtiliseAuth();
     const [render, setRender] = useState(false);
     const [listeDemandes, setListeDemande] = useState([]);
 
     useEffect(() => {
         const chercherDonnees = async () => {
-            const resultat = await fetch(`/api/demandesSpeciales`);
+            const resultat = await fetch(`/api/demandesSpeciales/${username}`);
             const body = await resultat.json().catch((error) => { console.log(error) });
             setListeDemande(body);
         };
@@ -23,7 +28,11 @@ function PageAfficherDemande() {
         return (
             <>
                 <br />
-                <ul><h3 style={{ textAlign: "center" }}>Demande Actives</h3>
+                <ul>
+                    <Link to="/creerDemandeSpeciale">
+                        <Button style={{ marginRight: "10px" }}>Nouvelle Demande Spéciale</Button>
+                    </Link>
+                    <h3 style={{ textAlign: "center" }}>Demande Actives</h3>
                     {AfficherDemandesActives(listeDemandes)}
                     <h3 style={{ textAlign: "center" }}>Demande Inactives</h3>
                     {AfficherDemandesInactives(listeDemandes)}
@@ -32,7 +41,15 @@ function PageAfficherDemande() {
         );
     }
     else {
-        return <h5 variant={"info"} >Aucune liste de demande.</h5>;
+        return (
+            <>
+                <br/>
+                <Link to="/demande">
+                    <Button style={{ marginRight: "10px" }}>Nouvelle Demande Spéciale</Button>
+                </Link>
+                <h5 variant={"info"} >Aucune demande spéciale.</h5>
+            </>
+        );
     }
 
     async function handleClickButtonActif(demande) {
@@ -49,11 +66,12 @@ function PageAfficherDemande() {
         modifierActif();
         setRender(!render);
     }
+
     function AfficherDemandesInactives(demandes) {
         const demandesInactives = demandes.filter((demande) => !demande.estActive);
         var demandesJSX = demandesInactives.map((demande) =>
             <>
-                <Button style={{ marginRight: "10px" }} onClick={() => handleClickButtonActif(demande)} >Réactiver</Button>
+                <Button style={{ marginRight: "10px" }} onClick={() => handleClickButtonActif(demande)}>Réactiver</Button>
                 <li style={{ color: "grey" }}> {demande.name} </li>
                 {demande.listeChansons.map((chanson) =>
                     <ul>
@@ -71,6 +89,10 @@ function PageAfficherDemande() {
         var demandesJSX = demandesActives.map((demande) =>
             <>
                 <Button style={{ marginRight: "10px" }} onClick={() => handleClickButtonActif(demande)}>Désactiver</Button>
+                <Link to={`/modifierDemandeSpeciale/${demande._id}`}>
+                    <Button style={{ marginRight: "10px" }}>Modifier</Button>
+                </Link>
+                
                 <li> {demande.name} </li>
                 {demande.listeChansons.map((chanson) =>
                     <ul>
@@ -84,4 +106,4 @@ function PageAfficherDemande() {
     }
 }
 
-export default PageAfficherDemande;
+export default PageGestionPourUtilisateur;

@@ -44,7 +44,6 @@ app.get('/api/pieces/:id', (requete, reponse) => {
 });
 
 app.post('/api/pieces/ajouter', (requete, reponse) => {
-    //const {titre, artiste, categories} = requete.body;
     const titre = requete.body.titre;
     const artiste = requete.body.artiste;
     const categories = requete.body.categories;
@@ -72,7 +71,6 @@ app.post('/api/pieces/ajouter', (requete, reponse) => {
 });
 
 app.put('/api/pieces/modifier/:id', (requete, reponse) => {
-    //const {titre, artiste, categories} = requete.body;
     const titre = requete.body.titre;
     const artiste = requete.body.artiste;
     const categories = requete.body.categories;
