@@ -74,7 +74,7 @@ function PageInscription() {
                     }
                     <Form.Group>
                     <Form.Label>Mot de passe</Form.Label>
-                    <Form.Control type="text" value={password}
+                    <Form.Control type="password" value={password}
                         onChange={(event) => setPassword(event.target.value)} />
                 </Form.Group>
                 <Button disabled={alerteUsername} className="btn-block my-2" variant={'primary'} onClick={envoyerFormulaire} >
