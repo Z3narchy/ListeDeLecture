@@ -6,7 +6,7 @@ import PageModifierPiece from './pages/PageModifierPiece';
 import PageSupprimerPiece from './pages/PageSupprimerPiece';
 import PageCreerDemandeSpeciale from './pages/PageCreerDemandeSpeciale';
 import PageAfficherDemandeAdmin from './pages/PageAfficherDemandeAdmin';
-import PageInscriptionUtilisateur from './pages/PageInscriptionUtilisateur';
+import PageInscription from './pages/PageInscription';
 import Page404 from './pages/Page404';
 import BarreNavigation from './composants/BarreNavigation';
 import PageConnexion from './pages/PageConnexionUtilisateur';
@@ -46,7 +46,7 @@ function App() {
             <Route path="/supprimerPiece/:id" component={PageSupprimerPiece} />
             <Route path="/ajouterPiece" component={PageAjouterPiece} />
             <Route path="/afficherDemandesAdmin" component={PageAfficherDemandeAdmin} />
-            <Route path="/inscription" component={PageInscriptionUtilisateur} />
+            <Route path="/inscription" component={PageInscription} />
             <Route path="/connexion" component={PageConnexion} />
             <Route path="/gestionDemandesUtilisateur" component={PageGestionPourUtilisateur}/>
             <Route path="/modifierDemandeSpeciale/:id" component={PageModifierDemandeSpeciale}/>

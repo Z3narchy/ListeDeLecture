@@ -44,7 +44,6 @@ app.get('/api/pieces/:id', (requete, reponse) => {
 });
 
 app.post('/api/pieces/ajouter', (requete, reponse) => {
-    //const {titre, artiste, categories} = requete.body;
     const titre = requete.body.titre;
     const artiste = requete.body.artiste;
     const categories = requete.body.categories;
@@ -72,7 +71,6 @@ app.post('/api/pieces/ajouter', (requete, reponse) => {
 });
 
 app.put('/api/pieces/modifier/:id', (requete, reponse) => {
-    //const {titre, artiste, categories} = requete.body;
     const titre = requete.body.titre;
     const artiste = requete.body.artiste;
     const categories = requete.body.categories;
@@ -120,16 +118,6 @@ app.get('/api/demandesSpeciales', (requete, reponse) => {
     utiliserDB(async (db) => {
         const listeDemandes = await db.collection('demandesSpeciales').find().toArray();
         reponse.status(200).json(listeDemandes);
-    }, reponse).catch(
-        () => reponse.status(500).send("Erreur lors de la requête")
-    );;
-});
-
-app.get('/api/demandesSpeciales/:{id}', (requete, reponse) => {
-    var objectId = ObjectID.createFromHexString(requete.params.id);
-    utiliserDB(async (db) => {
-        const demande = await db.collection('demandesSpeciales').find({ _id: objectId });
-        reponse.status(200).json(demande);
     }, reponse).catch(
         () => reponse.status(500).send("Erreur lors de la requête")
     );;
@@ -229,31 +217,31 @@ app.get('/api/utilisateurs', (requete, reponse) => {
 
 app.post('/api/utilisateurs/:username', (requete, reponse) => {
     const usernameRequete = requete.params.username;
-    const motPasse = requete.body.motPasse;
-    console.log(usernameRequete);
-    console.log(motPasse);
+    const motPasseRequete= requete.body.motPasse;
     var authentification = {
         username: "",
         estValide: false,
         estAdmin: false
-    }
+    };
+
     utiliserDB(async (db) => {
         const utilisateur = await db.collection('utilisateurs').findOne({ username: usernameRequete });
-        
 
         if (utilisateur !== undefined) {
             authentification.username = utilisateur.username;
-            authentification.estValide = utilisateur.motPasse === motPasse;
-            authentification.estAdmin = utilisateur.estAdmin;
-        };
+            authentification.estValide = utilisateur.motPasse === motPasseRequete;
 
+            if(authentification.estValide){
+                authentification.estAdmin = utilisateur.estAdmin;
+            }
+        };
         reponse.status(200).json(authentification);
     }, reponse).catch(
         () => reponse.status(500).send(authentification)
     );
 });
 
-app.post('/api/utilisateurs/ajouter', (requete, reponse) => {
+app.post('/api/utilisateurs', (requete, reponse) => {
     const nouvelUtilisateur = requete.body;
 
     if (nouvelUtilisateur !== undefined) {
@@ -281,18 +269,18 @@ app.put('/api/utilisateurs/modifier/:id', (requete, reponse) => {
     
     if (modifications !== undefined){
         utiliserDB(async (db) => {
-            const objectId = Object.createFromHexString(id);
+            const objectId = ObjectID.createFromHexString(id);
             await db.collection('utilisateurs').updateOne({ _id: objectId }, {
                 '$set': {
                     username: modifications.username,
                     motPasse: modifications.motPasse,
-                    estActive: modifications.estActive
+                    estAdmin: modifications.estAdmin
                 }
             });
 
-            reponse.status(200).send("Utilisateur modifié");
+            reponse.status(200).send(`Utilisateur ${objectId} modifié`);
         }, reponse).catch(
-            () => reponse.status(500).send("Erreur : l'utilisateur n'a pas été modifiée")
+            () => reponse.status(500).send("Erreur : l'utilisateur n'a pas été modifié.")
         );
     }
     else {
@@ -305,7 +293,7 @@ app.delete('/api/utilisateurs/supprimer/:id', (requete, reponse) => {
     const id = requete.params.id;
     
     utiliserDB(async (db) => {
-        const objectId = Object.createFromHexString(id);
+        const objectId = ObjectID.createFromHexString(id);
         const resultat = await db.collection('utilisateurs').deleteOne({ _id: objectId});
 
         reponse.status(200).send("Utilisateur(s) supprimé(s)");
