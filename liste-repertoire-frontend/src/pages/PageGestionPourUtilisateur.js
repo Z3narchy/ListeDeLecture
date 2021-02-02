@@ -57,7 +57,7 @@ function PageGestionPourUtilisateur()
         const modifierActif = async () => {
             await fetch(`/api/demandesSpeciales/modifier/${demande._id}`, {
                 method: 'put',
-                body: JSON.stringify({ name: demande.name, listeChansons: demande.listeChansons, estActive: demande.estActive }),
+                body: JSON.stringify({ name: demande.name, listeChansons: demande.listeChansons, estActive: demande.estActive, dateAjout: demande.dateAjout }),
                 headers: {
                     'Content-Type': 'application/json'
                 }
@@ -72,7 +72,7 @@ function PageGestionPourUtilisateur()
         var demandesJSX = demandesInactives.map((demande) =>
             <>
                 <Button style={{ marginRight: "10px" }} onClick={() => handleClickButtonActif(demande)}>Réactiver</Button>
-                <li style={{ color: "grey" }}> {demande.name} </li>
+                <li style={{ color: "grey" }}> {demande.name +" - "+ demande.dateAjout} </li>
                 {demande.listeChansons.map((chanson) =>
                     <ul>
                         <li style={{ color: "grey" }}>{chanson.artiste} - {chanson.titre}</li>
@@ -93,7 +93,7 @@ function PageGestionPourUtilisateur()
                     <Button style={{ marginRight: "10px" }}>Modifier</Button>
                 </Link>
                 
-                <li> {demande.name} </li>
+                <li> {demande.name +" - "+ demande.dateAjout} </li>
                 {demande.listeChansons.map((chanson) =>
                     <ul>
                         <li>{chanson.artiste} - {chanson.titre}</li>
