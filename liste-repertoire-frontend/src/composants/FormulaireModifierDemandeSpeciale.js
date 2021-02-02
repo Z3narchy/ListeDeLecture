@@ -3,7 +3,6 @@ import {
     useState,
     useEffect
 } from 'react';
-
 import { Form } from 'react-bootstrap';
 import Button from 'react-bootstrap/Button';
 import { Redirect } from 'react-router-dom';
@@ -21,11 +20,14 @@ function FormulaireModifierDemandeSpeciale({ id })
     const [listeDemandes, setListeDemande] = useState([]);
     const [rediriger, setRediriger] = useState(false);    
 
+    const estActive = true;
+    const dateAjout = new Date().toLocaleDateString()
+
     useEffect(() => {
         const chercherDemande = async () => {
             const resultat = await fetch(`/api/demandesSpeciales/demande/${id}`);
             const body = await resultat.json().catch((error) => { console.log(error) });
-            setDemande(demande);
+            setListeDemande(body.listeChansons);
         };
         chercherDemande();
     }, [id]);
@@ -42,7 +44,7 @@ function FormulaireModifierDemandeSpeciale({ id })
     const envoyerDemande = async () => {
         await fetch(`/api/demandesSpeciales/modifier/${id}`, {
             method: 'put',
-            body: JSON.stringify({ demande }),
+            body: JSON.stringify({ name : username, listeChansons: listeDemandes, estActive, dateAjout}),
             headers: {
                 'Content-Type': 'application/json'
             }
@@ -52,7 +54,7 @@ function FormulaireModifierDemandeSpeciale({ id })
 
     function AfficherRedirection() {
         if (rediriger === true) {
-            return <Redirect to="/gestionDemandesSpeciales" />
+            return <Redirect to="/gestionDemandesUtilisateur" />
         }
     }
 
@@ -81,7 +83,7 @@ function FormulaireModifierDemandeSpeciale({ id })
                 <h3>Pièce(s) déjà ajouté(s).</h3>
                 <ListePiecesAjouter pieces={listeDemandes} />
             </Form>
-            <p>Pour ajouter une chanson à votre liste, simplement cliquer sur le bouton 'Add'.</p>
+            <p>Pour ajouter une chanson à votre liste, simplement cliquer sur le bouton 'Ajouter'.</p>
             <ListePiecesDemande pieces={listePieces} handle={handleclick} />
         </>
     );

@@ -104,10 +104,10 @@ function ListePiecesAdmin({ pieces }) {
                                 )}
                                 </td>
                                 <td>
-                                    <Link to={`/modifier/${piece._id}`}>
+                                    <Link to={`/modifierPiece/${piece._id}`}>
                                         <Button variant="success" className="m-1" size="sm">Modifier</Button>
                                     </Link>
-                                    <Link to={`/supprimer/${piece._id}`}>
+                                    <Link to={`/supprimerPiece/${piece._id}`}>
                                         <Button variant="danger" className="m-1" size="sm">Supprimer</Button>
                                     </Link>
                                 </td>

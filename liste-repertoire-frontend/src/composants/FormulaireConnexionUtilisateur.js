@@ -19,7 +19,7 @@ function FormulaireConnexion() {
 
     function VerifierUtilisateur() {
         const envoyerFormulaire = async () => {
-            const resultat = await fetch(`/api/utilisateurs/${usager}`, {
+            const resultat = await fetch(`/api/utilisateurs/connexion/${usager}`, {
                 method: 'post',
                 body: JSON.stringify({ motPasse }),
                 headers: {
