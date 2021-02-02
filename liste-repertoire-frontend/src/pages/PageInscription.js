@@ -11,42 +11,44 @@ import Alert from 'react-bootstrap/Alert';
 import Button from 'react-bootstrap/Button';
 
 function PageInscriptionUtilisateur() {
-    const [username, setUsername] = useState('');
-    const [password, setPassword] = useState('');
-    const [alerteUsername, setAlerteUsername] = useState(true);
+    const [username, setUsername] = useState("");
+    const [motPasse, setMotDePasse] = useState('');
     const [rediriger, setRediriger] = useState(false);
+    const [alert, setAlert] = useState(null);
 
-    useEffect(() => {
-        const chercherDonnees = async () => {
-            if (username != '') {
-                const resultat = await fetch(`/api/utilisateurs/${username}`);
-                const body = await resultat.json().catch((error) => { console.log(error) });
-                if (body == undefined) {
-                    setAlerteUsername(false);
+
+
+    const CreerUtilisateur = async () =>
+    {
+        const resultat = await fetch(`/api/utilisateurs/chercher/${username}`).catch();
+        const nomUser = await resultat.json();
+
+        if(username !== nomUser)
+        {
+            await fetch(`/api/utilisateurs/ajouter`, {
+                method: 'post',
+                body: JSON.stringify({ username, motPasse }),
+                headers: {
+                    'Content-Type': 'application/json'
                 }
-                else if (body.username != undefined) {
-                    setAlerteUsername(true);
-                }
-            }
-            else
-            {
-                setAlerteUsername(true);
-            }
-
-        };
-        chercherDonnees();
-    }, [username]);
-
-    const envoyerFormulaire = async () => {
-        await fetch(`/api/utilisateurs`, {
-            method: 'post',
-            body: JSON.stringify({ username, password }),
-            headers: {
-                'Content-Type': 'application/json'
-            }
-        });
-        setRediriger(true);
+            });
+            setRediriger(true);
+        }
+        else
+        {
+            setAlert(true);
+        }   
     };
+
+    function alerteDejaInscrit()
+    {
+        if(alert !== null){
+            return(<Alert variant="warning">Le nom d'utilisateur existe déjà</Alert>)
+        }
+        else{
+            return null;
+        }
+    }
 
     function AfficherRedirection() {
         if (rediriger === true) {
@@ -61,31 +63,25 @@ function PageInscriptionUtilisateur() {
                 <Form className="mb-1 col-md-4">
                     <h5 className="text-center">Inscription</h5>
                     <Form.Group>
+                    {alerteDejaInscrit()}
                         <Form.Label>Nom d'utilisateur</Form.Label>
                         <Form.Control type="text" value={username}
                             onChange={(event) => setUsername(event.target.value)} />
                     </Form.Group>
-                    {
-                        (username == '') ?
-                            null :
-                            (alerteUsername) ?
-                                <Alert variant={'danger'}>Ce nom d'utilisateur est déjà utilisé</Alert> :
-                                <Alert variant={'success'}>Ce nom d'utilisateur est disponible</Alert>
-                    }
                     <Form.Group>
-                    <Form.Label>Mot de passe</Form.Label>
-                    <Form.Control type="password" value={password}
-                        onChange={(event) => setPassword(event.target.value)} />
-                </Form.Group>
-                <Button disabled={alerteUsername} className="btn-block my-2" variant={'primary'} onClick={envoyerFormulaire} >
-                    Inscription
+                        <Form.Label>Mot de passe</Form.Label>
+                        <Form.Control type="password" value={motPasse}
+                            onChange={(event) => setMotDePasse(event.target.value)} />
+                    </Form.Group>
+                    <Button className="btn-block my-2" variant={'primary'} onClick={CreerUtilisateur} >
+                        Inscription
                 </Button>
-                <Button className="btn-block my-2" variant={'danger'} onClick={() => setRediriger(true)}>
-                    Annuler
+                    <Button className="btn-block my-2" variant={'danger'} onClick={() => setRediriger(true)}>
+                        Annuler
                 </Button>
                     <p>Déjà inscrit ? Connectez vous <Link to='/connexion'>ici</Link></p>
                 </Form>
-        </div>
+            </div>
         </>
     )
 }

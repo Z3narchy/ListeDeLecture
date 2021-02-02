@@ -24,10 +24,10 @@ function BarreNavigation() {
                         username ?  
                         <>
                             <LinkContainer to="/gestionDemandesUtilisateur">
-                                <Nav.Link>Mes Demandes</Nav.Link>
+                                <Nav.Link>Voir Mes Demandes</Nav.Link>
                             </LinkContainer>
                             <LinkContainer to="/creerDemandeSpeciale">
-                                <Nav.Link>Demande spéciale</Nav.Link>
+                                <Nav.Link>Creer Demande</Nav.Link>
                             </LinkContainer>
                         </>
                         :
@@ -40,6 +40,7 @@ function BarreNavigation() {
                             </LinkContainer>
                         </>
                     }
+                    {console.log(estAdmin)}
                     {
                         estAdmin ?
                         <LinkContainer to="/admin">
