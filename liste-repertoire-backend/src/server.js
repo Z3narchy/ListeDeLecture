@@ -126,7 +126,7 @@ app.get('/api/demandesSpeciales', (requete, reponse) => {
 app.get('/api/demandesSpeciales/:username', (requete, reponse) => {
     const username = requete.params.username;
     utiliserDB(async (db) => {
-        const listeDemandes = await db.collection('demandesSpeciales').findOne({ username: username }).toArray();
+        const listeDemandes = await db.collection('demandesSpeciales').find({ name: username }).toArray();
         reponse.status(200).json(listeDemandes);
     }, reponse).catch(
         () => reponse.status(500).send("Erreur lors de la requête")
@@ -228,8 +228,9 @@ app.get('/api/utilisateurs/chercher/:username', (requete, reponse) =>  {
 });
 
 app.post('/api/utilisateurs/connexion/:username', (requete, reponse) => {
+
     const usernameRequete = requete.params.username;
-    const motPasseRequete= requete.body.motPasse;
+    const motPasseRequete = requete.body.motPasse;
     var authentification = {
         username: "",
         estValide: false,
@@ -243,7 +244,7 @@ app.post('/api/utilisateurs/connexion/:username', (requete, reponse) => {
             authentification.username = utilisateur.username;
             authentification.estValide = utilisateur.motPasse === motPasseRequete;
 
-            if(authentification.estValide){
+            if (authentification.estValide) {
                 authentification.estAdmin = utilisateur.estAdmin;
             }
         };
@@ -280,10 +281,8 @@ app.post('/api/utilisateurs/ajouter', (requete, reponse) => {
 app.put('/api/utilisateurs/modifier/:id', (requete, reponse) => {
     const id = requete.params.id;
     const modifications = requete.body;
-    console.log(modifications);
-    console.log(id);
-    
-    if (modifications !== undefined){
+
+    if (modifications !== undefined) {
         utiliserDB(async (db) => {
             const objectId = ObjectID.createFromHexString(id);
             await db.collection('utilisateurs').updateOne({ _id: objectId }, {
@@ -307,10 +306,10 @@ app.put('/api/utilisateurs/modifier/:id', (requete, reponse) => {
 
 app.delete('/api/utilisateurs/supprimer/:id', (requete, reponse) => {
     const id = requete.params.id;
-    
+
     utiliserDB(async (db) => {
         const objectId = ObjectID.createFromHexString(id);
-        const resultat = await db.collection('utilisateurs').deleteOne({ _id: objectId});
+        const resultat = await db.collection('utilisateurs').deleteOne({ _id: objectId });
 
         reponse.status(200).send("Utilisateur(s) supprimé(s)");
     }, reponse).catch(
