@@ -215,7 +215,7 @@ app.get('/api/utilisateurs', (requete, reponse) => {
     );;
 });
 
-app.get('/api/utilisateurs/:username', (requete, response) =>  {
+app.get('/api/utilisateurs/chercher/:username', (requete, reponse) =>  {
     const username = requete.params.username
 
     utiliserDB(async (db) => {
@@ -223,11 +223,12 @@ app.get('/api/utilisateurs/:username', (requete, response) =>  {
 
         reponse.status(200).json(utilisateur.username);
     }, reponse).catch(
-        () => reponse.status(500).send("Erreur lors de la requête")
+        () => reponse.status(200).json("l'utilisateur n'existe pas")
     );;
 });
 
-app.post('/api/utilisateurs/:username', (requete, reponse) => {
+app.post('/api/utilisateurs/connexion/:username', (requete, reponse) => {
+
     const usernameRequete = requete.params.username;
     const motPasseRequete = requete.body.motPasse;
     var authentification = {
@@ -253,15 +254,17 @@ app.post('/api/utilisateurs/:username', (requete, reponse) => {
     );
 });
 
-app.post('/api/utilisateurs', (requete, reponse) => {
-    const nouvelUtilisateur = requete.body;
+app.post('/api/utilisateurs/ajouter', (requete, reponse) => {
+    const {username, motPasse} = requete.body;
+    console.log(username);
+    console.log(motPasse);
 
-    if (nouvelUtilisateur !== undefined) {
+    if (username !== undefined && motPasse !== undefined) {
         utiliserDB(async (db) => {
             await db.collection('utilisateurs').insertOne({
-                username: nouvelUtilisateur.username,
-                motPasse: nouvelUtilisateur.motPasse,
-                estAdmin: nouvelUtilisateur.estAdmin
+                username: username,
+                motPasse: motPasse,
+                estAdmin: false
             });
 
             reponse.status(200).send("L'utilisateur a bien été inscrit.");
@@ -271,7 +274,7 @@ app.post('/api/utilisateurs', (requete, reponse) => {
     }
     else {
         reponse.status(500).send(`Certains paramètres ne sont pas définis :
-            - infosUtilsateur: ${nouvelUtilisateur}`);
+            - infosUtilsateur: ${username}`);
     }
 });
 
