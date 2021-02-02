@@ -126,7 +126,7 @@ app.get('/api/demandesSpeciales', (requete, reponse) => {
 app.get('/api/demandesSpeciales/:username', (requete, reponse) => {
     const username = requete.params.username;
     utiliserDB(async (db) => {
-        const listeDemandes = await db.collection('demandesSpeciales').findOne({ username: username }).toArray();
+        const listeDemandes = await db.collection('demandesSpeciales').find({ name: username }).toArray();
         reponse.status(200).json(listeDemandes);
     }, reponse).catch(
         () => reponse.status(500).send("Erreur lors de la requête")
@@ -215,9 +215,9 @@ app.get('/api/utilisateurs', (requete, reponse) => {
     );;
 });
 
-app.get('/api/utilisateurs/:username', (requete, reponse) =>  {
+app.get('/api/utilisateurs/:username', (requete, response) =>  {
     const username = requete.params.username
-    
+
     utiliserDB(async (db) => {
         const utilisateur = await db.collection('utilisateurs').findOne({username: username});
 
