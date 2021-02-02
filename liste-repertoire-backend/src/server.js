@@ -215,7 +215,7 @@ app.get('/api/utilisateurs', (requete, reponse) => {
     );;
 });
 
-app.get('/api/utilisateurs/:username', (requete, response) =>  {
+app.get('/api/utilisateurs/:username', (requete, reponse) =>  {
     const username = requete.params.username
 
     utiliserDB(async (db) => {
