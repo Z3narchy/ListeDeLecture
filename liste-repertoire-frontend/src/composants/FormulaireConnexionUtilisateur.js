@@ -1,11 +1,11 @@
 import {
     React,
     useState,
-    useEffect
 } from 'react';
 import { UtiliseAuth } from '../context/Auth';
 import { Form } from 'react-bootstrap';
 import Button from 'react-bootstrap/Button';
+import Alert from 'react-bootstrap/Alert';
 import { Redirect } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 
@@ -37,11 +37,10 @@ function FormulaireConnexion() {
     }
 
     function AfficherOffreInscription() {
-        console.log(utilisateurExiste);
         if (utilisateurExiste === false) {
             return (
                 <>
-                    <h3><br/>CE COMPTE N'EXISTE PAS !</h3>
+                    <Alert variant="danger">CE COMPTE N'EXISTE PAS !</Alert>
                     <Link to="/inscription">
                         <Button className="btn-block" variant="primary">S'INSCRIRE</Button>
                     </Link>
@@ -67,29 +66,30 @@ function FormulaireConnexion() {
     return (
         <>
             {AfficherRedirection()}
-
-            <Form className="text-center mb-1 col-md-6">
-                <h5>Connecter vous à votre compte!</h5>
-                <Form.Group>
-                    <Form.Label>Nom d'usager</Form.Label>
-                    <Form.Control type="text" value={usager}
-                        onChange={(event) => setUsager(event.target.value)} />
-                </Form.Group>
-                <Form.Group>
-                    <Form.Label>Mot de passe</Form.Label>
-                    <Form.Control type="text" value={motPasse}
-                        onChange={(event) => setMotPasse(event.target.value)} />
-                </Form.Group>
-                <Form.Group>
-                    <Button className="btn-block" variant="primary" onClick={VerifierUtilisateur} >
-                        Connexion
-                    </Button>
-                    <Link to="/">
-                        <Button className="btn-block" variant="danger" >Annuler</Button>
-                    </Link>
-                    {AfficherOffreInscription()}
-                </Form.Group>
-            </Form>
+            <div className="d-flex justify-content-center">
+                <Form className="mb-1 col-md-4">
+                    <h5>Connecter vous à votre compte!</h5>
+                    <Form.Group>
+                        <Form.Label>Nom d'usager</Form.Label>
+                        <Form.Control type="text" value={usager}
+                            onChange={(event) => setUsager(event.target.value)} />
+                    </Form.Group>
+                    <Form.Group>
+                        <Form.Label>Mot de passe</Form.Label>
+                        <Form.Control type="text" value={motPasse}
+                            onChange={(event) => setMotPasse(event.target.value)} />
+                    </Form.Group>
+                    <Form.Group>
+                        <Button className="btn-block" variant="primary" onClick={VerifierUtilisateur} >
+                            Connexion
+                        </Button>
+                        <Button className="btn-block my-2" variant={'danger'} onClick={() => setRediriger(true)}>
+                            Annuler
+                        </Button>
+                        {AfficherOffreInscription()}
+                    </Form.Group>
+                </Form>
+            </div>
         </>
     );
 }
