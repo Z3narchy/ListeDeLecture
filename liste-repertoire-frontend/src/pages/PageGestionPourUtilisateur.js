@@ -44,7 +44,7 @@ function PageGestionPourUtilisateur()
         return (
             <>
                 <br/>
-                <Link to="/demande">
+                <Link to="/creerDemandeSpeciale">
                     <Button style={{ marginRight: "10px" }}>Nouvelle Demande Spéciale</Button>
                 </Link>
                 <h5 variant={"info"} >Aucune demande spéciale.</h5>

@@ -6,7 +6,7 @@ import Table from 'react-bootstrap/Table';
 import Col from 'react-bootstrap/Col';
 
 
-function ListePiecesDemande({ pieces, handle }) {
+function ListePiecesDemande({ pieces, listeDemandes, handle }) {
     const [tri, setTri] = useState('Titre');
     const [ordre, setOrdre] = useState('Croissant')
 
@@ -101,7 +101,7 @@ function ListePiecesDemande({ pieces, handle }) {
                                     </Button>
                                 )}
                                 </td>
-                                <td><Button variant="primary" className="m-2" onClick={() => handle(piece._id)}>Ajouter</Button></td>
+                                <td><Button disabled={listeDemandes.includes(piece)} variant="primary" className="m-2" onClick={() => handle(piece._id)}>Ajouter</Button></td>
                             </tr>
                         )}
                     </tbody>

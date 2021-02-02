@@ -64,14 +64,14 @@ function PageCreerDemandeSpeciale() {
                     <Form.Control disabled type="text" value={username}/>
                 </Form.Group>
                 <h3>Pièce(s) déjà ajouté(s).</h3>
-                <ListePiecesAjouter pieces={listeDemandes} />
+                <ListePiecesAjouter pieces={listeDemandes} setListeDemande={setListeDemande} />
                 <p>Cliquer sur le bouton pour envoyer votre liste.</p>
                 <Button variant="primary" onClick={envoyerDemande} >
                     Envoyer
                 </Button>
             </Form>
             <p>Pour ajouter une chanson à votre liste, simplement cliquer sur le bouton 'Ajouter'.</p>
-            <ListePiecesDemande pieces={listePieces} handle={handleclick} />
+            <ListePiecesDemande pieces={listePieces} listeDemandes={listeDemandes} handle={handleclick} />
         </>
     );
 }
