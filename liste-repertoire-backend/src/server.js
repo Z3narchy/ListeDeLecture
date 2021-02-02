@@ -264,7 +264,7 @@ app.post('/api/utilisateurs/ajouter', (requete, reponse) => {
             await db.collection('utilisateurs').insertOne({
                 username: username,
                 motPasse: motPasse,
-                estAdmin: false
+                estAdmin: "false"
             });
 
             reponse.status(200).send("L'utilisateur a bien été inscrit.");

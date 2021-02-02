@@ -10,19 +10,16 @@ import { UtiliseAuth } from '../context/Auth';
 import ListePiecesAjouter from './ListePiecesAjouter';
 import ListePiecesDemande from './ListePiecesDemande';
 
-// A FINIR
-
 function FormulaireModifierDemandeSpeciale({ id }) 
 {
     const {username} = UtiliseAuth();
-    const [demande, setDemande] = useState({});
     const [listePieces, setListePieces] = useState([]);
     const [listeDemandes, setListeDemande] = useState([]);
     const [rediriger, setRediriger] = useState(false);    
 
     const estActive = true;
     const dateAjout = new Date().toLocaleDateString()
-
+    
     useEffect(() => {
         const chercherDemande = async () => {
             const resultat = await fetch(`/api/demandesSpeciales/demande/${id}`);
@@ -39,8 +36,9 @@ function FormulaireModifierDemandeSpeciale({ id })
             setListePieces(body);
         };
         chercherPieces();
-    }, []);
+    }, [id]);
 
+    
     const envoyerDemande = async () => {
         await fetch(`/api/demandesSpeciales/modifier/${id}`, {
             method: 'put',
@@ -66,6 +64,14 @@ function FormulaireModifierDemandeSpeciale({ id })
             setListeDemande(nouvelleListe)
         }
     }
+    
+    const autresPieces = listePieces.filter(piece => undefined === listeDemandes.find
+        ((demande) => demande.titre === piece.titre));
+
+    console.log("listePieces:");
+    console.log(listePieces);
+    console.log("listeDemandes:");
+    console.log(listeDemandes);
     return (
         <>
             {AfficherRedirection()}
@@ -81,10 +87,10 @@ function FormulaireModifierDemandeSpeciale({ id })
                     Envoyer
             </Button>
                 <h3>Pièce(s) déjà ajouté(s).</h3>
-                <ListePiecesAjouter pieces={listeDemandes} />
+                <ListePiecesAjouter pieces={listeDemandes}  setListeDemande={setListeDemande}/>
             </Form>
             <p>Pour ajouter une chanson à votre liste, simplement cliquer sur le bouton 'Ajouter'.</p>
-            <ListePiecesDemande pieces={listePieces} handle={handleclick} />
+            <ListePiecesDemande pieces={autresPieces} listeDemandes={listeDemandes} handle={handleclick} />
         </>
     );
 }
