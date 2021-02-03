@@ -5,12 +5,11 @@ import {
     useEffect
 } from 'react';
 import Button from 'react-bootstrap/Button'
-import {Link} from 'react-router-dom';
+import Row from 'react-bootstrap/Row'
+import { Link } from 'react-router-dom';
 
-// A FINIR
-function PageGestionPourUtilisateur()
-{
-    const {username} = UtiliseAuth();
+function PageGestionPourUtilisateur() {
+    const { username } = UtiliseAuth();
     const [render, setRender] = useState(false);
     const [listeDemandes, setListeDemande] = useState([]);
 
@@ -29,12 +28,15 @@ function PageGestionPourUtilisateur()
             <>
                 <br />
                 <ul>
-                    <Link to="/creerDemandeSpeciale">
-                        <Button style={{ marginRight: "10px" }}>Nouvelle Demande Spéciale</Button>
-                    </Link>
-                    <h3 style={{ textAlign: "center" }}>Demande Actives</h3>
+                    <h3 style={{ textAlign: "center" }}>Mes Demandes</h3>
+                    <Row style={{ justifyContent: "center" }}>
+                        <Link to="/creerDemandeSpeciale">
+                            <Button style={{ margin: "10px" }}>Nouvelle Demande Spéciale</Button>
+                        </Link>
+                    </Row>
+                    <h4 className="bg-success text-white rounded" style={{ textAlign: "center" }}>Demandes Actives</h4>
                     {AfficherDemandesActives(listeDemandes)}
-                    <h3 style={{ textAlign: "center" }}>Demande Inactives</h3>
+                    <h4 className="bg-danger text-white rounded" style={{ textAlign: "center" }}>Demandes Inactives</h4>
                     {AfficherDemandesInactives(listeDemandes)}
                 </ul>
             </>
@@ -43,7 +45,7 @@ function PageGestionPourUtilisateur()
     else {
         return (
             <>
-                <br/>
+                <br />
                 <Link to="/creerDemandeSpeciale">
                     <Button style={{ marginRight: "10px" }}>Nouvelle Demande Spéciale</Button>
                 </Link>
@@ -71,13 +73,16 @@ function PageGestionPourUtilisateur()
         const demandesInactives = demandes.filter((demande) => !demande.estActive);
         var demandesJSX = demandesInactives.map((demande) =>
             <>
-                <Button style={{ marginRight: "10px" }} onClick={() => handleClickButtonActif(demande)}>Réactiver</Button>
-                <li style={{ color: "grey" }}> {demande.name +" - "+ demande.dateAjout} </li>
+                <li style={{ color: "grey" }}> {demande.name + " - " + demande.dateAjout} </li>
+                
                 {demande.listeChansons.map((chanson) =>
                     <ul>
                         <li style={{ color: "grey" }}>{chanson.artiste} - {chanson.titre}</li>
                     </ul>
                 )}
+                <Row style={{ marginTop: "10px" }}>
+                    <Button variant="success" style={{ marginRight: "10px" }} onClick={() => handleClickButtonActif(demande)}>Réactiver</Button>
+                </Row>
                 <br /><br />
             </>
         )
@@ -88,17 +93,18 @@ function PageGestionPourUtilisateur()
         const demandesActives = demandes.filter((demande) => demande.estActive);
         var demandesJSX = demandesActives.map((demande) =>
             <>
-                <Button style={{ marginRight: "10px" }} onClick={() => handleClickButtonActif(demande)}>Désactiver</Button>
-                <Link to={`/modifierDemandeSpeciale/${demande._id}`}>
-                    <Button style={{ marginRight: "10px" }}>Modifier</Button>
-                </Link>
-                
-                <li> {demande.name +" - "+ demande.dateAjout} </li>
+                <li> {demande.name + " - " + demande.dateAjout} </li>
                 {demande.listeChansons.map((chanson) =>
                     <ul>
                         <li>{chanson.artiste} - {chanson.titre}</li>
                     </ul>
                 )}
+                <Row style={{ marginTop: "10px" }}>
+                    <Button variant="danger" style={{ marginRight: "10px" }} onClick={() => handleClickButtonActif(demande)}>Désactiver</Button>
+                    <Link to={`/modifierDemandeSpeciale/${demande._id}`}>
+                        <Button variant="warning" style={{ marginRight: "10px" }}>Modifier</Button>
+                    </Link>
+                </Row>
                 <br /><br />
             </>
         )
