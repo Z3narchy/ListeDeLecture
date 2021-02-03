@@ -3,7 +3,6 @@ import {
     useState,
     useEffect
 } from 'react';
-
 import ListePiecesAdmin from '../composants/ListePiecesAdmin';
 import Button from 'react-bootstrap/Button';
 import { Link } from 'react-router-dom';
@@ -23,7 +22,6 @@ function PageAdmin() {
     return (
         <>
             <h1>Page administrateur</h1>
-
             <Link to="/ajouterPiece">
                 <Button className="m-2">Ajouter une nouvelle pièce</Button>
             </Link>

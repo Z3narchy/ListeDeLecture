@@ -9,13 +9,11 @@ import { Link } from 'react-router-dom';
 function ListePiecesAdmin({ pieces }) {
     const [tri, setTri] = useState('Titre');
     const [ordre, setOrdre] = useState('Croissant')
-
     const [rechercheTitre, setRechercheTitre] = useState('');
     const [rechercheArtiste, setRechercheArtiste] = useState('');
     const [rechercheCategorie, setRechercheCategorie] = useState('');
 
     if (pieces?.length) {
-
         // Tri des catégories pour chaque pièce individuellement
         pieces.forEach(piece =>
             piece.categorie.sort()
@@ -24,7 +22,6 @@ function ListePiecesAdmin({ pieces }) {
         // Affiche seulement les pièces qui correspondent aux valeurs contenues dans les Input de recherche
         pieces = pieces.filter(function (piece) {
             var contientCategorie = false;
-
             piece.categorie.forEach(categorie => {
                 if (categorie.toLowerCase().includes(rechercheCategorie.toLowerCase())) {
                     contientCategorie = true;
@@ -46,7 +43,6 @@ function ListePiecesAdmin({ pieces }) {
             }
             return 0;
         });
-
 
         return (
             <>
