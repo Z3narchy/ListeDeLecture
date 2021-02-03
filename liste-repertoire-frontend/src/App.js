@@ -25,16 +25,16 @@ import {
 } from 'react-router-dom';
 import {
   React,
-  useState, 
+  useState,
 } from 'react';
 
 function App() {
-  const [authentification, setAuthentification]  = useState(false);
-  const [estAdmin, setEstAdmin]  = useState(false); 
-  const [username, setUsername]  = useState(false); 
+  const [authentification, setAuthentification] = useState(false);
+  const [estAdmin, setEstAdmin] = useState(false);
+  const [username, setUsername] = useState(false);
 
   return (
-    <ContexteAuth.Provider value={{authentification, setAuthentification, estAdmin, setEstAdmin, username, setUsername}}>
+    <ContexteAuth.Provider value={{ authentification, setAuthentification, estAdmin, setEstAdmin, username, setUsername }}>
       <Router>
         <Container>
           <BarreNavigation />
@@ -50,9 +50,9 @@ function App() {
             <Route path="/inscription" component={PageInscription} />
             <Route path="/connexion" component={PageConnexion} />
             <Route path="/deconnexion" component={PageDeconnexion} />
-            <Route path="/gestionUtilisateur" component={PageGestionUsager} />
-            <Route path="/gestionDemandesUtilisateur" component={PageGestionPourUtilisateur}/>
-            <Route path="/modifierDemandeSpeciale/:id" component={PageModifierDemandeSpeciale}/>
+            <Route path="/gestionUtilisateurs" component={PageGestionUsager} />
+            <Route path="/gestionDemandesUtilisateur" component={PageGestionPourUtilisateur} />
+            <Route path="/modifierDemandeSpeciale/:id" component={PageModifierDemandeSpeciale} />
             <Route component={Page404} />
           </Switch>
         </Container>
