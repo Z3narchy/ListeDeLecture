@@ -51,7 +51,7 @@ function BarreNavigation() {
                                         <Nav.Link>Deconnexion</Nav.Link>
                                     </LinkContainer>
                                     <LinkContainer to="/">
-                                        <Nav.Link>Compte <strong>{username}</strong></Nav.Link>
+                                        <Nav.Link>Compte: <strong>{username}</strong></Nav.Link>
                                     </LinkContainer>
                                 </>
                                 :
