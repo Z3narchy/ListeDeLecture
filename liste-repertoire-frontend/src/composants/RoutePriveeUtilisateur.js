@@ -17,3 +17,4 @@ function RoutePriveeUtilisateur({ component: Component, ...reste }) {
 }
 
 export default RoutePriveeUtilisateur;
+
