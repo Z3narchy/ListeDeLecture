@@ -76,12 +76,12 @@ function FormulaireAjouterPiece({ id }) {
                         </InputGroup>
                     )}
                     <div className="text-center">
-                        <Button className="ml-2" variant="success" onClick={AjouterCategorie} >
+                        <Button disabled={categories.includes('')} className="ml-2" variant="success" onClick={AjouterCategorie} >
                             +
                         </Button>
                     </div>
                 </Form.Group>
-                <Button variant="primary" onClick={envoyerFormulaire} >
+                <Button disabled={titre === '' || artiste === '' || categories.includes('') || categories.length === 0} variant="primary" onClick={envoyerFormulaire} >
                     Ajouter
             </Button>
             </Form>
