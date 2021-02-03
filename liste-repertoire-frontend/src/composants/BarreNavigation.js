@@ -28,7 +28,7 @@ function BarreNavigation() {
                                     <NavDropdown title="Administration">
                                         <NavDropdown.Item>
                                             <LinkContainer to="/admin">
-                                                <Nav.Link>Admin</Nav.Link>
+                                                <Nav.Link>Général</Nav.Link>
                                             </LinkContainer>
                                         </NavDropdown.Item>
                                         <NavDropdown.Item>
