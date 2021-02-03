@@ -22,7 +22,7 @@ function BarreNavigation() {
                     </Nav>
                     <Nav>
                         {
-                            estAdmin ?
+                            estAdmin === "true" ?
                             <>
                             <LinkContainer to="/admin">
                                 <Nav.Link>Admin</Nav.Link>
