@@ -89,12 +89,12 @@ function FormulaireModifierPiece({ id }) {
                             </InputGroup>
                         )}
                     <div className="text-center">
-                        <Button className="ml-2" variant="success" onClick={AjouterCategorie} >
+                        <Button disabled={categories.includes('')} className="ml-2" variant="success" onClick={AjouterCategorie} >
                             +
                         </Button>
                     </div>
                 </Form.Group>
-                <Button variant="success" onClick={envoyerFormulaire} >
+                <Button disabled={titre === '' || artiste === '' || categories.includes('') || categories.length === 0} variant="success" onClick={envoyerFormulaire} >
                     Appliquer les modifications
                 </Button>
             </Form>
