@@ -27,16 +27,16 @@ import {
 } from 'react-router-dom';
 import {
   React,
-  useState, 
+  useState,
 } from 'react';
 
 function App() {
-  const [authentification, setAuthentification]  = useState(false);
-  const [estAdmin, setEstAdmin]  = useState(false); 
-  const [username, setUsername]  = useState(false); 
+  const [authentification, setAuthentification] = useState(false);
+  const [estAdmin, setEstAdmin] = useState(false);
+  const [username, setUsername] = useState(false);
 
   return (
-    <ContexteAuth.Provider value={{authentification, setAuthentification, estAdmin, setEstAdmin, username, setUsername}}>
+    <ContexteAuth.Provider value={{ authentification, setAuthentification, estAdmin, setEstAdmin, username, setUsername }}>
       <Router>
         <Container>
           <BarreNavigation />
@@ -54,7 +54,7 @@ function App() {
             <RoutePriveeAdmin path="/supprimerPiece/:id" component={PageSupprimerPiece} />
             <RoutePriveeAdmin path="/admin" component={PageAdmin} />
             <RoutePriveeAdmin path="/afficherDemandesAdmin" component={PageAfficherDemandeAdmin} />
-            <RoutePriveeAdmin path="/gestionUtilisateur" component={PageGestionUsager} />
+            <RoutePriveeAdmin path="/gestionUtilisateurs" component={PageGestionUsager} />
             <Route component={Page404} />
           </Switch>
         </Container>

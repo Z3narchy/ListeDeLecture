@@ -9,13 +9,11 @@ import Col from 'react-bootstrap/Col';
 function ListePiecesDemande({ pieces, listeDemandes, handle }) {
     const [tri, setTri] = useState('Titre');
     const [ordre, setOrdre] = useState('Croissant')
-
     const [rechercheTitre, setRechercheTitre] = useState('');
     const [rechercheArtiste, setRechercheArtiste] = useState('');
     const [rechercheCategorie, setRechercheCategorie] = useState('');
 
     if (pieces?.length) {
-
         // Tri des catégories pour chaque pièce individuellement
         pieces.forEach(piece =>
             piece.categorie.sort()
@@ -24,7 +22,6 @@ function ListePiecesDemande({ pieces, listeDemandes, handle }) {
         // Affiche seulement les pièces qui correspondent aux valeurs contenues dans les Input de recherche
         pieces = pieces.filter(function (piece) {
             var contientCategorie = false;
-
             piece.categorie.forEach(categorie => {
                 if (categorie.toLowerCase().includes(rechercheCategorie.toLowerCase())) {
                     contientCategorie = true;

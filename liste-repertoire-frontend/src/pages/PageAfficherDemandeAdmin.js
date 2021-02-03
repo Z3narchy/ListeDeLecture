@@ -18,23 +18,6 @@ function PageAfficherDemandeAdmin() {
         chercherDonnees();
     }, []);
 
-    if (listeDemandes?.length) {
-
-        return (
-            <>
-                <br />
-                <ul><h3 style={{ textAlign: "center" }}>Demande Actives</h3>
-                    {AfficherDemandesActives(listeDemandes)}
-                    <h3 style={{ textAlign: "center" }}>Demande Inactives</h3>
-                    {AfficherDemandesInactives(listeDemandes)}
-                </ul>
-            </>
-        );
-    }
-    else {
-        return <h5 variant={"info"} >Aucune demande trouvée.</h5>;
-    }
-
     async function handleClickButtonActif(demande) {
         demande.estActive = !demande.estActive;
         const modifierActif = async () => {
@@ -49,16 +32,16 @@ function PageAfficherDemandeAdmin() {
         modifierActif();
         setRender(!render);
     }
+    
     function AfficherDemandesInactives(demandes) {
         const demandesInactives = demandes.filter((demande) => !demande.estActive);
-        var demandesJSX = demandesInactives.map((demande) =>
+        var demandesJSX = demandesInactives.map((demande, index) =>
             <>
-                {console.log(demande)}
-                <Button style={{ marginRight: "10px" }} onClick={() => handleClickButtonActif(demande)} >Réactiver</Button>
+                <Button key ={index} style={{ marginRight: "10px" }} onClick={() => handleClickButtonActif(demande)} >Réactiver</Button>
                 <li style={{ color: "grey" }}> {demande.name} - {demande.dateAjout} </li>
-                {demande.listeChansons.map((chanson) =>
+                {demande.listeChansons.map((chanson, index2) =>
                     <ul>
-                        <li style={{ color: "grey" }}>{chanson.artiste} - {chanson.titre}</li>
+                        <li key ={index2} style={{ color: "grey" }}>{chanson.artiste} - {chanson.titre}</li>
                     </ul>
                 )}
                 <br /><br />
@@ -69,13 +52,13 @@ function PageAfficherDemandeAdmin() {
 
     function AfficherDemandesActives(demandes) {
         const demandesActives = demandes.filter((demande) => demande.estActive);
-        var demandesJSX = demandesActives.map((demande) =>
+        var demandesJSX = demandesActives.map((demande, index) =>
             <>
-                <Button style={{ marginRight: "10px" }} onClick={() => handleClickButtonActif(demande)}>Désactiver</Button>
+                <Button key ={index} style={{ marginRight: "10px" }} onClick={() => handleClickButtonActif(demande)}>Désactiver</Button>
                 <li> {demande.name} - {demande.dateAjout} </li>
-                {demande.listeChansons.map((chanson) =>
+                {demande.listeChansons.map((chanson, index2) =>
                     <ul>
-                        <li>{chanson.artiste} - {chanson.titre}</li>
+                        <li key ={index2}>{chanson.artiste} - {chanson.titre}</li>
                     </ul>
                 )}
                 <br /><br />
@@ -83,6 +66,22 @@ function PageAfficherDemandeAdmin() {
         )
         return demandesJSX;
     }
+
+    if (listeDemandes?.length) {
+        return (
+            <>
+                <br />
+                <ul><h3 style={{ textAlign: "center" }}>Demande Actives</h3>
+                    {AfficherDemandesActives(listeDemandes)}
+                    <h3 style={{ textAlign: "center" }}>Demande Inactives</h3>
+                    {AfficherDemandesInactives(listeDemandes)}
+                </ul>
+            </>
+        );
+    }
+    else {
+        return <h5 variant={"info"} >Aucune demande trouvée.</h5>;
+    } 
 }
 
 export default PageAfficherDemandeAdmin;
