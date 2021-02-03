@@ -256,8 +256,6 @@ app.post('/api/utilisateurs/connexion/:username', (requete, reponse) => {
 
 app.post('/api/utilisateurs/ajouter', (requete, reponse) => {
     const {username, motPasse} = requete.body;
-    console.log(username);
-    console.log(motPasse);
 
     if (username !== undefined && motPasse !== undefined) {
         utiliserDB(async (db) => {
