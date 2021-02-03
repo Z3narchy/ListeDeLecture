@@ -70,7 +70,6 @@ function FormulaireCreerDemandeSpeciale() {
                     Envoyer
                 </Button>
             </Form>
-            <p>Pour ajouter une chanson à votre liste, simplement cliquer sur le bouton 'Ajouter'.</p>
             <ListePiecesDemande pieces={autresPieces} listeDemandes={listeDemandes} handle={handleclick} />
         </>
     );
