@@ -3,7 +3,6 @@ import {
     useState,
     useEffect
 } from 'react';
-
 import { Form } from 'react-bootstrap';
 import Button from 'react-bootstrap/Button';
 import InputGroup from 'react-bootstrap/InputGroup';
@@ -60,6 +59,7 @@ function FormulaireModifierPiece({ id }) {
         categorieSupprimee.splice(index, 1);
         setCategories(categorieSupprimee);
     }
+
     return (
         <>
             {AfficherRedirection()}
@@ -69,7 +69,6 @@ function FormulaireModifierPiece({ id }) {
                     <Form.Control type="text" value={titre}
                         onChange={(event) => setTitre(event.target.value)} />
                 </Form.Group>
-
                 <Form.Group>
                     <Form.Label>Artiste / Groupe</Form.Label>
                     <Form.Control type="text" value={artiste}
@@ -79,14 +78,13 @@ function FormulaireModifierPiece({ id }) {
                     <Form.Label>Catégories</Form.Label>
                     {
                         categories.map((categorie, index) =>
-                            <InputGroup>
+                            <InputGroup key={index}>
                                 <Form.Control className="my-2" type="text" value={categorie}
                                     onChange={(event) => ChangementCategorie(index, event.target.value)} />
-
                                 <InputGroup.Append>
                                     <Button className="my-2" variant="danger" onClick={() => SupprimerCategorie(index)} >
                                         X
-                                            </Button>
+                                    </Button>
                                 </InputGroup.Append>
                             </InputGroup>
                         )}

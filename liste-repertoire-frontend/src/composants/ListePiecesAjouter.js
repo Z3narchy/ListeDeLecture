@@ -10,13 +10,12 @@ function ListePiecesAjouter({ pieces, setListeDemande }) {
     }
 
     if (pieces?.length) {
-
         return (
             <>
                 <ul>
                     {pieces.map((piece, index) => 
-                        <div>
-                            <li  className="d-inline-block" key={piece._id}>{piece.titre} - {piece.artiste}</li>
+                        <div key={index}>
+                            <li  className="d-inline-block">- {piece.titre} - {piece.artiste}</li>
                             <Button className="m-1"variant={'danger'} onClick={() => SupprimerCategorie(index)}>X</Button>
                         </div>
                     )}

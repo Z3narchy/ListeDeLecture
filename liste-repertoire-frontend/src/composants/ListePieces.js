@@ -8,13 +8,11 @@ import Button from 'react-bootstrap/Button';
 function ListePieces({ pieces }) {
     const [tri, setTri] = useState('Titre');
     const [ordre, setOrdre] = useState('Croissant')
-
     const [rechercheTitre, setRechercheTitre] = useState('');
     const [rechercheArtiste, setRechercheArtiste] = useState('');
     const [rechercheCategorie, setRechercheCategorie] = useState('');
 
     if (pieces?.length) {
-
         // Tri des catégories pour chaque pièce individuellement
         pieces.forEach(piece =>
             piece.categorie.sort()
@@ -23,7 +21,6 @@ function ListePieces({ pieces }) {
         // Affiche seulement les pièces qui correspondent aux valeurs contenues dans les Input de recherche
         pieces = pieces.filter(function (piece) {
             var contientCategorie = false;
-
             piece.categorie.forEach(categorie => {
                 if (categorie.toLowerCase().includes(rechercheCategorie.toLowerCase())) {
                     contientCategorie = true;
@@ -45,7 +42,6 @@ function ListePieces({ pieces }) {
             }
             return 0;
         });
-
 
         return (
             <>
@@ -95,7 +91,7 @@ function ListePieces({ pieces }) {
                             <tr key={piece._id}>
                                 <td>{piece.titre}</td>
                                 <td>{piece.artiste}</td>
-                                <td>{piece.categorie.map((categorie , index) =>
+                                <td>{piece.categorie.map((categorie, index) =>
                                     <Button key={index} className="mx-1" variant="light" onClick={() => setRechercheCategorie(categorie)}>
                                         {categorie}
                                     </Button>

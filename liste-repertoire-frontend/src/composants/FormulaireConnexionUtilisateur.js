@@ -16,7 +16,6 @@ function FormulaireConnexion() {
     const { setAuthentification, setEstAdmin, setUsername } = UtiliseAuth();
     const [utilisateurExiste, setUtilisateurExiste] = useState(null);
 
-
     function VerifierUtilisateur() {
         const envoyerFormulaire = async () => {
             const resultat = await fetch(`/api/utilisateurs/connexion/${usager}`, {
@@ -33,7 +32,7 @@ function FormulaireConnexion() {
             setUtilisateurExiste(infosUtilisateur.estValide);
             setRediriger(true);
         };
-        envoyerFormulaire(); 
+        envoyerFormulaire();
     }
 
     function AfficherOffreInscription() {
@@ -48,6 +47,7 @@ function FormulaireConnexion() {
             )
         }
     }
+    
     function AfficherRedirection() {
 
         if (rediriger === true) {
@@ -68,7 +68,6 @@ function FormulaireConnexion() {
             {AfficherRedirection()}
             <div className="d-flex justify-content-center">
                 <Form className="mb-1 col-md-4">
-                    <h5>Connecter vous à votre compte!</h5>
                     <Form.Group>
                         <Form.Label>Nom d'usager</Form.Label>
                         <Form.Control type="text" value={usager}
