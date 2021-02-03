@@ -11,6 +11,7 @@ import Page404 from './pages/Page404';
 import BarreNavigation from './composants/BarreNavigation';
 import PageGestionUsager from './pages/PageGestionUsager';
 import PageConnexion from './pages/PageConnexionUtilisateur';
+import PageDeconnexion from './pages/PageDeconnexion';
 import PageGestionPourUtilisateur from './pages/PageGestionPourUtilisateur';
 import PageModifierDemandeSpeciale from './pages/PageModifierDemandeSpeciale';
 import { ContexteAuth } from './context/Auth';
@@ -48,6 +49,7 @@ function App() {
             <Route path="/afficherDemandesAdmin" component={PageAfficherDemandeAdmin} />
             <Route path="/inscription" component={PageInscription} />
             <Route path="/connexion" component={PageConnexion} />
+            <Route path="/deconnexion" component={PageDeconnexion} />
             <Route path="/gestionUtilisateur" component={PageGestionUsager} />
             <Route path="/gestionDemandesUtilisateur" component={PageGestionPourUtilisateur}/>
             <Route path="/modifierDemandeSpeciale/:id" component={PageModifierDemandeSpeciale}/>

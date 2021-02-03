@@ -1,7 +1,6 @@
 import {
     React,
     useState,
-    useEffect
 } from 'react';
 
 import { Link } from 'react-router-dom';
@@ -75,10 +74,10 @@ function PageInscriptionUtilisateur() {
                     </Form.Group>
                     <Button className="btn-block my-2" variant={'primary'} onClick={CreerUtilisateur} >
                         Inscription
-                </Button>
+                    </Button>
                     <Button className="btn-block my-2" variant={'danger'} onClick={() => setRediriger(true)}>
                         Annuler
-                </Button>
+                    </Button>
                     <p>Déjà inscrit ? Connectez vous <Link to='/connexion'>ici</Link></p>
                 </Form>
             </div>
