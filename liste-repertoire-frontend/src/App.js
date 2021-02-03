@@ -15,6 +15,8 @@ import PageDeconnexion from './pages/PageDeconnexion';
 import PageGestionPourUtilisateur from './pages/PageGestionPourUtilisateur';
 import PageModifierDemandeSpeciale from './pages/PageModifierDemandeSpeciale';
 import { ContexteAuth } from './context/Auth';
+import RoutePriveeAdmin from './composants/RoutePriveeAdmin';
+import RoutePriveeUtilisateur from './composants/RoutePriveeUtilisateur';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Container from 'react-bootstrap/Container';
@@ -41,18 +43,18 @@ function App() {
           <Switch>
             <Route path="/" component={PageAccueil} exact />
             <Route path="/repertoirePieces" component={PageRepertoirePieces} />
-            <Route path="/admin" component={PageAdmin} />
-            <Route path="/creerDemandeSpeciale" component={PageCreerDemandeSpeciale} />
-            <Route path="/modifierPiece/:id" component={PageModifierPiece} />
-            <Route path="/supprimerPiece/:id" component={PageSupprimerPiece} />
-            <Route path="/ajouterPiece" component={PageAjouterPiece} />
-            <Route path="/afficherDemandesAdmin" component={PageAfficherDemandeAdmin} />
             <Route path="/inscription" component={PageInscription} />
             <Route path="/connexion" component={PageConnexion} />
-            <Route path="/deconnexion" component={PageDeconnexion} />
-            <Route path="/gestionUtilisateurs" component={PageGestionUsager} />
-            <Route path="/gestionDemandesUtilisateur" component={PageGestionPourUtilisateur} />
-            <Route path="/modifierDemandeSpeciale/:id" component={PageModifierDemandeSpeciale} />
+            <RoutePriveeUtilisateur path="/creerDemandeSpeciale" component={PageCreerDemandeSpeciale} />
+            <RoutePriveeUtilisateur path="/deconnexion" component={PageDeconnexion} />
+            <RoutePriveeUtilisateur path="/gestionDemandesUtilisateur" component={PageGestionPourUtilisateur}/>
+            <RoutePriveeUtilisateur path="/modifierDemandeSpeciale/:id" component={PageModifierDemandeSpeciale}/>
+            <RoutePriveeAdmin path="/ajouterPiece" component={PageAjouterPiece} />
+            <RoutePriveeAdmin path="/modifierPiece/:id" component={PageModifierPiece} />
+            <RoutePriveeAdmin path="/supprimerPiece/:id" component={PageSupprimerPiece} />
+            <RoutePriveeAdmin path="/admin" component={PageAdmin} />
+            <RoutePriveeAdmin path="/afficherDemandesAdmin" component={PageAfficherDemandeAdmin} />
+            <RoutePriveeAdmin path="/gestionUtilisateurs" component={PageGestionUsager} />
             <Route component={Page404} />
           </Switch>
         </Container>
