@@ -76,7 +76,7 @@ function FormulaireConnexion() {
                     </Form.Group>
                     <Form.Group>
                         <Form.Label>Mot de passe</Form.Label>
-                        <Form.Control type="text" value={motPasse}
+                        <Form.Control type="password" value={motPasse}
                             onChange={(event) => setMotPasse(event.target.value)} />
                     </Form.Group>
                     <Form.Group>
