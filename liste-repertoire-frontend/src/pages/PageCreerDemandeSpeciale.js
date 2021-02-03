@@ -9,7 +9,7 @@ import ListePiecesAjouter from '../composants/ListePiecesAjouter';
 import { Form } from 'react-bootstrap';
 import Button from 'react-bootstrap/Button';
 import { Redirect } from 'react-router-dom';
- 
+
 function PageCreerDemandeSpeciale() {
     const [listePieces, setListePieces] = useState([]);
     const [rediriger, setRediriger] = useState(false);
@@ -23,7 +23,7 @@ function PageCreerDemandeSpeciale() {
     const envoyerDemande = async () => {
         await fetch(`/api/demandesSpeciales/ajouter`, {
             method: 'post',
-            body: JSON.stringify({ name : username, listeDemandes, estActive, dateAjout }),
+            body: JSON.stringify({ name: username, listeDemandes, estActive, dateAjout }),
             headers: {
                 'Content-Type': 'application/json'
             }
@@ -33,7 +33,7 @@ function PageCreerDemandeSpeciale() {
 
     function AfficherRedirection() {
         if (rediriger === true) {
-            return <Redirect to="/gestionDemandesUtilisateur"/>
+            return <Redirect to="/gestionDemandesUtilisateur" />
         }
     }
     useEffect(() => {
@@ -61,16 +61,14 @@ function PageCreerDemandeSpeciale() {
             <Form className="mb-1">
                 <Form.Group>
                     <Form.Label>Nom d'usager</Form.Label>
-                    <Form.Control disabled type="text" value={username}/>
+                    <Form.Control disabled type="text" value={username} />
                 </Form.Group>
                 <h3>Pièce(s) déjà ajouté(s).</h3>
                 <ListePiecesAjouter pieces={listeDemandes} setListeDemande={setListeDemande} />
-                <p>Cliquer sur le bouton pour envoyer votre liste.</p>
-                <Button variant="primary" onClick={envoyerDemande} >
+                <Button disabled={listeDemandes.length == 0} variant="primary" onClick={envoyerDemande} >
                     Envoyer
                 </Button>
             </Form>
-            <p>Pour ajouter une chanson à votre liste, simplement cliquer sur le bouton 'Ajouter'.</p>
             <ListePiecesDemande pieces={listePieces} listeDemandes={listeDemandes} handle={handleclick} />
         </>
     );
