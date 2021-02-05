@@ -1,0 +1,230 @@
+[
+    {
+        "name": "Sebastien",
+        "listeChansons": [
+            {
+                "_id": "5fff3bd3e5c476703a80d337",
+                "titre": "Solar Flare Homicide",
+                "artiste": "Emmure",
+                "categorie": [
+                    "Deathcore",
+                    "Categorie 1",
+                    "Categorie 2"
+                ]
+            },
+            {
+                "_id": "5fff3bd3e5c476703a80d339",
+                "titre": "Flag of the Beast ",
+                "artiste": "Emmure",
+                "categorie": [
+                    "Deathcore",
+                    "Categorie 1",
+                    "Categorie 2"
+                ]
+            },
+            {
+                "_id": "5fff3bd3e5c476703a80d33a",
+                "titre": "Master of Puppets",
+                "artiste": "Metallica",
+                "categorie": [
+                    "Hard Rock",
+                    "Categorie 1",
+                    "Categorie 2"
+                ]
+            }
+        ],
+        "estActive": true,
+        "dateAjout": "2020-12-12"
+    },
+
+    {
+        "name": "Sébastien",
+        "listeChansons": [
+            {
+                "_id": "5fff3bd3e5c476703a80d337",
+                "titre": "Solar Flare Homicide",
+                "artiste": "Emmure",
+                "categorie": [
+                    "Deathcore",
+                    "Categorie 1",
+                    "Categorie 2"
+                ]
+            },
+            {
+                "_id": "5fff3bd3e5c476703a80d339",
+                "titre": "Flag of the Beast ",
+                "artiste": "Emmure",
+                "categorie": [
+                    "Deathcore",
+                    "Categorie 1",
+                    "Categorie 2"
+                ]
+            }
+        ],
+        "estActive": true,
+        "dateAjout": "2020-10-12"
+    },
+
+    {
+        "name": "Nicolas",
+        "listeChansons": [
+            {
+                "_id": "5fff3bd3e5c476703a80d338",
+                "titre": "Dust In The Wind",
+                "artiste": "Kansas",
+                "categorie": [
+                    "Soft Rock",
+                    "Categorie 1",
+                    "Categorie 2"
+                ]
+            },
+            {
+                "_id": "5fff3bd3e5c476703a80d339",
+                "titre": "Flag of the Beast ",
+                "artiste": "Emmure",
+                "categorie": [
+                    "Deathcore",
+                    "Categorie 1",
+                    "Categorie 2"
+                ]
+            },
+            {
+                "_id": "5fff3bd3e5c476703a80d33a",
+                "titre": "Master of Puppets",
+                "artiste": "Metallica",
+                "categorie": [
+                    "Hard Rock",
+                    "Categorie 1",
+                    "Categorie 2"
+                ]
+            }
+        ],
+        "estActive": true,
+        "dateAjout": "2021-02-02"
+    },
+
+    {
+        "name": "Monsieur Patate",
+        "listeChansons": [
+            {
+                "_id": "5fff3bd3e5c476703a80d337",
+                "titre": "Solar Flare Homicide",
+                "artiste": "Emmure",
+                "categorie": [
+                    "Deathcore",
+                    "Categorie 1",
+                    "Categorie 2"
+                ]
+            },
+            {
+                "_id": "5fff3bd3e5c476703a80d33b",
+                "titre": "From Whom the Bell Tolls",
+                "artiste": "Metallica",
+                "categorie": [
+                    "Hard Rock",
+                    "Categorie 1",
+                    "Categorie 2"
+                ]
+            },
+            {
+                "_id": "5fff3bd3e5c476703a80d338",
+                "titre": "Dust In The Wind",
+                "artiste": "Kansas",
+                "categorie": [
+                    "Soft Rock",
+                    "Categorie 1",
+                    "Categorie 2"
+                ]
+            }
+        ],
+        "estActive": true,
+        "dateAjout": "2020-01-01"
+
+    },
+
+    {
+        "name": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAH",
+        "listeChansons": [
+            {
+                "_id": "5fff3bd3e5c476703a80d33a",
+                "titre": "Master of Puppets",
+                "artiste": "Metallica",
+                "categorie": [
+                    "Hard Rock",
+                    "Categorie 1",
+                    "Categorie 2"
+                ]
+            },
+            {
+                "_id": "5fff3bd3e5c476703a80d33b",
+                "titre": "From Whom the Bell Tolls",
+                "artiste": "Metallica",
+                "categorie": [
+                    "Hard Rock",
+                    "Categorie 1",
+                    "Categorie 2"
+                ]
+            },
+            {
+                "_id": "5fff3bd3e5c476703a80d338",
+                "titre": "Dust In The Wind",
+                "artiste": "Kansas",
+                "categorie": [
+                    "Soft Rock",
+                    "Categorie 1",
+                    "Categorie 2"
+                ]
+            },
+            {
+                "_id": "5fff3bd3e5c476703a80d339",
+                "titre": "Flag of the Beast ",
+                "artiste": "Emmure",
+                "categorie": [
+                    "Deathcore",
+                    "Categorie 1",
+                    "Categorie 2"
+                ]
+            },
+            {
+                "_id": "5fff3bd3e5c476703a80d337",
+                "titre": "Solar Flare Homicide",
+                "artiste": "Emmure",
+                "categorie": [
+                    "Deathcore",
+                    "Categorie 1",
+                    "Categorie 2"
+                ]
+            }
+        ],
+        "estActive": true,
+        "dateAjout": "2020-18-09"
+    },
+    
+    {
+        "name": "Patatomique",
+        "listeChansons": [
+            {
+                "_id": "5fff3bd3e5c476703a80d337",
+                "titre": "Solar Flare Homicide",
+                "artiste": "Emmure",
+                "categorie": [
+                    "Deathcore",
+                    "Categorie 1",
+                    "Categorie 2"
+                ]
+            },
+            {
+                "_id": "5fff3bd3e5c476703a80d339",
+                "titre": "Flag of the Beast ",
+                "artiste": "Emmure",
+                "categorie": [
+                    "Deathcore",
+                    "Categorie 1",
+                    "Categorie 2"
+                ]
+            }
+        ],
+        "estActive": true,
+        "dateAjout": "1995-18-09"
+    }
+]

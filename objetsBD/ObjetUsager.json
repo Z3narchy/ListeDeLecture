@@ -1,0 +1,32 @@
+[
+    {
+        "username": "Kanshiin",
+        "motPasse": "LetMeIn",
+        "estAdmin": "false"
+    },
+    {
+        "username": "Garall",
+        "motPasse": "Passw0rd",
+        "estAdmin": "false"
+    },
+    {
+       "username": "ZenChaos",
+        "motPasse": "123456",
+        "estAdmin": "false"
+    },
+    {
+        "username": "Nicolas",
+        "motPasse": "HelloWorld",
+        "estAdmin": "false"
+    },
+    {
+        "username": "MarieSunShine",
+        "motPasse": "JeSuisLaMeilleur!!",
+        "estAdmin": "true"
+    },
+    {
+        "username": "admin",
+        "motPasse": "admin",
+        "estAdmin": "true"
+    }
+]

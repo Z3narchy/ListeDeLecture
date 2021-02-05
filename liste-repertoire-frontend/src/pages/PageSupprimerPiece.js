@@ -9,7 +9,7 @@ import Button from 'react-bootstrap/Button';
 import { Link } from 'react-router-dom';
 import { Redirect } from 'react-router-dom';
 
-function PageSupprimer({ match }) {
+function PageSupprimerPiece({ match }) {
     const id = match.params.id;
     const [rediriger, setRediriger] = useState(false);
 
@@ -45,4 +45,4 @@ function PageSupprimer({ match }) {
     );
 }
 
-export default PageSupprimer;
+export default PageSupprimerPiece;

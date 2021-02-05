@@ -2,16 +2,16 @@ import {
     React,
     useState
 } from 'react';
-
 import { Form } from 'react-bootstrap';
 import Button from 'react-bootstrap/Button';
+import Alert from 'react-bootstrap/Alert';
 import { Redirect } from 'react-router-dom';
 import InputGroup from 'react-bootstrap/InputGroup';
 
 function FormulaireAjouterPiece({ id }) {
     const [titre, setTitre] = useState('');
     const [artiste, setArtiste] = useState('');
-    const [categories, setCategories] = useState([]);
+    const [categories, setCategories] = useState(['']);
     const [rediriger, setRediriger] = useState(false);
 
     const envoyerFormulaire = async () => {
@@ -37,7 +37,6 @@ function FormulaireAjouterPiece({ id }) {
         setCategories(nouvelleCategorie);
     }
 
-
     function ChangementCategorie(index, valeur) {
         var categorieChangee = categories.slice();
         categorieChangee.splice(index, 1, valeur)
@@ -49,6 +48,13 @@ function FormulaireAjouterPiece({ id }) {
         categorieSupprimee.splice(index, 1);
         setCategories(categorieSupprimee);
     }
+
+    function CategoriesDistinctes()
+    {
+        var categoriesDistinctes = categories.filter((categorie, index, a) => a.indexOf(categorie) === index);
+        return categories.length === categoriesDistinctes.length;
+    }
+
     return (
         <>
             {AfficherRedirection()}
@@ -58,7 +64,6 @@ function FormulaireAjouterPiece({ id }) {
                     <Form.Control type="text" value={titre}
                         onChange={(event) => setTitre(event.target.value)} />
                 </Form.Group>
-
                 <Form.Group>
                     <Form.Label>Artiste / Groupe</Form.Label>
                     <Form.Control type="text" value={artiste}
@@ -67,10 +72,9 @@ function FormulaireAjouterPiece({ id }) {
                 <Form.Group>
                     <Form.Label>Catégorie</Form.Label>
                     {categories.map((categorie, index) =>
-                        <InputGroup>
+                        <InputGroup key={index}>
                             <Form.Control className="my-2" type="text" value={categorie}
                                 onChange={(event) => ChangementCategorie(index, event.target.value)} />
-
                             <InputGroup.Append>
                                 <Button className="my-2" variant="danger" onClick={() => SupprimerCategorie(index)} >
                                     X
@@ -79,13 +83,14 @@ function FormulaireAjouterPiece({ id }) {
                         </InputGroup>
                     )}
                     <div className="text-center">
-                        <Button className="ml-2" variant="success" onClick={AjouterCategorie} >
+                        <Button disabled={categories.includes('')} className="ml-2" variant="success" onClick={AjouterCategorie} >
                             +
                         </Button>
                     </div>
                 </Form.Group>
-
-                <Button variant="primary" onClick={envoyerFormulaire} >
+                { !CategoriesDistinctes() ? <Alert variant="warning">Vous ne pouvez pas avoir 2 catégories identiques</Alert> : null}
+                { categories.length === 0 ? <Alert variant="warning">Vous devez inclure au moins une catégorie</Alert> : null}
+                <Button disabled={titre === '' || artiste === '' || categories.includes('') || categories.length === 0 || !CategoriesDistinctes()} variant="primary" onClick={envoyerFormulaire} >
                     Ajouter
             </Button>
             </Form>

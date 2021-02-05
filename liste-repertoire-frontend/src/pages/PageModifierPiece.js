@@ -1,13 +1,14 @@
 import React from 'react';
-import FormulaireAjouterPiece from '../composants/FormulaireAjouterPiece';
+import FormulaireModifierPiece from '../composants/FormulaireModifierPiece';
 import Button from 'react-bootstrap/Button'
 import { Link } from 'react-router-dom';
 
-function PageAjouter() {
+function PageModifierPiece({ match }) {
+    const id = match.params.id;
     return (
         <>
-            <h1>Ajouter une nouvelle pièce</h1>
-            <FormulaireAjouterPiece />
+            <h1>Modifier</h1>
+            <FormulaireModifierPiece id={id} />
             <Link to="/admin">
                 <Button variant={'danger'} >Annuler</Button>
             </Link>
@@ -15,4 +16,4 @@ function PageAjouter() {
     );
 }
 
-export default PageAjouter;
+export default PageModifierPiece;

@@ -3,7 +3,6 @@ import {
     useState,
     useEffect
 } from 'react';
-
 import ListePiecesAdmin from '../composants/ListePiecesAdmin';
 import Button from 'react-bootstrap/Button';
 import { Link } from 'react-router-dom';
@@ -23,11 +22,10 @@ function PageAdmin() {
     return (
         <>
             <h1>Page administrateur</h1>
-
-            <Link to="/ajouter">
+            <Link to="/ajouterPiece">
                 <Button className="m-2">Ajouter une nouvelle pièce</Button>
             </Link>
-            <Link to="/afficher">
+            <Link to="/afficherDemandesAdmin">
                 <Button className="m-2">Afficher les listes de demandes</Button>
             </Link>
             <h2>Liste du répertoire</h2>
