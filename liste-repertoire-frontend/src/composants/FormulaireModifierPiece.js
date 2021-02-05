@@ -101,7 +101,7 @@ function FormulaireModifierPiece({ id }) {
                         </Button>
                     </div>
                 </Form.Group>
-                { !CategoriesDistinctes() ? <Alert variant="warning">Vous ne pouvez pas avoir de catégories identiques</Alert> : null}
+                { !CategoriesDistinctes() ? <Alert variant="warning">Cette catégorie existe déjà</Alert> : null}
                 { categories.length === 0 ? <Alert variant="warning">Vous devez inclure au moins une catégorie</Alert> : null}
                 <Button disabled={titre === '' || artiste === '' || categories.includes('') || categories.length === 0 || !CategoriesDistinctes()} variant="success" onClick={envoyerFormulaire} >
                     Appliquer les modifications

@@ -16,7 +16,7 @@ function FormulaireCreerDemandeSpeciale() {
     const [listeDemandes, setListeDemande] = useState([]);
     const { username } = UtiliseAuth()
     const estActive = true;
-    const dateAjout = new Date().toLocaleDateString()
+    const dateAjout = new Date().toLocaleDateString('en-CA')
 
     const envoyerDemande = async () => {
         await fetch(`/api/demandesSpeciales/ajouter`, {

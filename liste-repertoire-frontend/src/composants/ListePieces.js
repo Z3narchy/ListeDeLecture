@@ -7,7 +7,7 @@ import Button from 'react-bootstrap/Button';
 
 function ListePieces({ pieces }) {
     const [tri, setTri] = useState('Titre');
-    const [ordre, setOrdre] = useState('Croissant')
+    const [ordre, setOrdre] = useState('Croissant');
     const [rechercheTitre, setRechercheTitre] = useState('');
     const [rechercheArtiste, setRechercheArtiste] = useState('');
     const [rechercheCategorie, setRechercheCategorie] = useState('');
