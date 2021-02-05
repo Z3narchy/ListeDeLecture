@@ -5,13 +5,14 @@ import {
 } from 'react';
 import { Form } from 'react-bootstrap';
 import Button from 'react-bootstrap/Button';
+import Alert from 'react-bootstrap/Alert';
 import InputGroup from 'react-bootstrap/InputGroup';
 import { Redirect } from 'react-router-dom';
 
 function FormulaireModifierPiece({ id }) {
     const [titre, setTitre] = useState('');
     const [artiste, setArtiste] = useState('');
-    const [categories, setCategories] = useState([]);
+    const [categories, setCategories] = useState(['']);
     const [rediriger, setRediriger] = useState(false);
 
     useEffect(() => {
@@ -60,6 +61,12 @@ function FormulaireModifierPiece({ id }) {
         setCategories(categorieSupprimee);
     }
 
+    function CategoriesDistinctes()
+    {
+        var categoriesDistinctes = categories.filter((categorie, index, a) => a.indexOf(categorie) === index);
+        return categories.length === categoriesDistinctes.length;
+    }
+
     return (
         <>
             {AfficherRedirection()}
@@ -94,7 +101,9 @@ function FormulaireModifierPiece({ id }) {
                         </Button>
                     </div>
                 </Form.Group>
-                <Button disabled={titre === '' || artiste === '' || categories.includes('') || categories.length === 0} variant="success" onClick={envoyerFormulaire} >
+                { !CategoriesDistinctes() ? <Alert variant="warning">Cette catégorie existe déjà</Alert> : null}
+                { categories.length === 0 ? <Alert variant="warning">Vous devez inclure au moins une catégorie</Alert> : null}
+                <Button disabled={titre === '' || artiste === '' || categories.includes('') || categories.length === 0 || !CategoriesDistinctes()} variant="success" onClick={envoyerFormulaire} >
                     Appliquer les modifications
                 </Button>
             </Form>

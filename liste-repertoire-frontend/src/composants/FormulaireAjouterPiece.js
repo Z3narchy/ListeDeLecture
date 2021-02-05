@@ -4,13 +4,14 @@ import {
 } from 'react';
 import { Form } from 'react-bootstrap';
 import Button from 'react-bootstrap/Button';
+import Alert from 'react-bootstrap/Alert';
 import { Redirect } from 'react-router-dom';
 import InputGroup from 'react-bootstrap/InputGroup';
 
 function FormulaireAjouterPiece({ id }) {
     const [titre, setTitre] = useState('');
     const [artiste, setArtiste] = useState('');
-    const [categories, setCategories] = useState([]);
+    const [categories, setCategories] = useState(['']);
     const [rediriger, setRediriger] = useState(false);
 
     const envoyerFormulaire = async () => {
@@ -48,6 +49,12 @@ function FormulaireAjouterPiece({ id }) {
         setCategories(categorieSupprimee);
     }
 
+    function CategoriesDistinctes()
+    {
+        var categoriesDistinctes = categories.filter((categorie, index, a) => a.indexOf(categorie) === index);
+        return categories.length === categoriesDistinctes.length;
+    }
+
     return (
         <>
             {AfficherRedirection()}
@@ -81,7 +88,9 @@ function FormulaireAjouterPiece({ id }) {
                         </Button>
                     </div>
                 </Form.Group>
-                <Button disabled={titre === '' || artiste === '' || categories.includes('') || categories.length === 0} variant="primary" onClick={envoyerFormulaire} >
+                { !CategoriesDistinctes() ? <Alert variant="warning">Vous ne pouvez pas avoir 2 catégories identiques</Alert> : null}
+                { categories.length === 0 ? <Alert variant="warning">Vous devez inclure au moins une catégorie</Alert> : null}
+                <Button disabled={titre === '' || artiste === '' || categories.includes('') || categories.length === 0 || !CategoriesDistinctes()} variant="primary" onClick={envoyerFormulaire} >
                     Ajouter
             </Button>
             </Form>

@@ -34,7 +34,7 @@
             }
         ],
         "estActive": true,
-        "dateAjout": "12/12/2020"
+        "dateAjout": "2020-12-12"
     },
 
     {
@@ -62,7 +62,7 @@
             }
         ],
         "estActive": true,
-        "dateAjout": "12/12/2020"
+        "dateAjout": "2020-10-12"
     },
 
     {
@@ -100,7 +100,7 @@
             }
         ],
         "estActive": true,
-        "dateAjout": "12/12/2020"
+        "dateAjout": "2021-02-02"
     },
 
     {
@@ -138,7 +138,7 @@
             }
         ],
         "estActive": true,
-        "dateAjout": "01/01/2021"
+        "dateAjout": "2020-01-01"
 
     },
 
@@ -197,7 +197,7 @@
             }
         ],
         "estActive": true,
-        "dateAjout": "18/09/2020"
+        "dateAjout": "2020-18-09"
     },
     
     {
@@ -225,6 +225,6 @@
             }
         ],
         "estActive": true,
-        "dateAjout": "18/09/1995"
+        "dateAjout": "1995-18-09"
     }
 ]
