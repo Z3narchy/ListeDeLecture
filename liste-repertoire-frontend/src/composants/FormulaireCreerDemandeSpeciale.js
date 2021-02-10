@@ -9,8 +9,10 @@ import ListePiecesAjouter from '../composants/ListePiecesAjouter';
 import { Form } from 'react-bootstrap';
 import Button from 'react-bootstrap/Button';
 import { Redirect } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 function FormulaireCreerDemandeSpeciale() {
+    const { t } = useTranslation();
     const [listePieces, setListePieces] = useState([]);
     const [rediriger, setRediriger] = useState(false);
     const [listeDemandes, setListeDemande] = useState([]);
@@ -61,13 +63,13 @@ function FormulaireCreerDemandeSpeciale() {
             {AfficherRedirection()}
             <Form className="mb-1">
                 <Form.Group>
-                    <Form.Label>Nom d'usager</Form.Label>
+                    <Form.Label>{t('nomUsager')}</Form.Label>
                     <Form.Control disabled type="text" value={username} />
                 </Form.Group>
-                <h3 className="mb-3">Pièce(s) déjà ajouté(s).</h3>
+                <h3 className="mb-3">{t('piecesDejaAjoutes')}</h3>
                 <ListePiecesAjouter pieces={listeDemandes} setListeDemande={setListeDemande} />
                 <Button className="mb-2" variant="primary" onClick={envoyerDemande} >
-                    Envoyer
+                {t('envoyer')}
                 </Button>
             </Form>
             <ListePiecesDemande pieces={autresPieces} listeDemandes={listeDemandes} handle={handleclick} />
