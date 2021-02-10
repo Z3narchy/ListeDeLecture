@@ -74,14 +74,12 @@ function FormulaireModifierDemandeSpeciale({ id }) {
                     <Form.Label>Nom d'usager</Form.Label>
                     <Form.Control disabled type="text" value={username} />
                 </Form.Group>
-                <p>Cliquer sur le bouton pour envoyer votre demande modifiée.</p>
                 <Button variant="primary" onClick={envoyerDemande} >
                     Envoyer
             </Button>
                 <h3>Pièce(s) déjà ajouté(s).</h3>
                 <ListePiecesAjouter pieces={listeDemandes} setListeDemande={setListeDemande} />
             </Form>
-            <p>Pour ajouter une chanson à votre liste, simplement cliquer sur le bouton 'Ajouter'.</p>
             <ListePiecesDemande pieces={autresPieces} listeDemandes={listeDemandes} handle={handleclick} />
         </>
     );

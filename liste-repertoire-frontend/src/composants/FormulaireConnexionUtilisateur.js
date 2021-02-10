@@ -8,8 +8,10 @@ import Button from 'react-bootstrap/Button';
 import Alert from 'react-bootstrap/Alert';
 import { Redirect } from 'react-router-dom';
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 function FormulaireConnexion() {
+    const { t } = useTranslation();
     const [usager, setUsager] = useState('');
     const [motPasse, setMotPasse] = useState('');
     const [rediriger, setRediriger] = useState(false);
