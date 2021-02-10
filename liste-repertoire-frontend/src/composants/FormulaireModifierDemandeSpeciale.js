@@ -9,8 +9,10 @@ import { Redirect } from 'react-router-dom';
 import { UtiliseAuth } from '../context/Auth';
 import ListePiecesAjouter from './ListePiecesAjouter';
 import ListePiecesDemande from './ListePiecesDemande';
+import { useTranslation } from 'react-i18next';
 
 function FormulaireModifierDemandeSpeciale({ id }) {
+    const { t } = useTranslation();
     const { username } = UtiliseAuth();
     const [listePieces, setListePieces] = useState([]);
     const [listeDemandes, setListeDemande] = useState([]);
@@ -68,16 +70,16 @@ function FormulaireModifierDemandeSpeciale({ id }) {
     return (
         <>
             {AfficherRedirection()}
-            <h1>Liste du répertoire</h1>
+            <h1>{t('listeDuRepertoire')}</h1>
             <Form className="mb-1">
                 <Form.Group>
-                    <Form.Label>Nom d'usager</Form.Label>
+                    <Form.Label>{t('nomUsager')}</Form.Label>
                     <Form.Control disabled type="text" value={username} />
                 </Form.Group>
                 <Button variant="primary" onClick={envoyerDemande} >
-                    Envoyer
+                {t('envoyer')}
             </Button>
-                <h3>Pièce(s) déjà ajouté(s).</h3>
+                <h3>{t('piecesDejaAjoutees')}</h3>
                 <ListePiecesAjouter pieces={listeDemandes} setListeDemande={setListeDemande} />
             </Form>
             <ListePiecesDemande pieces={autresPieces} listeDemandes={listeDemandes} handle={handleclick} />

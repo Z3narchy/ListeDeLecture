@@ -8,8 +8,10 @@ import { Redirect } from 'react-router-dom';
 import { Form } from 'react-bootstrap';
 import Alert from 'react-bootstrap/Alert';
 import Button from 'react-bootstrap/Button';
+import { useTranslation } from 'react-i18next';
 
 function FormulaireInscription() {
+    const { t } = useTranslation();
     const [username, setUsername] = useState("");
     const [motPasse, setMotDePasse] = useState('');
     const [rediriger, setRediriger] = useState(false);
@@ -40,7 +42,7 @@ function FormulaireInscription() {
     function alerteDejaInscrit()
     {
         if(alert !== null){
-            return(<Alert variant="warning">Le nom d'utilisateur existe déjà</Alert>)
+            return(<Alert variant="warning">{t('nomUtilisateurExiste')}</Alert>)
         }
         else{
             return null;
@@ -60,22 +62,22 @@ function FormulaireInscription() {
                 <Form className="mb-1 col-md-4">
                     <Form.Group>
                     {alerteDejaInscrit()}
-                        <Form.Label>Nom d'utilisateur</Form.Label>
+                        <Form.Label>{t('nomUsager')}</Form.Label>
                         <Form.Control type="text" value={username}
                             onChange={(event) => setUsername(event.target.value)} />
                     </Form.Group>
                     <Form.Group>
-                        <Form.Label>Mot de passe</Form.Label>
+                        <Form.Label>{t('motPasse')}</Form.Label>
                         <Form.Control type="password" value={motPasse}
                             onChange={(event) => setMotDePasse(event.target.value)} />
                     </Form.Group>
                     <Button className="btn-block my-2" variant={'primary'} onClick={CreerUtilisateur} >
-                        Inscription
+                    {t('inscription')}
                     </Button>
                     <Button className="btn-block my-2" variant={'danger'} onClick={() => setRediriger(true)}>
-                        Annuler
+                    {t('annuler')}
                     </Button>
-                    <p>Déjà inscrit ? Connectez vous <Link to='/connexion'>ici</Link></p>
+                    <p>{t('dejaInscritConnectezVous')}<Link to='/connexion'>{t('ici')}</Link></p>
                 </Form>
             </div>
         </>

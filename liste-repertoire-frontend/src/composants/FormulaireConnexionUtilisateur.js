@@ -41,9 +41,9 @@ function FormulaireConnexion() {
         if (utilisateurExiste === false) {
             return (
                 <>
-                    <Alert variant="danger">CE COMPTE N'EXISTE PAS !</Alert>
+                    <Alert variant="danger">{t('compteExistePas')}</Alert>
                     <Link to="/inscription">
-                        <Button className="btn-block" variant="primary">S'INSCRIRE</Button>
+                        <Button className="btn-block" variant="primary">{t('sinscrire')}</Button>
                     </Link>
                 </>
             )
@@ -71,21 +71,21 @@ function FormulaireConnexion() {
             <div className="d-flex justify-content-center">
                 <Form className="mb-1 col-md-4">
                     <Form.Group>
-                        <Form.Label>Nom d'usager</Form.Label>
+                        <Form.Label>{t('nomUsager')}</Form.Label>
                         <Form.Control type="text" value={usager}
                             onChange={(event) => setUsager(event.target.value)} />
                     </Form.Group>
                     <Form.Group>
-                        <Form.Label>Mot de passe</Form.Label>
+                        <Form.Label>{t('motPasse')}</Form.Label>
                         <Form.Control type="password" value={motPasse}
                             onChange={(event) => setMotPasse(event.target.value)} />
                     </Form.Group>
                     <Form.Group>
                         <Button className="btn-block" variant="primary" onClick={VerifierUtilisateur} >
-                            Connexion
+                        {t('connexion')}
                         </Button>
                         <Button className="btn-block my-2" variant={'danger'} onClick={() => setRediriger(true)}>
-                            Annuler
+                        {t('annuler')}
                         </Button>
                         {AfficherOffreInscription()}
                     </Form.Group>
