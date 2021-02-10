@@ -7,8 +7,10 @@ import {
 import Button from 'react-bootstrap/Button'
 import Row from 'react-bootstrap/Row'
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 function PageGestionPourUtilisateur() {
+    const { t } = useTranslation();
     const { username } = UtiliseAuth();
     const [render, setRender] = useState(false);
     const [listeDemandes, setListeDemande] = useState([]);
@@ -28,15 +30,15 @@ function PageGestionPourUtilisateur() {
             <>
                 <br />
                 <ul>
-                    <h3 style={{ textAlign: "center" }}>Mes Demandes</h3>
+                    <h3 style={{ textAlign: "center" }}>{t('mesDemandes')}</h3>
                     <Row style={{ justifyContent: "center" }}>
                         <Link to="/creerDemandeSpeciale">
-                            <Button style={{ margin: "10px" }}>Nouvelle Demande Spéciale</Button>
+                            <Button style={{ margin: "10px" }}>{t('nouvelleDemande')}</Button>
                         </Link>
                     </Row>
-                    <h4 className="bg-success text-white rounded" style={{ textAlign: "center" }}>Demandes Actives</h4>
+                    <h4 className="bg-success text-white rounded" style={{ textAlign: "center" }}>{t('demandesActives')}</h4>
                     {AfficherDemandesActives(listeDemandes)}
-                    <h4 className="bg-danger text-white rounded" style={{ textAlign: "center" }}>Demandes Inactives</h4>
+                    <h4 className="bg-danger text-white rounded" style={{ textAlign: "center" }}>{t('demandesInactives')}</h4>
                     {AfficherDemandesInactives(listeDemandes)}
                 </ul>
             </>
@@ -47,9 +49,9 @@ function PageGestionPourUtilisateur() {
             <>
                 <br />
                 <Link to="/creerDemandeSpeciale">
-                    <Button style={{ marginRight: "10px" }}>Nouvelle Demande Spéciale</Button>
+                    <Button style={{ marginRight: "10px" }}>{t('nouvelleDemande')}</Button>
                 </Link>
-                <h5 variant={"info"} >Aucune demande spéciale.</h5>
+                <h5 variant={"info"}>{t('aucuneDemandeTrouvee')}</h5>
             </>
         );
     }
@@ -81,7 +83,7 @@ function PageGestionPourUtilisateur() {
                     </ul>
                 )}
                 <Row style={{ marginTop: "10px" }}>
-                    <Button variant="success" style={{ marginRight: "10px" }} onClick={() => handleClickButtonActif(demande)}>Réactiver</Button>
+                    <Button variant="success" style={{ marginRight: "10px" }} onClick={() => handleClickButtonActif(demande)}>{t('reactiver')}</Button>
                 </Row>
                 <br /><br />
             </>
@@ -100,9 +102,9 @@ function PageGestionPourUtilisateur() {
                     </ul>
                 )}
                 <Row style={{ marginTop: "10px" }}>
-                    <Button variant="danger" style={{ marginRight: "10px" }} onClick={() => handleClickButtonActif(demande)}>Désactiver</Button>
+                    <Button variant="danger" style={{ marginRight: "10px" }} onClick={() => handleClickButtonActif(demande)}>{t('desactiver')}</Button>
                     <Link to={`/modifierDemandeSpeciale/${demande._id}`}>
-                        <Button variant="warning" style={{ marginRight: "10px" }}>Modifier</Button>
+                        <Button variant="warning" style={{ marginRight: "10px" }}>{t('modifier')}</Button>
                     </Link>
                 </Row>
                 <br /><br />

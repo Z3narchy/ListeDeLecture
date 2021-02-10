@@ -1,10 +1,13 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 
 function Page404() {
+    const { t } = useTranslation();
+
     return (
         <>
-            <h1>Erreur 404!</h1>
-            <h5>La page demandé n'existe pas.</h5>
+            <h1>{t('erreur404')}</h1>
+            <h5>{t('pageExistePas')}</h5>
         </>
     )
 }

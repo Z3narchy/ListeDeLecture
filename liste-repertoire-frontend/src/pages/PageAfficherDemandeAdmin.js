@@ -7,8 +7,11 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
+import { useTranslation } from 'react-i18next';
 
 function PageAfficherDemandeAdmin() {
+    const { t } = useTranslation();
+
     const [render, setRender] = useState(false);
     const [listeDemandes, setListeDemande] = useState([]);
 
@@ -142,7 +145,7 @@ function PageAfficherDemandeAdmin() {
         );
     }
     else {
-        return <h5 variant={"info"} >Aucune demande trouvée.</h5>;
+        return <h5 variant={"info"}>{t('aucuneDemandeTrouvee')}</h5>;
     } 
 }
 

@@ -71,5 +71,6 @@
     "usagerEstAdmin": "User is an administrator",
     "promouvoirAdmin": "Promote as administrator",
     "supprimerUsager": "Delete user",
-    "esTuCertainSuppPiece": "Do you really want to delete this song?"
+    "esTuCertainSuppPiece": "Do you really want to delete this song?",
+    "aucunUtilisateur": "No users exists"
 }
