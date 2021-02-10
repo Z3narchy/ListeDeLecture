@@ -56,10 +56,10 @@ function PageGestionUsager() {
         <Table bordered hover>
           <thead>
             <tr>
-              <th align="center">Décompte d'usager</th>
+              <th align="center">#</th>
               <th align="center">Username</th>
               <th align="center">L'usager est admin</th>
-              <th align="center">Promouvoir en status admin</th>
+              <th align="center">Promouvoir</th>
               <th align="center">Supprimer l'usager</th>
             </tr>
           </thead>
