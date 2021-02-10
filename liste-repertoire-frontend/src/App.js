@@ -1,3 +1,4 @@
+import Langages from './composants/Langages';
 import PageAccueil from './pages/PageAccueil';
 import PageRepertoirePieces from './pages/PageRepertoirePieces';
 import PageAdmin from './pages/PageAdmin';
@@ -39,6 +40,7 @@ function App() {
     <ContexteAuth.Provider value={{ authentification, setAuthentification, estAdmin, setEstAdmin, username, setUsername }}>
       <Router>
         <Container>
+          <Langages />
           <BarreNavigation />
           <Switch>
             <Route path="/" component={PageAccueil} exact />
