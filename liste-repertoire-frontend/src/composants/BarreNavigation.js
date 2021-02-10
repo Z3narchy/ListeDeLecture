@@ -4,10 +4,12 @@ import NavDropdown from 'react-bootstrap/NavDropdown';
 import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
 import { UtiliseAuth } from '../context/Auth';
+import { useTranslation } from 'react-i18next';
 
 function BarreNavigation() {
     const { username } = UtiliseAuth();
     const { estAdmin } = UtiliseAuth();
+    const { t } = useTranslation();
     return (
         <>
             <Navbar bg="light" expand="sm">
@@ -15,10 +17,10 @@ function BarreNavigation() {
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="mr-auto">
                         <LinkContainer to="/" exact>
-                            <Nav.Link>Accueil</Nav.Link>
+                            <Nav.Link>{t('accueil')}</Nav.Link>
                         </LinkContainer>
                         <LinkContainer to="/repertoirePieces">
-                            <Nav.Link>Répertoire</Nav.Link>
+                            <Nav.Link>{t('repertoire')}</Nav.Link>
                         </LinkContainer>
                     </Nav>
                     <Nav>
@@ -28,12 +30,12 @@ function BarreNavigation() {
                                     <NavDropdown title="Administration">
                                         <NavDropdown.Item>
                                             <LinkContainer to="/admin">
-                                                <Nav.Link>Général</Nav.Link>
+                                                <Nav.Link>{t('general')}</Nav.Link>
                                             </LinkContainer>
                                         </NavDropdown.Item>
                                         <NavDropdown.Item>
                                             <LinkContainer to="/gestionUtilisateurs">
-                                                <Nav.Link>Gestion Usagers</Nav.Link>
+                                                <Nav.Link>{t('gestionUsagers')}</Nav.Link>
                                             </LinkContainer>
                                         </NavDropdown.Item>
 
@@ -45,22 +47,22 @@ function BarreNavigation() {
                             username ?
                                 <>
                                     <LinkContainer to="/gestionDemandesUtilisateur">
-                                        <Nav.Link>Mes Demandes</Nav.Link>
+                                        <Nav.Link>{t('mesDemandes')}</Nav.Link>
                                     </LinkContainer>
                                     <LinkContainer to="/deconnexion">
-                                        <Nav.Link>Deconnexion</Nav.Link>
+                                        <Nav.Link>{t('deconnexion')}</Nav.Link>
                                     </LinkContainer>
                                     <LinkContainer to="/">
-                                        <Nav.Link>Compte: <strong>{username}</strong></Nav.Link>
+                                        <Nav.Link>{t('compte')} <strong>{username}</strong></Nav.Link>
                                     </LinkContainer>
                                 </>
                                 :
                                 <>
                                     <LinkContainer to="/inscription">
-                                        <Nav.Link>Inscription</Nav.Link>
+                                        <Nav.Link>{t('inscription')}</Nav.Link>
                                     </LinkContainer>
                                     <LinkContainer to="/connexion">
-                                        <Nav.Link>Connexion</Nav.Link>
+                                        <Nav.Link>{t('connexion')}</Nav.Link>
                                     </LinkContainer>
                                 </>
                         }

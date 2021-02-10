@@ -1,7 +1,10 @@
 import React from 'react';
 import Button from 'react-bootstrap/Button';
-function ListePiecesAjouter({ pieces, setListeDemande }) {
+import { useTranslation } from 'react-i18next';
 
+function ListePiecesAjouter({ pieces, setListeDemande }) {
+    const { t } = useTranslation();
+    
     function SupprimerCategorie(index)
     {
         var piecesSupprimee = pieces.slice();
@@ -24,7 +27,7 @@ function ListePiecesAjouter({ pieces, setListeDemande }) {
         );
     }
     else {
-        return <h5 variant={"info"} >Aucune pièce ajoutée.</h5>;
+        return <h5 variant={"info"}>{t('aucunePieceAjoutee')}</h5>;
     }
 }
 
