@@ -7,8 +7,10 @@ import Button from 'react-bootstrap/Button';
 import Alert from 'react-bootstrap/Alert';
 import { Redirect } from 'react-router-dom';
 import InputGroup from 'react-bootstrap/InputGroup';
+import { useTranslation } from 'react-i18next';
 
 function FormulaireAjouterPiece({ id }) {
+    const { t } = useTranslation();
     const [titre, setTitre] = useState('');
     const [artiste, setArtiste] = useState('');
     const [categories, setCategories] = useState(['']);
@@ -60,17 +62,17 @@ function FormulaireAjouterPiece({ id }) {
             {AfficherRedirection()}
             <Form className="mb-1">
                 <Form.Group>
-                    <Form.Label>Titre</Form.Label>
+                    <Form.Label>{t('titre')}</Form.Label>
                     <Form.Control type="text" value={titre}
                         onChange={(event) => setTitre(event.target.value)} />
                 </Form.Group>
                 <Form.Group>
-                    <Form.Label>Artiste / Groupe</Form.Label>
+                    <Form.Label>{t('artiste')} / {t('groupe')}</Form.Label>
                     <Form.Control type="text" value={artiste}
                         onChange={(event) => setArtiste(event.target.value)} />
                 </Form.Group>
                 <Form.Group>
-                    <Form.Label>Catégorie</Form.Label>
+                    <Form.Label>{t('categorie')}</Form.Label>
                     {categories.map((categorie, index) =>
                         <InputGroup key={index}>
                             <Form.Control className="my-2" type="text" value={categorie}
@@ -88,10 +90,10 @@ function FormulaireAjouterPiece({ id }) {
                         </Button>
                     </div>
                 </Form.Group>
-                { !CategoriesDistinctes() ? <Alert variant="warning">Vous ne pouvez pas avoir 2 catégories identiques</Alert> : null}
-                { categories.length === 0 ? <Alert variant="warning">Vous devez inclure au moins une catégorie</Alert> : null}
+                { !CategoriesDistinctes() ? <Alert variant="warning">{t('peuxPas2Categories')}</Alert> : null}
+                { categories.length === 0 ? <Alert variant="warning">{t('inclureAuMoins1Categorie')}</Alert> : null}
                 <Button disabled={titre === '' || artiste === '' || categories.includes('') || categories.length === 0 || !CategoriesDistinctes()} variant="primary" onClick={envoyerFormulaire} >
-                    Ajouter
+                {t('ajouter')}
             </Button>
             </Form>
         </>
