@@ -72,5 +72,6 @@
     "usagerEstAdmin": "L'usager est admin",
     "promouvoirAdmin": "Promouvoir en Admin",
     "supprimerUsager": "Supprimer l'usager",
-    "esTuCertainSuppPiece": "Êtes-vous certain de vouloir supprimer cette pièce?"
+    "esTuCertainSuppPiece": "Êtes-vous certain de vouloir supprimer cette pièce?",
+    "aucunUtilisateur": "Aucun utilisateur inscrit."
 }

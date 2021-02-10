@@ -7,8 +7,10 @@ import Button from 'react-bootstrap/Button';
 import Table from 'react-bootstrap/Table';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Alert from 'react-bootstrap/Alert';
+import { useTranslation } from 'react-i18next';
 
 function PageGestionUsager() {
+  const { t } = useTranslation();
   const [rafraichir, setRafraichir] = useState(false);
   const [listeUsagers, setListeUsager] = useState([]);
   useEffect(() => {
@@ -52,15 +54,15 @@ function PageGestionUsager() {
   if (listeUsagers?.length) {
     return (
       <>
-        <Alert className="mt-2" variant='primary'> Gestion des usagers</Alert>
+        <Alert className="mt-2" variant='primary'>{t('gestionUsagers')}</Alert>
         <Table bordered hover>
           <thead>
             <tr>
               <th align="center">#</th>
-              <th align="center">Username</th>
-              <th align="center">L'usager est admin</th>
-              <th align="center">Promouvoir</th>
-              <th align="center">Supprimer l'usager</th>
+              <th align="center">{t('demandesActives')}</th>
+              <th align="center">{t('usagerEstAdmin')}</th>
+              <th align="center">{t('promouvoirAdmin')}</th>
+              <th align="center">{t('supprimerUsager')}</th>
             </tr>
           </thead>
           <tbody>
@@ -74,10 +76,10 @@ function PageGestionUsager() {
                     <td align="center">{(listeUsagers[usager].estAdmin === "false") ?
                       <Button variant="success" className="m-1" size="sm" onClick={() =>
                         promouvoirUsager(listeUsagers[usager]._id, listeUsagers[usager].username,
-                          listeUsagers[usager].motPasse)} >Promouvoir admin</Button> : null}
+                          listeUsagers[usager].motPasse)}>{t('promouvoirAdmin')}</Button> : null}
                     </td>
                     <td align="center"><Button variant="danger" className="m-1" size="sm"
-                      onClick={() => supprimerUsager(listeUsagers[usager]._id)} >Supprimer l'usager</Button>
+                      onClick={() => supprimerUsager(listeUsagers[usager]._id)}>{t('supprimerUsager')}</Button>
                     </td>
                   </tr>
                 );
@@ -89,7 +91,7 @@ function PageGestionUsager() {
     );
   }
   else {
-    return <h5 variant={"info"} >Aucun usager d'inscrit!</h5>;
+    return <h5 variant={"info"}>{t('aucunUtilisateur')}</h5>;
   }
 }
 
