@@ -54,9 +54,11 @@
     "pageAdmin": "Administrator Pannel",
     "ajouterPiece": "Add a new song",
     "afficherListeDemandes": "Display request list",
-    "listeRepertoire": "Playlists list",
+    "listeRepertoire": "Playlists",
+    "supprimer": "Delete",
     
     "desactiver": "Deactivate",
+    "reactiver": "Reactivate",
     "nom": "Name",
     "date": "Date",
     "demandesActives": "Active requests",
@@ -72,5 +74,7 @@
     "promouvoirAdmin": "Promote as administrator",
     "supprimerUsager": "Delete user",
     "esTuCertainSuppPiece": "Do you really want to delete this song?",
-    "aucunUtilisateur": "No users exists"
+    "aucunUtilisateur": "No users exists",
+    "oui": "Yes",
+    "non": "No"
 }

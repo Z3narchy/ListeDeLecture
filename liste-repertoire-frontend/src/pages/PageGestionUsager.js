@@ -72,7 +72,7 @@ function PageGestionUsager() {
                   <tr key={index}>
                     <td align="center">{index + 1}</td>
                     <td align="center">{listeUsagers[usager].username}</td>
-                    <td align="center">{listeUsagers[usager].estAdmin === "true"? "Oui" : "Non"}</td>
+                    <td align="center">{listeUsagers[usager].estAdmin === "true"? t('oui') : t('non')}</td>
                     <td align="center">{(listeUsagers[usager].estAdmin === "false") ?
                       <Button variant="success" className="m-1" size="sm" onClick={() =>
                         promouvoirUsager(listeUsagers[usager]._id, listeUsagers[usager].username,

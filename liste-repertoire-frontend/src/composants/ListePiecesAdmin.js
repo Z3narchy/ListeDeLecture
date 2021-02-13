@@ -103,7 +103,7 @@ function ListePiecesAdmin({ pieces }) {
                                 </td>
                                 <td>
                                     <Link to={`/modifierPiece/${piece._id}`}>
-                                        <Button variant="success" className="m-1" size="sm">{t('mpdifier')}</Button>
+                                        <Button variant="success" className="m-1" size="sm">{t('modifier')}</Button>
                                     </Link>
                                     <Link to={`/supprimerPiece/${piece._id}`}>
                                         <Button variant="danger" className="m-1" size="sm">{t('supprimer')}</Button>
