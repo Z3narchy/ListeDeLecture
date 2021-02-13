@@ -66,7 +66,7 @@ function FormulaireCreerDemandeSpeciale() {
                     <Form.Label>{t('nomUsager')}</Form.Label>
                     <Form.Control disabled type="text" value={username} />
                 </Form.Group>
-                <h3 className="mb-3">{t('piecesDejaAjoutes')}</h3>
+                <h3 className="mb-3">{t('piecesDejaAjoutees')}</h3>
                 <ListePiecesAjouter pieces={listeDemandes} setListeDemande={setListeDemande} />
                 <Button className="mb-2" variant="primary" onClick={envoyerDemande} >
                 {t('envoyer')}

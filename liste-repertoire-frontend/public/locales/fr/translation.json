@@ -54,7 +54,8 @@
     "pageAdmin": "Page Administrateur",
     "ajouterPiece": "Ajouter une nouvelle pièce",
     "afficherListeDemandes": "Afficher les listes de demandes",
-    "listeRepertoire": "Liste du répertoire.",
+    "listeRepertoire": "Liste du répertoire",
+    "supprimer": "Supprimer",
     
     "desactiver": "Désactiver",
     "reactiver": "Réactiver",
@@ -73,5 +74,7 @@
     "promouvoirAdmin": "Promouvoir en Admin",
     "supprimerUsager": "Supprimer l'usager",
     "esTuCertainSuppPiece": "Êtes-vous certain de vouloir supprimer cette pièce?",
-    "aucunUtilisateur": "Aucun utilisateur inscrit."
+    "aucunUtilisateur": "Aucun utilisateur inscrit.",
+    "oui": "Oui",
+    "non": "Non"
 }

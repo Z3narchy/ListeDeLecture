@@ -106,7 +106,7 @@ function FormulaireModifierPiece({ id }) {
                 { !CategoriesDistinctes() ? <Alert variant="warning">{t('categorieExisteDeja')}</Alert> : null}
                 { categories.length === 0 ? <Alert variant="warning">{t('doitInclureAumoins1Cat')}</Alert> : null}
                 <Button disabled={titre === '' || artiste === '' || categories.includes('') || categories.length === 0 || !CategoriesDistinctes()} variant="success" onClick={envoyerFormulaire} >
-                {t('appliquerModification')}
+                {t('appliquerModifications')}
                 </Button>
             </Form>
         </>
