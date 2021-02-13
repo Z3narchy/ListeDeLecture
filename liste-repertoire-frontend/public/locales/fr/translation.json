@@ -1,0 +1,80 @@
+{
+    "connecter": "Se Connecter",
+    "deconnecter": "Se Déconnecter",
+
+    "accueil": "Accueil",
+    "repertoire": "Répertoire",
+    "general": "Général",
+    "gestionUsagers": "Gestion Usagers",
+    "mesDemandes": "Mes Demandes",
+    "deconnexion": "Deconnexion",
+    "compte": "Compte:",
+    "inscription": "Inscription",
+    "connexion": "Connexion",
+
+    "titre": "Titre",
+    "artiste": "Artiste",
+    "groupe": "Groupe",
+    "categorie": "Catégorie",
+    "categories": "Catégories",
+    "peuxPas2Categories": "Vous ne pouvez pas avoir 2 catégories identiques",
+    "inclureAuMoins1Categorie":"Vous devez inclure au moins une catégorie",
+    "ajouter":"Ajouter",
+
+    "compteExistePas": "CE COMPTE N'EXISTE PAS !",
+    "sinscrire": "S'INSCRIRE",
+    "nomUsager": "Nom d'usager",
+    "motPasse": "Mot de passe",
+    "annuler": "Annuler",
+
+    "piecesDejaAjoutees": "Pièce(s) déjà ajouté(s).",
+    "envoyer": "Envoyer",
+    "nomUtilisateurExiste": "Le nom d'utilisateur existe déjà.",
+    "dejaInscritConnectezVous": "Déjà inscrit ? Connectez vous.",
+    "ici": "ici",
+    
+    "listeDuRepertoire": "Liste du répertoire",
+    "categorieExisteDeja": "Cette catégorie existe déjà.",
+    "appliquerModifications": "Appliquer les modifications",
+    "trierPar": "Trier par",
+    "ordre": "Ordre",
+    "croissant": "Croissant",
+    "decroissant": "Décroissant",
+    "repertoireVide": "Répertoire vide.",
+
+    "actions": "Actions",
+    
+    "aucunePieceAjoutee": "Aucune pièce ajoutée.",
+    
+    "erreur404": "ERREUR 404!",
+    "pageExistePas": "La page demandée n'existe pas!",
+    
+    "pageAccueil" : "Page d'accueil",
+
+    "pageAdmin": "Page Administrateur",
+    "ajouterPiece": "Ajouter une nouvelle pièce",
+    "afficherListeDemandes": "Afficher les listes de demandes",
+    "listeRepertoire": "Liste du répertoire",
+    "supprimer": "Supprimer",
+    
+    "desactiver": "Désactiver",
+    "reactiver": "Réactiver",
+    "nom": "Nom",
+    "date": "Date",
+    "demandesActives": "Demande Actives",
+    "demandesInactives": "Demandes Inactives",
+    "aucuneDemandeTrouvee":"Aucune demande trouvée",
+
+    "connectezVous":"Connecter vous à votre compte!",
+    "demandeSpeciale": "Demande Spéciale",
+    "nouvelleDemande": "Nouvelle Demande Spéciale",
+    "modifier": "Modifier",
+
+    "usagerEstAdmin": "L'usager est admin",
+    "promouvoirAdmin": "Promouvoir en Admin",
+    "supprimerUsager": "Supprimer l'usager",
+    "esTuCertainSuppPiece": "Êtes-vous certain de vouloir supprimer cette pièce?",
+    "aucunUtilisateur": "Aucun utilisateur inscrit.",
+    "oui": "Oui",
+    "non": "Non"
+}

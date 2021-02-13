@@ -8,8 +8,10 @@ import Button from 'react-bootstrap/Button';
 import Alert from 'react-bootstrap/Alert';
 import InputGroup from 'react-bootstrap/InputGroup';
 import { Redirect } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 function FormulaireModifierPiece({ id }) {
+    const { t } = useTranslation();
     const [titre, setTitre] = useState('');
     const [artiste, setArtiste] = useState('');
     const [categories, setCategories] = useState(['']);
@@ -72,17 +74,17 @@ function FormulaireModifierPiece({ id }) {
             {AfficherRedirection()}
             <Form className="mb-1">
                 <Form.Group>
-                    <Form.Label>Titre</Form.Label>
+                    <Form.Label>{t('titre')}</Form.Label>
                     <Form.Control type="text" value={titre}
                         onChange={(event) => setTitre(event.target.value)} />
                 </Form.Group>
                 <Form.Group>
-                    <Form.Label>Artiste / Groupe</Form.Label>
+                    <Form.Label>{t('artiste')} / {t('groupe')}</Form.Label>
                     <Form.Control type="text" value={artiste}
                         onChange={(event) => setArtiste(event.target.value)} />
                 </Form.Group>
                 <Form.Group >
-                    <Form.Label>Catégories</Form.Label>
+                    <Form.Label>{t('categories')}</Form.Label>
                     {
                         categories.map((categorie, index) =>
                             <InputGroup key={index}>
@@ -101,10 +103,10 @@ function FormulaireModifierPiece({ id }) {
                         </Button>
                     </div>
                 </Form.Group>
-                { !CategoriesDistinctes() ? <Alert variant="warning">Cette catégorie existe déjà</Alert> : null}
-                { categories.length === 0 ? <Alert variant="warning">Vous devez inclure au moins une catégorie</Alert> : null}
+                { !CategoriesDistinctes() ? <Alert variant="warning">{t('categorieExisteDeja')}</Alert> : null}
+                { categories.length === 0 ? <Alert variant="warning">{t('doitInclureAumoins1Cat')}</Alert> : null}
                 <Button disabled={titre === '' || artiste === '' || categories.includes('') || categories.length === 0 || !CategoriesDistinctes()} variant="success" onClick={envoyerFormulaire} >
-                    Appliquer les modifications
+                {t('appliquerModifications')}
                 </Button>
             </Form>
         </>

@@ -5,9 +5,11 @@ import {
 } from 'react';
 
 import ListePieces from '../composants/ListePieces';
+import { useTranslation } from 'react-i18next';
 
 function PageRepertoirePieces() {
     const [listePieces, setListePieces] = useState([]);
+    const { t } = useTranslation();
 
     useEffect(() => {
         const chercherDonnees = async () => {
@@ -20,7 +22,7 @@ function PageRepertoirePieces() {
 
     return (
         <>
-            <h1>Liste du répertoire</h1>
+            <h1>{t('listeRepertoire')}</h1>
             <ListePieces pieces={listePieces} />
         </>
     );

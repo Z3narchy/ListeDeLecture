@@ -1,0 +1,80 @@
+{
+    "connecter": "Connect",
+    "deconnecter": "Disconnect",
+
+    "accueil": "Home",
+    "repertoire": "Directory",
+    "general": "General",
+    "gestionUsagers": "Users Management",
+    "mesDemandes": "My requests",
+    "deconnexion": "Disconnect",
+    "compte": "Account:",
+    "inscription": "Create account",
+    "connexion": "Connect",
+
+    "titre": "Title",
+    "artiste": "Artist",
+    "groupe": "Group",
+    "categorie": "Category",
+    "categories": "Categories",
+    "peuxPas2Categories": "You can't add two identical categories",
+    "inclureAuMoins1Categorie":"You must include at least one category",
+    "ajouter":"Add",
+
+    "compteExistePas": "This account doesn't exist",
+    "sinscrire": "Subscribe",
+    "nomUsager": "Username",
+    "motPasse": "Password",
+    "annuler": "Cancel",
+
+    "piecesDejaAjoutees": "Song already added",
+    "envoyer": "Send",
+    "nomUtilisateurExiste": "This username isn't available",
+    "dejaInscritConnectezVous": "Already got an account? Sign in",
+    "ici": "here",
+    
+    "listeDuRepertoire": "Playlist",
+    "categorieExisteDeja": "category already exists",
+    "appliquerModifications": "Apply changes",
+    "trierPar": "Order by",
+    "ordre": "Order",
+    "croissant": "Ascending",
+    "decroissant": "Descending",
+    "repertoireVide": "Empty Playlist",
+
+    "actions": "Actions",
+    
+    "aucunePieceAjoutee": "No songs were added",
+    
+    "erreur404": "ERROR 404!",
+    "pageExistePas": "The page already exists",
+    
+    "pageAccueil" : "Home page",
+
+    "pageAdmin": "Administrator Pannel",
+    "ajouterPiece": "Add a new song",
+    "afficherListeDemandes": "Display request list",
+    "listeRepertoire": "Playlists",
+    "supprimer": "Delete",
+    
+    "desactiver": "Deactivate",
+    "reactiver": "Reactivate",
+    "nom": "Name",
+    "date": "Date",
+    "demandesActives": "Active requests",
+    "demandesInactives": "Inactive requests",
+    "aucuneDemandeTrouvee":"No request found",
+
+    "connectezVous":"Sign in",
+    "demandeSpeciale": "Special Request",
+    "nouvelleDemande": "New special request",
+    "modifier": "Modify",
+
+    "usagerEstAdmin": "User is an administrator",
+    "promouvoirAdmin": "Promote as administrator",
+    "supprimerUsager": "Delete user",
+    "esTuCertainSuppPiece": "Do you really want to delete this song?",
+    "aucunUtilisateur": "No users exists",
+    "oui": "Yes",
+    "non": "No"
+}
